@@ -80,8 +80,8 @@
       "mtu": 1280,
       "peers": [
         {
-          "address": "162.159.192.1",
-          "port": 2408,
+          "address": "188.114.99.22",
+          "port": 8854,
           "public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
           "reserved": [38, 14, 66],
           "allowed_ips": ["0.0.0.0/0", "::/0"],
@@ -98,8 +98,8 @@
       "mtu": 1280,
       "peers": [
         {
-          "address": "2606:4700:d1::8a3a:8319:8bae:b5e0",
-          "port": 955,
+          "address": "188.114.99.22",
+          "port": 4233,
           "public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
           "reserved": [240, 241, 108],
           "allowed_ips": ["0.0.0.0/0", "::/0"],
