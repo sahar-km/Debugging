@@ -1,0 +1,342 @@
+{
+    "log": {
+        "level": "warn",
+        "timestamp": true
+    },
+    "dns": {
+        "servers": [
+            {
+                "address": "1.1.1.1",
+                "address_resolver": "dns-direct",
+                "detour": "SELECT",
+                "tag": "dns-remote"
+            },
+            {
+                "address": "8.8.8.8",
+                "detour": "direct",
+                "tag": "dns-direct"
+            },
+            {
+                "address": "local",
+                "tag": "dns-local"
+            },
+            {
+                "address": "178.22.122.100",
+                "detour": "direct",
+                "tag": "dns-openai"
+            }
+        ],
+        "rules": [
+            {
+                "outbound": "any",
+                "server": "dns-direct"
+            },
+            {
+                "domain": [
+                    "raw.githubusercontent.com",
+                    "time.apple.com"
+                ],
+                "server": "dns-direct"
+            },
+            {
+                "clash_mode": "Direct",
+                "server": "dns-direct"
+            },
+            {
+                "clash_mode": "Global",
+                "server": "dns-remote"
+            },
+            {
+                "type": "logical",
+                "mode": "and",
+                "rules": [
+                    {
+                        "rule_set": "geosite-ir"
+                    },
+                    {
+                        "rule_set": "geoip-ir"
+                    }
+                ],
+                "server": "dns-direct"
+            },
+            {
+                "disable_cache": true,
+                "rule_set": [
+                    "geosite-malware",
+                    "geosite-phishing",
+                    "geosite-cryptominers",
+                    "geosite-category-ads-all"
+                ],
+                "action": "reject"
+            },
+            {
+                "rule_set": "geosite-openai",
+                "server": "dns-openai"
+            }
+        ],
+        "strategy": "ipv4_only",
+        "independent_cache": true
+    },
+    "endpoints": [
+        {
+            "address": [
+                "172.16.0.2/32",
+                "2606:4700:110:8ca4:fd5:a861:ca96:7d7/128"
+            ],
+            "mtu": 1280,
+            "peers": [
+                {
+                    "address": "162.159.192.1",
+                    "port": 2408,
+                    "public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
+                    "reserved": [
+                        38,
+                        14,
+                        66
+                    ],
+                    "allowed_ips": [
+                        "0.0.0.0/0",
+                        "::/0"
+                    ],
+                    "persistent_keepalive_interval": 5
+                }
+            ],
+            "private_key": "WAypthahjV0uoLgGOJGg2fhylb4joen6rF4L7JsQJng=",
+            "type": "wireguard",
+            "tag": "🟡Berlin",
+            "detour": "⚪Tehran"
+        },
+        {
+            "address": [
+                "172.16.0.2/32",
+                "2606:4700:110:8836:f1c9:4393:9b37:3814/128"
+            ],
+            "mtu": 1280,
+            "peers": [
+                {
+                    "address": "2606:4700:d1::8a3a:8319:8bae:b5e0",
+                    "port": 955,
+                    "public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
+                    "reserved": [
+                        240,
+                        241,
+                        108
+                    ],
+                    "allowed_ips": [
+                        "0.0.0.0/0",
+                        "::/0"
+                    ],
+                    "persistent_keepalive_interval": 5
+                }
+            ],
+            "private_key": "OGRPS2N3uv+t3XmsP/XHipZoIOVZuYj9dvb5eS6HxWM=",
+            "type": "wireguard",
+            "tag": "⚪Tehran"
+        }
+    ],
+    "inbounds": [
+        {
+            "type": "direct",
+            "tag": "dns-in",
+            "listen": "0.0.0.0",
+            "listen_port": 6450,
+            "override_address": "1.1.1.1",
+            "override_port": 53
+        },
+        {
+            "type": "tun",
+            "tag": "tun-in",
+            "address": [
+                "172.18.0.1/30",
+                "fdfe:dcba:9876::1/126"
+            ],
+            "mtu": 9000,
+            "auto_route": true,
+            "strict_route": true,
+            "endpoint_independent_nat": true,
+            "stack": "mixed"
+        },
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "0.0.0.0",
+            "listen_port": 2080
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "selector",
+            "tag": "SELECT",
+            "outbounds": [
+                "🔰AUTO",
+                "⚪Tehran",
+                "🟡Berlin"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "🔰AUTO",
+            "outbounds": [
+                "⚪Tehran",
+                "🟡Berlin"
+            ],
+            "url": "https://www.gstatic.com/generate_204",
+            "interval": "30s"
+        },
+        {
+            "type": "direct",
+            "domain_strategy": "ipv4_only",
+            "tag": "direct"
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "action": "sniff"
+            },
+            {
+                "action": "hijack-dns",
+                "mode": "or",
+                "rules": [
+                    {
+                        "inbound": "dns-in"
+                    },
+                    {
+                        "protocol": "dns"
+                    }
+                ],
+                "type": "logical"
+            },
+            {
+                "clash_mode": "Direct",
+                "outbound": "direct"
+            },
+            {
+                "clash_mode": "Global",
+                "outbound": "SELECT"
+            },
+            {
+                "rule_set": [
+                    "geosite-malware",
+                    "geosite-phishing",
+                    "geosite-cryptominers",
+                    "geosite-category-ads-all"
+                ],
+                "action": "reject"
+            },
+            {
+                "rule_set": [
+                    "geoip-malware",
+                    "geoip-phishing"
+                ],
+                "action": "reject"
+            },
+            {
+                "rule_set": [
+                    "geosite-ir",
+                    "geosite-openai"
+                ],
+                "outbound": "direct"
+            },
+            {
+                "ip_is_private": true,
+                "outbound": "direct"
+            },
+            {
+                "rule_set": [
+                    "geoip-ir"
+                ],
+                "outbound": "direct"
+            }
+        ],
+        "rule_set": [
+            {
+                "type": "remote",
+                "tag": "geosite-ir",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geosite-ir.srs",
+                "download_detour": "direct"
+            },
+            {
+                "type": "remote",
+                "tag": "geoip-ir",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geoip-ir.srs",
+                "download_detour": "direct"
+            },
+            {
+                "type": "remote",
+                "tag": "geosite-openai",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geosite-openai.srs",
+                "download_detour": "direct"
+            },
+            {
+                "type": "remote",
+                "tag": "geosite-malware",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geosite-malware.srs",
+                "download_detour": "direct"
+            },
+            {
+                "type": "remote",
+                "tag": "geoip-malware",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geoip-malware.srs",
+                "download_detour": "direct"
+            },
+            {
+                "type": "remote",
+                "tag": "geosite-phishing",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geosite-phishing.srs",
+                "download_detour": "direct"
+            },
+            {
+                "type": "remote",
+                "tag": "geoip-phishing",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geoip-phishing.srs",
+                "download_detour": "direct"
+            },
+            {
+                "type": "remote",
+                "tag": "geosite-cryptominers",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geosite-cryptominers.srs",
+                "download_detour": "direct"
+            },
+            {
+                "type": "remote",
+                "tag": "geosite-category-ads-all",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geosite-category-ads-all.srs",
+                "download_detour": "direct"
+            }
+        ],
+        "auto_detect_interface": true,
+        "override_android_vpn": true,
+        "final": "SELECT"
+    },
+    "ntp": {
+        "enabled": true,
+        "server": "time.apple.com",
+        "server_port": 123,
+        "detour": "direct",
+        "interval": "30m",
+        "write_to_system": false
+    },
+    "experimental": {
+        "cache_file": {
+            "enabled": true,
+            "store_fakeip": true
+        },
+        "clash_api": {
+            "external_controller": "127.0.0.1:9090",
+            "external_ui": "ui",
+            "external_ui_download_url": "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip",
+            "external_ui_download_detour": "direct",
+            "default_mode": "Rule"
+        }
+    }
+}
