@@ -3,9 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cantarell&family=Courier+Prime&family=Fira+Code&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Mono:wght@100..700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cantarell&family=Courier+Prime&family=Fira+Code&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Mono:wght@100..700&display=swap"
+      rel="stylesheet"
+    />
     <title>VLESS Proxy Configuration</title>
     <style>
       * {
@@ -13,70 +16,112 @@
         padding: 0;
         box-sizing: border-box;
       }
-      
+
       @font-face {
         font-family: 'A401';
         src:
           url('https://pub-6ca0f15ec8df4ddab5f387843d1cf0a7.r2.dev/Aldine401.woff2') format('woff2'),
-          url('https://pub-6ca0f15ec8df4ddab5f387843d1cf0a7.r2.dev/Aldine401.otf') format('opentype');
-        font-display: swap; font-weight: 400; font-style: normal;
+          url('https://pub-6ca0f15ec8df4ddab5f387843d1cf0a7.r2.dev/Aldine401.otf')
+            format('opentype');
+        font-display: swap;
+        font-weight: 400;
+        font-style: normal;
       }
 
       @font-face {
         font-family: 'STYRB';
         src:
-          url('https://pub-e9cd5dd357214439993a02fd0684592e.r2.dev/StyreneBLC-Regular.woff2') format('woff2'),
-          url('https://pub-e9cd5dd357214439993a02fd0684592e.r2.dev/StyreneBLC-Regular.ttf') format('truetype');
-        font-display: swap; font-weight: 400; font-style: normal;
+          url('https://pub-e9cd5dd357214439993a02fd0684592e.r2.dev/StyreneBLC-Regular.woff2')
+            format('woff2'),
+          url('https://pub-e9cd5dd357214439993a02fd0684592e.r2.dev/StyreneBLC-Regular.ttf')
+            format('truetype');
+        font-display: swap;
+        font-weight: 400;
+        font-style: normal;
       }
 
       @font-face {
         font-family: 'STYRB';
-        src: url('https://pub-e9cd5dd357214439993a02fd0684592e.r2.dev/StyreneBLC-Medium.woff2') format('woff2'),
-            url('https://pub-e9cd5dd357214439993a02fd0684592e.r2.dev/StyreneBLC-Medium.ttf') format('truetype');
-        font-display: swap; font-weight: 500; font-style: normal;
+        src:
+          url('https://pub-e9cd5dd357214439993a02fd0684592e.r2.dev/StyreneBLC-Medium.woff2')
+            format('woff2'),
+          url('https://pub-e9cd5dd357214439993a02fd0684592e.r2.dev/StyreneBLC-Medium.ttf')
+            format('truetype');
+        font-display: swap;
+        font-weight: 500;
+        font-style: normal;
       }
 
       @font-face {
         font-family: 'ASNS';
-        src: url('https://pub-e9cd5dd357214439993a02fd0684592e.r2.dev/AnthropicSans20250417e-Text400.woff2') format('woff2'),
-            url('https://pub-e9cd5dd357214439993a02fd0684592e.r2.dev/AnthropicSans20250417e-Text400.ttf') format('truetype');
-        font-display: swap;  font-weight: 100 900; font-style: normal;
+        src:
+          url('https://pub-e9cd5dd357214439993a02fd0684592e.r2.dev/AnthropicSans20250417e-Text400.woff2')
+            format('woff2'),
+          url('https://pub-e9cd5dd357214439993a02fd0684592e.r2.dev/AnthropicSans20250417e-Text400.ttf')
+            format('truetype');
+        font-display: swap;
+        font-weight: 100 900;
+        font-style: normal;
       }
 
       @font-face {
         font-family: 'ASRF';
-        src: url('https://pub-e9cd5dd357214439993a02fd0684592e.r2.dev/AnthropicSerif20250417e-Text400.woff2') format('woff2'),
-           url('https://pub-e9cd5dd357214439993a02fd0684592e.r2.dev/AnthropicSerif20250417e-Text400.ttf') format('truetype');
-        font-display: swap;  font-weight: 100 900; font-style: normal;
+        src:
+          url('https://pub-e9cd5dd357214439993a02fd0684592e.r2.dev/AnthropicSerif20250417e-Text400.woff2')
+            format('woff2'),
+          url('https://pub-e9cd5dd357214439993a02fd0684592e.r2.dev/AnthropicSerif20250417e-Text400.ttf')
+            format('truetype');
+        font-display: swap;
+        font-weight: 100 900;
+        font-style: normal;
       }
 
       @font-face {
         font-family: 'LBR';
-        src: url('https://pub-e9cd5dd357214439993a02fd0684592e.r2.dev/Copyright-Labor-and-Wait.woff2') format('woff2'),
-            url('https://pub-e9cd5dd357214439993a02fd0684592e.r2.dev/Copyright-Labor-and-Wait.ttf') format('truetype');
-        font-weight: 400; font-style: normal; font-display: swap;
+        src:
+          url('https://pub-e9cd5dd357214439993a02fd0684592e.r2.dev/Copyright-Labor-and-Wait.woff2')
+            format('woff2'),
+          url('https://pub-e9cd5dd357214439993a02fd0684592e.r2.dev/Copyright-Labor-and-Wait.ttf')
+            format('truetype');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
       }
 
       @font-face {
         font-family: 'LBR';
-        src: url('https://pub-e9cd5dd357214439993a02fd0684592e.r2.dev/Copyright-Labor-and-Wait_2.woff2') format('woff2'),
-            url('https://pub-e9cd5dd357214439993a02fd0684592e.r2.dev/Copyright-Labor-and-Wait_2.ttf') format('truetype');
-        font-weight: 500; font-style: normal; font-display: swap;
+        src:
+          url('https://pub-e9cd5dd357214439993a02fd0684592e.r2.dev/Copyright-Labor-and-Wait_2.woff2')
+            format('woff2'),
+          url('https://pub-e9cd5dd357214439993a02fd0684592e.r2.dev/Copyright-Labor-and-Wait_2.ttf')
+            format('truetype');
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
       }
 
       @font-face {
         font-family: 'TMPS';
-        src: url('https://pub-e9cd5dd357214439993a02fd0684592e.r2.dev/TiemposText-Regular.woff2') format('woff2'),
-            url('https://pub-e9cd5dd357214439993a02fd0684592e.r2.dev/TiemposText-Regular.ttf') format('truetype');
-        font-display: swap; font-weight: 400; font-style: normal;
+        src:
+          url('https://pub-e9cd5dd357214439993a02fd0684592e.r2.dev/TiemposText-Regular.woff2')
+            format('woff2'),
+          url('https://pub-e9cd5dd357214439993a02fd0684592e.r2.dev/TiemposText-Regular.ttf')
+            format('truetype');
+        font-display: swap;
+        font-weight: 400;
+        font-style: normal;
       }
 
       @font-face {
-          font-family: 'MONO';
-          src: url('https://pub-e9cd5dd357214439993a02fd0684592e.r2.dev/1047a18a743f1fb96de17bffe2242740.woff2') format('woff2'),
-              url('https://pub-e9cd5dd357214439993a02fd0684592e.r2.dev/1047a18a743f1fb96de17bffe2242740.ttf') format('truetype');
-          font-display: swap; font-weight: 400; font-style: normal;
+        font-family: 'MONO';
+        src:
+          url('https://pub-e9cd5dd357214439993a02fd0684592e.r2.dev/1047a18a743f1fb96de17bffe2242740.woff2')
+            format('woff2'),
+          url('https://pub-e9cd5dd357214439993a02fd0684592e.r2.dev/1047a18a743f1fb96de17bffe2242740.ttf')
+            format('truetype');
+        font-display: swap;
+        font-weight: 400;
+        font-style: normal;
       }
 
       :root {
@@ -109,13 +154,17 @@
         --font-a-Sans: 'ASNS';
         --font-a-Serif: 'ASRF';
 
-        --serif: var(--font-a401), 'TMPS', ui-serif, Georgia, "Times New Roman", Times, serif;
-        --sans-serif: var(--font-styrb), "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Roboto, Arial, "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
-        --mono-serif: var(--font-mono), "Roboto Mono", "Courier Prime", SFMono-Regular, Cantarell, "Fira Code", monospace; 
+        --serif: var(--font-a401), 'TMPS', ui-serif, Georgia, 'Times New Roman', Times, serif;
+        --sans-serif:
+          var(--font-styrb), 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          'Helvetica Neue', Roboto, Arial, 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif;
+        --mono-serif:
+          var(--font-mono), 'Roboto Mono', 'Courier Prime', SFMono-Regular, Cantarell, 'Fira Code',
+          monospace;
       }
 
       body {
-        font-family:  var(--sans-serif);
+        font-family: var(--sans-serif);
         font-size: 16px;
         font-weight: 400;
         font-style: normal;
@@ -290,7 +339,7 @@
         box-shadow: 0 2px 4px var(--shadow-color);
       }
 
-       .button:not(.copy-buttons):not(.client-btn):active {
+      .button:not(.copy-buttons):not(.client-btn):active {
         transform: translateY(0px) scale(0.98);
         box-shadow: none;
       }
@@ -342,10 +391,10 @@
       }
 
       .copy-buttons:active {
-          transform-origin: center;
-          transform: translateY(0px) scale(0.98);
-          transition: transform var(--transition-speed-fast) ease-in-out;
-          box-shadow: none;
+        transform-origin: center;
+        transform: translateY(0px) scale(0.98);
+        transition: transform var(--transition-speed-fast) ease-in-out;
+        box-shadow: none;
       }
 
       .client-buttons {
@@ -447,15 +496,15 @@
       }
 
       .button.copied {
-          background-color: var(--accent-secondary) !important;
-          border-color: var(--border-color) !important;
-          color: var(--background-tertiary) !important;
+        background-color: var(--accent-secondary) !important;
+        border-color: var(--border-color) !important;
+        color: var(--background-tertiary) !important;
       }
 
       .button.error {
-          background-color: #c74a3b !important;
-          border-color: #a13b2f !important;
-          color: var(--text-accent) !important;
+        background-color: #c74a3b !important;
+        border-color: #a13b2f !important;
+        color: var(--text-accent) !important;
       }
 
       .footer {
@@ -493,45 +542,128 @@
         scrollbar-color: var(--border-color) var(--background-primary);
       }
 
-       @media (max-width: 768px) {
-         body { padding: 20px; }
-        .container { padding: 0 14px; }
-        .header h1 { font-size: 28px; }
-        .header p { font-size: 12px; }
-        .config-card { padding: 16px; }
-        .config-title { font-size: 20px; }
-        .config-content pre { font-size: 12px; padding-right: 65px; }
-        .attributes { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 20px; }
-        .client-buttons { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
-        .button { padding: 8px 12px; font-size: 12px; }
-        .copy-buttons { top: 10px; right: 10px; }
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-thumb { border-width: 1px; }
+      @media (max-width: 768px) {
+        body {
+          padding: 20px;
+        }
+        .container {
+          padding: 0 14px;
+        }
+        .header h1 {
+          font-size: 28px;
+        }
+        .header p {
+          font-size: 12px;
+        }
+        .config-card {
+          padding: 16px;
+        }
+        .config-title {
+          font-size: 20px;
+        }
+        .config-content pre {
+          font-size: 12px;
+          padding-right: 65px;
+        }
+        .attributes {
+          grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+          gap: 20px;
+        }
+        .client-buttons {
+          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        }
+        .button {
+          padding: 8px 12px;
+          font-size: 12px;
+        }
+        .copy-buttons {
+          top: 10px;
+          right: 10px;
+        }
+        ::-webkit-scrollbar {
+          width: 6px;
+          height: 6px;
+        }
+        ::-webkit-scrollbar-thumb {
+          border-width: 1px;
+        }
       }
 
       @media (max-width: 480px) {
-        body { padding: 18px; }
-        .container { padding: 0 12px; }
-        .header h1 { font-size: 22px; }
-        .header p { font-size: 9px; }
-        .config-card { padding: 10px; }
-        .config-title { font-size: 16px; }
-        .config-content { padding: 12px; }
-        .config-content pre { font-size: 11px; padding-right: 60px; }
-        .attributes { grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 15px; }
-        .attribute strong { font-size: 13px; }
-        .attribute span { font-size: 11px; }
-        .client-buttons { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
-        .button { padding: 10px 14px; font-size: 12px; }
-        .copy-buttons { top: 8px; right: 8px; padding: 5px 10px; }
+        body {
+          padding: 18px;
+        }
+        .container {
+          padding: 0 12px;
+        }
+        .header h1 {
+          font-size: 22px;
+        }
+        .header p {
+          font-size: 9px;
+        }
+        .config-card {
+          padding: 10px;
+        }
+        .config-title {
+          font-size: 16px;
+        }
+        .config-content {
+          padding: 12px;
+        }
+        .config-content pre {
+          font-size: 11px;
+          padding-right: 60px;
+        }
+        .attributes {
+          grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+          gap: 15px;
+        }
+        .attribute strong {
+          font-size: 13px;
+        }
+        .attribute span {
+          font-size: 11px;
+        }
+        .client-buttons {
+          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        }
+        .button {
+          padding: 10px 14px;
+          font-size: 12px;
+        }
+        .copy-buttons {
+          top: 8px;
+          right: 8px;
+          padding: 5px 10px;
+        }
       }
 
-      @media (min-width: 360px) { .container { max-width: 95%; } }
-      @media (min-width: 480px) { .container { max-width: 90%; } }
-      @media (min-width: 640px) { .container { max-width: 600px; } }
-      @media (min-width: 768px) { .container { max-width: 720px; } }
-      @media (min-width: 1024px) { .container { max-width: 800px; } }
-    
+      @media (min-width: 360px) {
+        .container {
+          max-width: 95%;
+        }
+      }
+      @media (min-width: 480px) {
+        .container {
+          max-width: 90%;
+        }
+      }
+      @media (min-width: 640px) {
+        .container {
+          max-width: 600px;
+        }
+      }
+      @media (min-width: 768px) {
+        .container {
+          max-width: 720px;
+        }
+      }
+      @media (min-width: 1024px) {
+        .container {
+          max-width: 800px;
+        }
+      }
     </style>
   </head>
   <body>
@@ -560,7 +692,11 @@
       <div class="config-card">
         <div class="config-title">Xray Core Clients</div>
         <div class="config-content">
-          <button class="button copy-buttons" onclick="copyToClipboard(this, '${dreamConfig}')" aria-label="Copy Xray Core configuration">
+          <button
+            class="button copy-buttons"
+            onclick="copyToClipboard(this, '${dreamConfig}')"
+            aria-label="Copy Xray Core configuration"
+          >
             Copy
           </button>
           <pre>${dreamConfig}</pre>
@@ -572,7 +708,12 @@
             class="button client-btn"
           >
             <span class="client-icon">
-              <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <svg
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
                 <!-- Hiddify Logo - Stylized H with Shield -->
                 <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
               </svg>
@@ -586,7 +727,12 @@
             class="button client-btn"
           >
             <span class="client-icon">
-              <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <svg
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
                 <!-- V2rayNG Logo - V2 with Network -->
                 <path d="M12 2L4 5v6c0 5.5 3.5 10.7 8 12.3 4.5-1.6 8-6.8 8-12.3V5l-8-3z" />
               </svg>
@@ -600,7 +746,11 @@
       <div class="config-card">
         <div class="config-title">Sing-Box Core Clients</div>
         <div class="config-content">
-          <button class="button copy-buttons" onclick="copyToClipboard(this, '${freedomConfig}')" aria-label="Copy Xray Core configuration">
+          <button
+            class="button copy-buttons"
+            onclick="copyToClipboard(this, '${freedomConfig}')"
+            aria-label="Copy Xray Core configuration"
+          >
             Copy
           </button>
           <pre>${freedomConfig}</pre>
@@ -609,7 +759,12 @@
           <!-- Clash Meta -->
           <a href="${clashMetaFullUrl}" class="button client-btn">
             <span class="client-icon">
-              <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <svg
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
                 <!-- Clash Meta Logo - Stylized C with network nodes -->
                 <path
                   d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"
@@ -622,7 +777,12 @@
           <!-- NekoBox -->
           <a href="${nekoBoxImportUrl}" class="button client-btn">
             <span class="client-icon">
-              <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <svg
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
                 <!-- NekoBox Logo - Cat/Box stylized -->
                 <path
                   d="M20,8h-3V6c0-1.1-0.9-2-2-2H9C7.9,4,7,4.9,7,6v2H4C2.9,8,2,8.9,2,10v9c0,1.1,0.9,2,2,2h16c1.1,0,2-0.9,2-2v-9 C22,8.9,21.1,8,20,8z M9,6h6v2H9V6z M20,19H4v-2h16V19z M20,15H4v-5h3v1c0,0.55,0.45,1,1,1h1.5c0.28,0,0.5-0.22,0.5-0.5v-0.5h4v0.5 c0,0.28,0.22,0.5,0.5,0.5H16c0.55,0,1-0.45,1-1v-1h3V15z"
@@ -647,7 +807,7 @@
         const isClientBtn = button.classList.contains('client-btn');
         const originalIconHTML = isClientBtn
           ? button.querySelector('.client-icon')?.innerHTML
-          : null; 
+          : null;
 
         button.disabled = true;
         button.classList.remove('copied', 'error');
