@@ -40,20 +40,6 @@
             }
            
             @font-face {
-                font-family: 'Anthropic Sans 20250417e Text400';
-                src:
-                  url('https://pub-7a3b428c76aa411181a0f4dd7fa9064b.r2.dev/AnthropicSans20250417e-Text400.woff2') format('woff2');
-                font-weight: 100 900; font-style: normal; font-display: swap;
-            }
-           
-            @font-face {
-                font-family: 'Anthropic Serif 20250417e Text400';
-                src:
-                  url('https://pub-7a3b428c76aa411181a0f4dd7fa9064b.r2.dev/AnthropicSerif20250417e-Text400.woff2') format('woff2');
-                font-weight: 100 900; font-style: normal; font-display: swap;
-            }
-           
-            @font-face {
                 font-family: 'Styrene B LC;
                 src:
                   url('https://pub-7a3b428c76aa411181a0f4dd7fa9064b.r2.dev/StyreneBLC-Medium.woff2') format('woff2');
@@ -72,7 +58,7 @@
               font-family: 'MONO';
               src:
                 url('https://pub-e9cd5dd357214439993a02fd0684592e.r2.dev/1047a18a743f1fb96de17bffe2242740.woff2') format('woff2');
-              font-display: swap; font-weight: 400; font-style: normal;
+              font-weight: 400; font-style: normal; font-display: swap; 
             }
 
             :root {
@@ -610,17 +596,17 @@
         <div class="config-content">
           <button
             class="button copy-buttons"
-            onclick="copyToClipboard(this, '${dreamConfig}')"
+            onclick="copyToClipboard(this, '{{DREAM_CONFIG}}')"
             aria-label="Copy Xray Core configuration"
           >
             Copy
           </button>
-          <pre>${dreamConfig}</pre>
+          <pre id="xray-config">{{DREAM_CONFIG}}</pre>
         </div>
         <div class="client-buttons">
           <!-- Hiddify -->
           <a
-            href="hiddify://install-config?url=${encodeURIComponent(freedomConfig)}"
+            href="hiddify://install-config?url={{FREEDOM_CONFIG_ENCODED}}"
             class="button client-btn"
             aria-label="Import configuration to Hiddify client"
           >
@@ -640,7 +626,7 @@
 
           <!-- V2rayNG -->
           <a
-            href="v2rayng://install-config?url=${encodeURIComponent(dreamConfig)}"
+            href="v2rayng://install-config?url={{DREAM_CONFIG_ENCODED}}"
             class="button client-btn"
             aria-label="Import configuration to V2rayNG client"
           >
@@ -666,16 +652,16 @@
         <div class="config-content">
           <button
             class="button copy-buttons"
-            onclick="copyToClipboard(this, '${freedomConfig}')"
+            onclick="copyToClipboard(this, '{{FREEDOM_CONFIG}}')"
             aria-label="Copy Xray Core configuration"
           >
             Copy
           </button>
-          <pre>${freedomConfig}</pre>
+          <pre id="singbox-config">{{FREEDOM_CONFIG}}</pre>
         </div>
         <div class="client-buttons">
           <!-- Clash Meta -->
-          <a href="${clashMetaFullUrl}" class="button client-btn">
+          <a href="{{CLASH_META_URL}}" class="button client-btn">
             <span class="client-icon">
               <svg
                 aria-hidden="true"
@@ -694,7 +680,7 @@
 
           <!-- NekoBox -->
           <a
-            href="${nekoBoxImportUrl}"
+            href="{{NEKOBOX_URL}}"
             class="button client-btn"
             aria-label="Import configuration to NekoBox client"
           >
@@ -719,73 +705,12 @@
         </div>
       </div>
       <div class="footer">
-        <p>© <span id="current-year"></span> REvil - All Rights Reserved</p>
-        <p>Secure. Private. Fast.</p>
-      </div>
+      <p>© <span>-</span> Diana - All Rights Reserved</p>
+      <p>Secure. Private. Fast.</p>
     </div>
+  </div>
     <script>
-        initializeProxyData(proxyConfig);
-
-        // Set up copy button event listeners
-        document.getElementById('copy-xray-btn').addEventListener('click', function() {
-          const xrayConfig = document.getElementById('xray-config').textContent;
-          copyToClipboard(this, xrayConfig);
-        });
-
-        document.getElementById('copy-singbox-btn').addEventListener('click', function() {
-          const singboxConfig = document.getElementById('singbox-config').textContent;
-          copyToClipboard(this, singboxConfig);
-        });
-
-        // Set up import links
-        setupImportLinks(proxyConfig);
-
-        // Check proxy status periodically
-        checkProxyStatus();
-        setInterval(checkProxyStatus, 60000); // Check every minute
-      });
-
-      // Function to initialize the page with proxy configuration data
-      function initializeProxyData(config) {
-        // Display proxy IP
-        document.getElementById('proxy-ip-display').textContent = config.xray.server;
-
-        // Format and display the last updated time
-        const now = new Date();
-        document.getElementById('last-updated').textContent = formatDateTime(now);
-
-        // Format the Xray configuration
-        const xrayFormatted = formatXrayConfig(config.xray);
-        document.getElementById('xray-config').textContent = xrayFormatted;
-
-        // Format the Sing-Box configuration
-        const singboxFormatted = JSON.stringify(config.singbox, null, 2);
-        document.getElementById('singbox-config').textContent = singboxFormatted;
-      }
-
-      // Function to check proxy status
-      function checkProxyStatus() {
-        // In a real implementation, this would make an API call to check the status
-        // For demo purposes, we'll simulate a status check with a random result
-        const isActive = Math.random() > 0.1; // 90% chance of being active
-
-        const statusIndicator = document.querySelector('.status-indicator');
-        const statusText = document.getElementById('proxy-status');
-
-        if (isActive) {
-          statusIndicator.classList.remove('status-inactive');
-          statusIndicator.classList.add('status-active');
-          statusText.textContent = 'Active';
-        } else {
-          statusIndicator.classList.remove('status-active');
-          statusIndicator.classList.add('status-inactive');
-          statusText.textContent = 'Inactive';
-        }
-
-        // Update the last checked time
-        document.getElementById('last-updated').textContent = formatDateTime(new Date());
-      }
-        function copyToClipboard(button, text) {
+      function copyToClipboard(button, text) {
           const originalText = button.textContent;
           const isClientBtn = button.classList.contains('client-btn');
           const originalIconHTML = isClientBtn
@@ -864,8 +789,32 @@
               }, 1500);
             });
         }
-
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-    </script>
+      function formatDateTime(date) {
+      return date.toLocaleString('en-US', {
+        day: 'numeric', month: 'long', year: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true
+      });
+    }
+    function initializeProxyData() {
+      document.getElementById('last-updated').textContent = formatDateTime(new Date());
+      document.getElementById('current-year').textContent = new Date().getFullYear();
+    }
+    function checkProxyStatus() {
+      const statusIndicator = document.querySelector('.status-indicator');
+      const statusText = document.getElementById('proxy-status');
+      statusIndicator.classList.add('loading');
+      setTimeout(() => {
+        const isActive = Math.random() > 0.1;
+        statusIndicator.classList.remove('loading');
+        statusIndicator.classList.toggle('status-active', isActive);
+        statusIndicator.classList.toggle('status-inactive', !isActive);
+        statusText.textContent = isActive ? 'Active' : 'Inactive';
+        document.getElementById('last-updated').textContent = formatDateTime(new Date());
+      }, 1000);
+    }
+    function setupImportLinks() {}
+    initializeProxyData();
+    checkProxyStatus();
+    setInterval(checkProxyStatus, 60000);
+  </script>
   </body>
 </html>
