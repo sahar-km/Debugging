@@ -58,7 +58,7 @@
               font-family: 'MONO';
               src:
                 url('https://pub-e9cd5dd357214439993a02fd0684592e.r2.dev/1047a18a743f1fb96de17bffe2242740.woff2') format('woff2');
-              font-weight: 400; font-style: normal; font-display: swap; 
+              font-weight: 400; font-style: normal; font-display: swap;
             }
 
             :root {
@@ -705,116 +705,121 @@
         </div>
       </div>
       <div class="footer">
-      <p>© <span>-</span> Diana - All Rights Reserved</p>
-      <p>Secure. Private. Fast.</p>
+        <p>© <span>-</span> Diana - All Rights Reserved</p>
+        <p>Secure. Private. Fast.</p>
+      </div>
     </div>
-  </div>
     <script>
       function copyToClipboard(button, text) {
-          const originalText = button.textContent;
-          const isClientBtn = button.classList.contains('client-btn');
-          const originalIconHTML = isClientBtn
-            ? button.querySelector('.client-icon')?.innerHTML
-            : null;
+        const originalText = button.textContent;
+        const isClientBtn = button.classList.contains('client-btn');
+        const originalIconHTML = isClientBtn
+          ? button.querySelector('.client-icon')?.innerHTML
+          : null;
 
-          button.disabled = true;
-          button.classList.remove('copied', 'error');
+        button.disabled = true;
+        button.classList.remove('copied', 'error');
 
-          if (isClientBtn && button.querySelector('.client-icon')) {
-            button.querySelector('.client-icon').style.display = 'none';
-          }
-          if (isClientBtn && button.querySelector('.button-text')) {
-            button.querySelector('.button-text').style.fontWeight = '500';
-          }
-
-          navigator.clipboard
-            .writeText(text)
-            .then(() => {
-              button.textContent = 'Copied!';
-              button.classList.add('copied');
-
-              setTimeout(() => {
-                if (isClientBtn && originalIconHTML) {
-                  const textSpan =
-                    button.querySelector('.button-text') || document.createElement('span');
-                  textSpan.className = 'button-text';
-                  textSpan.textContent = originalText;
-
-                  const iconSpan = document.createElement('span');
-                  iconSpan.className = 'client-icon';
-                  iconSpan.innerHTML = originalIconHTML;
-                  iconSpan.style.display = '';
-
-                  button.innerHTML = '';
-                  button.appendChild(iconSpan);
-                  button.appendChild(textSpan);
-                } else {
-                  button.textContent = originalText;
-                }
-                button.classList.remove('copied');
-                button.disabled = false;
-                if (isClientBtn && button.querySelector('.button-text')) {
-                  button.querySelector('.button-text').style.fontWeight = '';
-                }
-              }, 1200);
-            })
-            .catch(err => {
-              console.error('Failed to copy text: ', err);
-              button.textContent = 'Error';
-              button.classList.add('error');
-
-              setTimeout(() => {
-                if (isClientBtn && originalIconHTML) {
-                  const textSpan =
-                    button.querySelector('.button-text') || document.createElement('span');
-                  textSpan.className = 'button-text';
-                  textSpan.textContent = originalText;
-
-                  const iconSpan = document.createElement('span');
-                  iconSpan.className = 'client-icon';
-                  iconSpan.innerHTML = originalIconHTML;
-                  iconSpan.style.display = '';
-
-                  button.innerHTML = '';
-                  button.appendChild(iconSpan);
-                  button.appendChild(textSpan);
-                } else {
-                  button.textContent = originalText;
-                }
-                button.classList.remove('error');
-                button.disabled = false;
-                if (isClientBtn && button.querySelector('.button-text')) {
-                  button.querySelector('.button-text').style.fontWeight = '';
-                }
-              }, 1500);
-            });
+        if (isClientBtn && button.querySelector('.client-icon')) {
+          button.querySelector('.client-icon').style.display = 'none';
         }
+        if (isClientBtn && button.querySelector('.button-text')) {
+          button.querySelector('.button-text').style.fontWeight = '500';
+        }
+
+        navigator.clipboard
+          .writeText(text)
+          .then(() => {
+            button.textContent = 'Copied!';
+            button.classList.add('copied');
+
+            setTimeout(() => {
+              if (isClientBtn && originalIconHTML) {
+                const textSpan =
+                  button.querySelector('.button-text') || document.createElement('span');
+                textSpan.className = 'button-text';
+                textSpan.textContent = originalText;
+
+                const iconSpan = document.createElement('span');
+                iconSpan.className = 'client-icon';
+                iconSpan.innerHTML = originalIconHTML;
+                iconSpan.style.display = '';
+
+                button.innerHTML = '';
+                button.appendChild(iconSpan);
+                button.appendChild(textSpan);
+              } else {
+                button.textContent = originalText;
+              }
+              button.classList.remove('copied');
+              button.disabled = false;
+              if (isClientBtn && button.querySelector('.button-text')) {
+                button.querySelector('.button-text').style.fontWeight = '';
+              }
+            }, 1200);
+          })
+          .catch(err => {
+            console.error('Failed to copy text: ', err);
+            button.textContent = 'Error';
+            button.classList.add('error');
+
+            setTimeout(() => {
+              if (isClientBtn && originalIconHTML) {
+                const textSpan =
+                  button.querySelector('.button-text') || document.createElement('span');
+                textSpan.className = 'button-text';
+                textSpan.textContent = originalText;
+
+                const iconSpan = document.createElement('span');
+                iconSpan.className = 'client-icon';
+                iconSpan.innerHTML = originalIconHTML;
+                iconSpan.style.display = '';
+
+                button.innerHTML = '';
+                button.appendChild(iconSpan);
+                button.appendChild(textSpan);
+              } else {
+                button.textContent = originalText;
+              }
+              button.classList.remove('error');
+              button.disabled = false;
+              if (isClientBtn && button.querySelector('.button-text')) {
+                button.querySelector('.button-text').style.fontWeight = '';
+              }
+            }, 1500);
+          });
+      }
       function formatDateTime(date) {
-      return date.toLocaleString('en-US', {
-        day: 'numeric', month: 'long', year: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true
-      });
-    }
-    function initializeProxyData() {
-      document.getElementById('last-updated').textContent = formatDateTime(new Date());
-      document.getElementById('current-year').textContent = new Date().getFullYear();
-    }
-    function checkProxyStatus() {
-      const statusIndicator = document.querySelector('.status-indicator');
-      const statusText = document.getElementById('proxy-status');
-      statusIndicator.classList.add('loading');
-      setTimeout(() => {
-        const isActive = Math.random() > 0.1;
-        statusIndicator.classList.remove('loading');
-        statusIndicator.classList.toggle('status-active', isActive);
-        statusIndicator.classList.toggle('status-inactive', !isActive);
-        statusText.textContent = isActive ? 'Active' : 'Inactive';
+        return date.toLocaleString('en-US', {
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric',
+          hour: 'numeric',
+          minute: 'numeric',
+          hour12: true,
+        });
+      }
+      function initializeProxyData() {
         document.getElementById('last-updated').textContent = formatDateTime(new Date());
-      }, 1000);
-    }
-    function setupImportLinks() {}
-    initializeProxyData();
-    checkProxyStatus();
-    setInterval(checkProxyStatus, 60000);
-  </script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+      }
+      function checkProxyStatus() {
+        const statusIndicator = document.querySelector('.status-indicator');
+        const statusText = document.getElementById('proxy-status');
+        statusIndicator.classList.add('loading');
+        setTimeout(() => {
+          const isActive = Math.random() > 0.1;
+          statusIndicator.classList.remove('loading');
+          statusIndicator.classList.toggle('status-active', isActive);
+          statusIndicator.classList.toggle('status-inactive', !isActive);
+          statusText.textContent = isActive ? 'Active' : 'Inactive';
+          document.getElementById('last-updated').textContent = formatDateTime(new Date());
+        }, 1000);
+      }
+      function setupImportLinks() {}
+      initializeProxyData();
+      checkProxyStatus();
+      setInterval(checkProxyStatus, 60000);
+    </script>
   </body>
 </html>
