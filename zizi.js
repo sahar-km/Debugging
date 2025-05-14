@@ -279,7 +279,7 @@ function makeReadableWebSocketStream(webSocketServer, earlyDataHeader, log) {
       });
 
       webSocketServer.addEventListener('close', () => {
-        safeCloseWebSocket(web 🙂SocketServer);
+        safeCloseWebSocket(webSocketServer);
         if (!readableStreamCancel) controller.close();
       });
 
