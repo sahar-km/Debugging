@@ -25,7 +25,7 @@ async function handleRequest(request) {
       tlsCipher: request.cf?.tlsCipher || null,
       tlsVersion: request.cf?.tlsVersion || null,
       botManagement: request.cf?.botManagement || null,
-    }
+    },
   };
 
   return new Response(JSON.stringify(data, null, 2), {
