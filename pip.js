@@ -1,10 +1,12 @@
-import { connect } from "cloudflare:sockets";
+import { connect } from 'cloudflare:sockets';
 
 let sessionToken, apiToken;
 
 export default {
   async fetch(request, env, ctx) {
-    const faviconUrl = env.ICO || 'https://cf-assets.www.cloudflare.com/dzlvafdwdttg/19kSkLSfWtDcspvQI5pit4/c5630cf25d589a0de91978ca29486259/performance-acceleration-bolt.svg';
+    const faviconUrl =
+      env.ICO ||
+      'https://cf-assets.www.cloudflare.com/dzlvafdwdttg/19kSkLSfWtDcspvQI5pit4/c5630cf25d589a0de91978ca29486259/performance-acceleration-bolt.svg';
     const url = new URL(request.url);
     const userAgent = request.headers.get('User-Agent') || 'null';
     const path = url.pathname;
@@ -16,23 +18,39 @@ export default {
     apiToken = env.TOKEN || sessionToken;
 
     if (path.toLowerCase() === '/check') {
-      if (!url.searchParams.has('proxyip')) return new Response('Missing proxyip parameter', { status: 400 });
-      if (url.searchParams.get('proxyip') === '') return new Response('Invalid proxyip parameter', { status: 400 });
-      if (!url.searchParams.get('proxyip').includes('.') && !(url.searchParams.get('proxyip').includes('[') && url.searchParams.get('proxyip').includes(']'))) return new Response('Invalid proxyip format', { status: 400 });
+      if (!url.searchParams.has('proxyip'))
+        return new Response('Missing proxyip parameter', { status: 400 });
+      if (url.searchParams.get('proxyip') === '')
+        return new Response('Invalid proxyip parameter', { status: 400 });
+      if (
+        !url.searchParams.get('proxyip').includes('.') &&
+        !(
+          url.searchParams.get('proxyip').includes('[') &&
+          url.searchParams.get('proxyip').includes(']')
+        )
+      )
+        return new Response('Invalid proxyip format', { status: 400 });
 
       if (env.TOKEN) {
         if (!url.searchParams.has('token') || url.searchParams.get('token') !== apiToken) {
-          return new Response(JSON.stringify({
-            status: "error",
-            message: `ProxyIP check failed: Invalid TOKEN`,
-            timestamp: new Date().toISOString()
-          }, null, 4), {
-            status: 403,
-            headers: {
-              "content-type": "application/json; charset=UTF-8",
-              'Access-Control-Allow-Origin': '*'
-            }
-          });
+          return new Response(
+            JSON.stringify(
+              {
+                status: 'error',
+                message: `ProxyIP check failed: Invalid TOKEN`,
+                timestamp: new Date().toISOString(),
+              },
+              null,
+              4,
+            ),
+            {
+              status: 403,
+              headers: {
+                'content-type': 'application/json; charset=UTF-8',
+                'Access-Control-Allow-Origin': '*',
+              },
+            },
+          );
         }
       }
 
@@ -42,72 +60,102 @@ export default {
       return new Response(JSON.stringify(result, null, 2), {
         status: result.success ? 200 : 502,
         headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*"
-        }
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        },
       });
     } else if (path.toLowerCase() === '/resolve') {
-      if (!url.searchParams.has('token') || (url.searchParams.get('token') !== sessionToken) && (url.searchParams.get('token') !== apiToken)) {
-        return new Response(JSON.stringify({
-          status: "error",
-          message: `Domain resolution failed: Invalid TOKEN`, // Translated
-          timestamp: new Date().toISOString()
-        }, null, 4), {
-          status: 403,
-          headers: {
-            "content-type": "application/json; charset=UTF-8",
-            'Access-Control-Allow-Origin': '*'
-          }
-        });
+      if (
+        !url.searchParams.has('token') ||
+        (url.searchParams.get('token') !== sessionToken &&
+          url.searchParams.get('token') !== apiToken)
+      ) {
+        return new Response(
+          JSON.stringify(
+            {
+              status: 'error',
+              message: `Domain resolution failed: Invalid TOKEN`, // Translated
+              timestamp: new Date().toISOString(),
+            },
+            null,
+            4,
+          ),
+          {
+            status: 403,
+            headers: {
+              'content-type': 'application/json; charset=UTF-8',
+              'Access-Control-Allow-Origin': '*',
+            },
+          },
+        );
       }
-      if (!url.searchParams.has('domain')) return new Response('Missing domain parameter', { status: 400 });
+      if (!url.searchParams.has('domain'))
+        return new Response('Missing domain parameter', { status: 400 });
       const domain = url.searchParams.get('domain');
 
       try {
         const ips = await resolveDomain(domain);
         return new Response(JSON.stringify({ success: true, domain, ips }), {
           headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*"
-          }
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+          },
         });
       } catch (error) {
         return new Response(JSON.stringify({ success: false, error: error.message }), {
           status: 500,
           headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*"
-          }
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+          },
         });
       }
     } else if (path.toLowerCase() === '/ip-info') {
-      if (!url.searchParams.has('token') || (url.searchParams.get('token') !== sessionToken) && (url.searchParams.get('token') !== apiToken)) {
-        return new Response(JSON.stringify({
-          status: "error",
-          message: `IP info lookup failed: Invalid TOKEN`, // Translated
-          timestamp: new Date().toISOString()
-        }, null, 4), {
-          status: 403,
-          headers: {
-            "content-type": "application/json; charset=UTF-8",
-            'Access-Control-Allow-Origin': '*'
-          }
-        });
+      if (
+        !url.searchParams.has('token') ||
+        (url.searchParams.get('token') !== sessionToken &&
+          url.searchParams.get('token') !== apiToken)
+      ) {
+        return new Response(
+          JSON.stringify(
+            {
+              status: 'error',
+              message: `IP info lookup failed: Invalid TOKEN`, // Translated
+              timestamp: new Date().toISOString(),
+            },
+            null,
+            4,
+          ),
+          {
+            status: 403,
+            headers: {
+              'content-type': 'application/json; charset=UTF-8',
+              'Access-Control-Allow-Origin': '*',
+            },
+          },
+        );
       }
       let ip = url.searchParams.get('ip') || request.headers.get('CF-Connecting-IP');
       if (!ip) {
-        return new Response(JSON.stringify({
-          status: "error",
-          message: "IP parameter not provided", // Translated
-          code: "MISSING_PARAMETER",
-          timestamp: new Date().toISOString()
-        }, null, 4), {
-          status: 400,
-          headers: {
-            "content-type": "application/json; charset=UTF-8",
-            'Access-Control-Allow-Origin': '*'
-          }
-        });
+        return new Response(
+          JSON.stringify(
+            {
+              status: 'error',
+              message: 'IP parameter not provided', // Translated
+              code: 'MISSING_PARAMETER',
+              timestamp: new Date().toISOString(),
+            },
+            null,
+            4,
+          ),
+          {
+            status: 400,
+            headers: {
+              'content-type': 'application/json; charset=UTF-8',
+              'Access-Control-Allow-Origin': '*',
+            },
+          },
+        );
       }
 
       if (ip.includes('[')) {
@@ -126,39 +174,48 @@ export default {
 
         return new Response(JSON.stringify(data, null, 4), {
           headers: {
-            "content-type": "application/json; charset=UTF-8",
-            'Access-Control-Allow-Origin': '*'
-          }
+            'content-type': 'application/json; charset=UTF-8',
+            'Access-Control-Allow-Origin': '*',
+          },
         });
-
       } catch (error) {
-        console.error("IP info lookup failed:", error); // Translated
-        return new Response(JSON.stringify({
-          status: "error",
-          message: `IP info lookup failed: ${error.message}`, // Translated
-          code: "API_REQUEST_FAILED",
-          query: ip,
-          timestamp: new Date().toISOString(),
-          details: {
-            errorType: error.name,
-            stack: error.stack ? error.stack.split('\n')[0] : null
-          }
-        }, null, 4), {
-          status: 500,
-          headers: {
-            "content-type": "application/json; charset=UTF-8",
-            'Access-Control-Allow-Origin': '*'
-          }
-        });
+        console.error('IP info lookup failed:', error); // Translated
+        return new Response(
+          JSON.stringify(
+            {
+              status: 'error',
+              message: `IP info lookup failed: ${error.message}`, // Translated
+              code: 'API_REQUEST_FAILED',
+              query: ip,
+              timestamp: new Date().toISOString(),
+              details: {
+                errorType: error.name,
+                stack: error.stack ? error.stack.split('\n')[0] : null,
+              },
+            },
+            null,
+            4,
+          ),
+          {
+            status: 500,
+            headers: {
+              'content-type': 'application/json; charset=UTF-8',
+              'Access-Control-Allow-Origin': '*',
+            },
+          },
+        );
       }
     } else {
-      const envKey = env.URL302 ? 'URL302' : (env.URL ? 'URL' : null);
+      const envKey = env.URL302 ? 'URL302' : env.URL ? 'URL' : null;
       if (envKey) {
         const urls = await normalizeAndDeduplicateUrls(env[envKey]); // Renamed from 整理
         const targetUrl = urls[Math.floor(Math.random() * urls.length)];
-        return envKey === 'URL302' ? Response.redirect(targetUrl, 302) : fetch(new Request(targetUrl, request));
+        return envKey === 'URL302'
+          ? Response.redirect(targetUrl, 302)
+          : fetch(new Request(targetUrl, request));
       } else if (env.TOKEN) {
-        return new Response(await nginxWelcomePage(), { // Renamed from nginx
+        return new Response(await nginxWelcomePage(), {
+          // Renamed from nginx
           headers: {
             'Content-Type': 'text/html; charset=UTF-8',
           },
@@ -168,7 +225,7 @@ export default {
       }
       return await generateHtmlPage(hostname, faviconUrl, sessionToken); // Renamed from HTML, pass sessionToken
     }
-  }
+  },
 };
 
 async function resolveDomain(domain) {
@@ -176,30 +233,25 @@ async function resolveDomain(domain) {
   try {
     const [ipv4Response, ipv6Response] = await Promise.all([
       fetch(`https://1.1.1.1/dns-query?name=${domain}&type=A`, {
-        headers: { 'Accept': 'application/dns-json' }
+        headers: { Accept: 'application/dns-json' },
       }),
       fetch(`https://1.1.1.1/dns-query?name=${domain}&type=AAAA`, {
-        headers: { 'Accept': 'application/dns-json' }
-      })
+        headers: { Accept: 'application/dns-json' },
+      }),
     ]);
 
-    const [ipv4Data, ipv6Data] = await Promise.all([
-      ipv4Response.json(),
-      ipv6Response.json()
-    ]);
+    const [ipv4Data, ipv6Data] = await Promise.all([ipv4Response.json(), ipv6Response.json()]);
 
     const ips = [];
 
     if (ipv4Data.Answer) {
-      const ipv4Addresses = ipv4Data.Answer
-        .filter(record => record.type === 1) // A record
+      const ipv4Addresses = ipv4Data.Answer.filter(record => record.type === 1) // A record
         .map(record => record.data);
       ips.push(...ipv4Addresses);
     }
 
     if (ipv6Data.Answer) {
-      const ipv6Addresses = ipv6Data.Answer
-        .filter(record => record.type === 28) // AAAA record
+      const ipv6Addresses = ipv6Data.Answer.filter(record => record.type === 28) // AAAA record
         .map(record => `[${record.data}]`);
       ips.push(...ipv6Addresses);
     }
@@ -214,7 +266,8 @@ async function resolveDomain(domain) {
   }
 }
 
-async function checkProxyIPConnectivity(proxyIP) { // Renamed from CheckProxyIP
+async function checkProxyIPConnectivity(proxyIP) {
+  // Renamed from CheckProxyIP
   let portRemote = 443;
   let targetHost = proxyIP; // Use a different variable for the host part
 
@@ -225,21 +278,23 @@ async function checkProxyIPConnectivity(proxyIP) { // Renamed from CheckProxyIP
   } else if (proxyIP.includes('[') && proxyIP.includes(']:')) {
     portRemote = parseInt(proxyIP.split(']:')[1]);
     targetHost = proxyIP.split(']:')[0] + ']';
-  } else if (proxyIP.includes(':') && !proxyIP.startsWith('[')) { // Ensure it's not an IPv6 without port
+  } else if (proxyIP.includes(':') && !proxyIP.startsWith('[')) {
+    // Ensure it's not an IPv6 without port
     const parts = proxyIP.split(':');
     // Check if the last part is a number (port) and there's more than one colon (potential IPv6)
     // This logic might need refinement for IPv6 with ports if not bracketed
-    if (!isNaN(parseInt(parts[parts.length - 1])) && parts.length > 2 && proxyIP.includes('.')) { // Likely IPv4 with port
-        portRemote = parseInt(parts[parts.length - 1]);
-        targetHost = parts.slice(0, -1).join(':');
-    } else if (!isNaN(parseInt(parts[parts.length - 1])) && parts.length === 2) { // Simple host:port
-        portRemote = parseInt(parts[parts.length - 1]);
-        targetHost = parts[0];
+    if (!isNaN(parseInt(parts[parts.length - 1])) && parts.length > 2 && proxyIP.includes('.')) {
+      // Likely IPv4 with port
+      portRemote = parseInt(parts[parts.length - 1]);
+      targetHost = parts.slice(0, -1).join(':');
+    } else if (!isNaN(parseInt(parts[parts.length - 1])) && parts.length === 2) {
+      // Simple host:port
+      portRemote = parseInt(parts[parts.length - 1]);
+      targetHost = parts[0];
     }
     // If it's an IPv6 address without brackets and a port, this simple split might be problematic.
     // The original code assumed proxyIP was already the host part for non-bracketed IPv6.
   }
-
 
   const tcpSocket = connect({
     hostname: targetHost,
@@ -248,10 +303,10 @@ async function checkProxyIPConnectivity(proxyIP) { // Renamed from CheckProxyIP
 
   try {
     const httpRequest =
-      "GET /cdn-cgi/trace HTTP/1.1\r\n" +
-      "Host: speed.cloudflare.com\r\n" +
-      "User-Agent: CheckProxyIP/cmliu\r\n" + // User-Agent can remain as is or be generic
-      "Connection: close\r\n\r\n";
+      'GET /cdn-cgi/trace HTTP/1.1\r\n' +
+      'Host: speed.cloudflare.com\r\n' +
+      'User-Agent: CheckProxyIP/cmliu\r\n' + // User-Agent can remain as is or be generic
+      'Connection: close\r\n\r\n';
 
     const writer = tcpSocket.writable.getWriter();
     await writer.write(new TextEncoder().encode(httpRequest));
@@ -263,7 +318,7 @@ async function checkProxyIPConnectivity(proxyIP) { // Renamed from CheckProxyIP
     while (true) {
       const { value, done } = await Promise.race([
         reader.read(),
-        new Promise(resolve => setTimeout(() => resolve({ done: true }), 5000)) // 5-second timeout
+        new Promise(resolve => setTimeout(() => resolve({ done: true }), 5000)), // 5-second timeout
       ]);
 
       if (done) break;
@@ -274,8 +329,10 @@ async function checkProxyIPConnectivity(proxyIP) { // Renamed from CheckProxyIP
         responseData = newData;
 
         const responseText = new TextDecoder().decode(responseData);
-        if (responseText.includes("\r\n\r\n") &&
-          (responseText.includes("Connection: close") || responseText.includes("content-length"))) {
+        if (
+          responseText.includes('\r\n\r\n') &&
+          (responseText.includes('Connection: close') || responseText.includes('content-length'))
+        ) {
           break;
         }
       }
@@ -289,11 +346,14 @@ async function checkProxyIPConnectivity(proxyIP) { // Renamed from CheckProxyIP
     function isValidProxyResponse(text, data) {
       const httpStatusMatch = text.match(/^HTTP\/\d\.\d\s+(\d+)/i);
       const httpStatusCode = httpStatusMatch ? parseInt(httpStatusMatch[1]) : null;
-      const looksLikeCloudflare = text.includes("cloudflare");
+      const looksLikeCloudflare = text.includes('cloudflare');
       // Cloudflare often returns "400 Bad Request" with "plain HTTP request sent to HTTPS port"
       // or similar when a direct IP is hit on a port expecting SNI/TLS for a specific domain.
       // This is an indicator that the IP is likely a Cloudflare IP.
-      const isExpectedError = text.includes("plain HTTP request") || text.includes("400 Bad Request") || text.includes("Client sent an HTTP request to an HTTPS server.");
+      const isExpectedError =
+        text.includes('plain HTTP request') ||
+        text.includes('400 Bad Request') ||
+        text.includes('Client sent an HTTP request to an HTTPS server.');
       const hasSufficientBody = data.length > 50; // Arbitrary small size to ensure some response beyond headers
 
       return httpStatusCode !== null && looksLikeCloudflare && isExpectedError && hasSufficientBody;
@@ -306,7 +366,9 @@ async function checkProxyIPConnectivity(proxyIP) { // Renamed from CheckProxyIP
       portRemote: portRemote,
       statusCode: statusCode || null,
       responseSize: responseData.length,
-      responseData: isSuccessful ? "Response indicates a likely Cloudflare IP. Full trace hidden for brevity." : responseText, // Avoid sending full trace if successful
+      responseData: isSuccessful
+        ? 'Response indicates a likely Cloudflare IP. Full trace hidden for brevity.'
+        : responseText, // Avoid sending full trace if successful
       timestamp: new Date().toISOString(),
     };
 
@@ -318,23 +380,26 @@ async function checkProxyIPConnectivity(proxyIP) { // Renamed from CheckProxyIP
       proxyIP: targetHost, // Return the cleaned host even on failure
       portRemote: portRemote,
       timestamp: new Date().toISOString(),
-      error: error.message || error.toString()
+      error: error.message || error.toString(),
     };
   }
 }
 
-async function normalizeAndDeduplicateUrls(content) { // Renamed from 整理
+async function normalizeAndDeduplicateUrls(content) {
+  // Renamed from 整理
   // Replaces carriage returns and newlines with a single pipe, then multiple pipes with a single pipe.
   const replacedContent = content.replace(/[\r\n]+/g, '|').replace(/\|+/g, '|'); // Renamed from 替换后的内容
   const urlArray = replacedContent.split('|'); // Renamed from 地址数组
   // Filters out empty strings and duplicate items.
-  const normalizedArray = urlArray.filter((item, index) => { // Renamed from 整理数组
+  const normalizedArray = urlArray.filter((item, index) => {
+    // Renamed from 整理数组
     return item !== '' && urlArray.indexOf(item) === index;
   });
   return normalizedArray;
 }
 
-async function generateTokenHash(text) { // Renamed from 双重哈希, parameter 文本 to text
+async function generateTokenHash(text) {
+  // Renamed from 双重哈希, parameter 文本 to text
   const encoder = new TextEncoder(); // Renamed from 编码器
 
   const firstHashBuffer = await crypto.subtle.digest('MD5', encoder.encode(text)); // Renamed from 第一次哈希
@@ -348,7 +413,8 @@ async function generateTokenHash(text) { // Renamed from 双重哈希, parameter
   return secondHex.toLowerCase();
 }
 
-async function nginxWelcomePage() { // Renamed from nginx
+async function nginxWelcomePage() {
+  // Renamed from nginx
   const text = `
     <!DOCTYPE html>
     <html>
@@ -379,7 +445,8 @@ async function nginxWelcomePage() { // Renamed from nginx
   return text;
 }
 
-async function generateHtmlPage(hostname, faviconUrl, currentSessionToken) { // Renamed from HTML, added currentSessionToken
+async function generateHtmlPage(hostname, faviconUrl, currentSessionToken) {
+  // Renamed from HTML, added currentSessionToken
   const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1380,6 +1447,6 @@ curl "https://${hostname}/check?proxyip=1.2.3.4:443"
 `;
 
   return new Response(html, {
-    headers: { "content-type": "text/html;charset=UTF-8" }
+    headers: { 'content-type': 'text/html;charset=UTF-8' },
   });
 }
