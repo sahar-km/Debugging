@@ -68,10 +68,10 @@ export default {
           }
         });
       } catch (error) {
-        return new Response(JSON.stringify({ success: false, error: error.message }), { //
+        return new Response(JSON.stringify({ success: false, error: error.message }), { 
           status: 500,
           headers: {
-            "Content-Type": "application/json";
+            "Content-Type": "application/json"
             "Access-Control-Allow-Origin": "*"
           }
         });
@@ -111,7 +111,7 @@ export default {
       }
 
       try {
-        const response = await fetch(`http://ip-api.com/json/${ip}?lang=zh-CN`); // Using the ip-api.com endpoint from the original code
+        const response = await fetch(`http://ip-api.com/json/${ip}?lang=zh-CN`);
 
         if (!response.ok) {
           throw new Error(`HTTP error: ${response.status}`);
@@ -133,9 +133,9 @@ export default {
           status: "error",
           message: `IP Info Fetch Error: ${error.message}`,
           code: "API_REQUEST_FAILED",
-          query: ip, //
+          query: ip,
           timestamp: new Date().toISOString(),
-          details: { //
+          details: {
             errorType: error.name,
             stack: error.stack ? error.stack.split('\n')[0] : null
           }
@@ -152,72 +152,72 @@ export default {
       if (envKey) {
         const URLs = await 整理(env[envKey]);
         const URL = URLs[Math.floor(Math.random() * URLs.length)];
-        return envKey === 'URL302' ? Response.redirect(URL, 302) : fetch(new Request(URL, request)); //
+        return envKey === 'URL302' ? Response.redirect(URL, 302) : fetch(new Request(URL, request));
       } else if (env.TOKEN) {
         return new Response(await nginx(), {
           headers: {
-            'Content-Type': 'text/html; charset=UTF-8', //
+            'Content-Type': 'text/html; charset=UTF-8',
           },
         });
-      } else if (path.toLowerCase() === '/favicon.ico') { //
-        return Response.redirect(网站图标, 302); //
+      } else if (path.toLowerCase() === '/favicon.ico') {
+        return Response.redirect(网站图标, 302);
       }
-      return await HTML(hostname, 网站图标, 临时TOKEN); // Pass 临时TOKEN
+      return await HTML(hostname, 网站图标, 临时TOKEN);
     }
   }
 };
 
-async function resolveDomain(domain) { //
-  domain = domain.includes(':') ? domain.split(':')[0] : domain; //
+async function resolveDomain(domain) {
+  domain = domain.includes(':') ? domain.split(':')[0] : domain;
   try {
-    const [ipv4Response, ipv6Response] = await Promise.all([ //
-      fetch(`https://1.1.1.1/dns-query?name=${domain}&type=A`, { //
-        headers: { 'Accept': 'application/dns-json' } //
+    const [ipv4Response, ipv6Response] = await Promise.all([
+      fetch(`https://1.1.1.1/dns-query?name=${domain}&type=A`, {
+        headers: { 'Accept': 'application/dns-json' }
       }),
-      fetch(`https://1.1.1.1/dns-query?name=${domain}&type=AAAA`, { //
-        headers: { 'Accept': 'application/dns-json' } //
+      fetch(`https://1.1.1.1/dns-query?name=${domain}&type=AAAA`, {
+        headers: { 'Accept': 'application/dns-json' }
       })
     ]);
 
-    const [ipv4Data, ipv6Data] = await Promise.all([ //
-      ipv4Response.json(), //
-      ipv6Response.json() //
+    const [ipv4Data, ipv6Data] = await Promise.all([
+      ipv4Response.json(),
+      ipv6Response.json()
     ]);
 
-    const ips = []; //
-    if (ipv4Data.Answer) { //
-      const ipv4Addresses = ipv4Data.Answer //
-        .filter(record => record.type === 1) //
-        .map(record => record.data); //
-      ips.push(...ipv4Addresses); //
+    const ips = [];
+    if (ipv4Data.Answer) {
+      const ipv4Addresses = ipv4Data.Answer
+        .filter(record => record.type === 1)
+        .map(record => record.data);
+      ips.push(...ipv4Addresses);
     }
-    if (ipv6Data.Answer) { //
-      const ipv6Addresses = ipv6Data.Answer //
-        .filter(record => record.type === 28) //
-        .map(record => `[${record.data}]`); //
-      ips.push(...ipv6Addresses); //
+    if (ipv6Data.Answer) {
+      const ipv6Addresses = ipv6Data.Answer
+        .filter(record => record.type === 28)
+        .map(record => `[${record.data}]`);
+      ips.push(...ipv6Addresses);
     }
-    if (ips.length === 0) { //
-      throw new Error('No A or AAAA records found'); //
+    if (ips.length === 0) {
+      throw new Error('No A or AAAA records found');
     }
     return ips; //
   } catch (error) {
-    throw new Error(`DNS resolution failed: ${error.message}`); //
+    throw new Error(`DNS resolution failed: ${error.message}`);
   }
 }
 
-async function CheckProxyIP(proxyIP) { //
-  let portRemote = 443; //
+async function CheckProxyIP(proxyIP) {
+  let portRemote = 443;
   let hostToCheck = proxyIP;
 
-  if (proxyIP.includes('.tp')) { //
-    const portMatch = proxyIP.match(/\.tp(\d+)\./); //
-    if (portMatch) portRemote = parseInt(portMatch[1]); //
+  if (proxyIP.includes('.tp')) {
+    const portMatch = proxyIP.match(/\.tp(\d+)\./);
+    if (portMatch) portRemote = parseInt(portMatch[1]);
      hostToCheck = proxyIP.split('.tp')[0];
-  } else if (proxyIP.includes('[') && proxyIP.includes(']:')) { //
-    portRemote = parseInt(proxyIP.split(']:')[1]); //
-    hostToCheck = proxyIP.split(']:')[0] + ']'; //
-  } else if (proxyIP.includes(':') && !proxyIP.startsWith('[')) { //
+  } else if (proxyIP.includes('[') && proxyIP.includes(']:')) {
+    portRemote = parseInt(proxyIP.split(']:')[1]);
+    hostToCheck = proxyIP.split(']:')[0] + ']';
+  } else if (proxyIP.includes(':') && !proxyIP.startsWith('[')) {
     const parts = proxyIP.split(':');
     if (parts.length === 2 && parts[0].includes('.')) {
         hostToCheck = parts[0];
@@ -225,39 +225,39 @@ async function CheckProxyIP(proxyIP) { //
     }
   }
 
-  const tcpSocket = connect({ //
+  const tcpSocket = connect({
     hostname: hostToCheck,
     port: portRemote,
   });
 
   try {
-    const httpRequest = //
+    const httpRequest =
       "GET /cdn-cgi/trace HTTP/1.1\r\n" +
       "Host: speed.cloudflare.com\r\n" +
-      "User-Agent: CheckProxyIP/mehdi-hexing\r\n" +
+      "User-Agent: checkproxyip/saharkm/\r\n" +
       "Connection: close\r\n\r\n";
 
-    const writer = tcpSocket.writable.getWriter(); //
+    const writer = tcpSocket.writable.getWriter();
     await writer.write(new TextEncoder().encode(httpRequest)); //
-    writer.releaseLock(); //
+    writer.releaseLock();
 
-    const reader = tcpSocket.readable.getReader(); //
-    let responseData = new Uint8Array(0); //
+    const reader = tcpSocket.readable.getReader();
+    let responseData = new Uint8Array(0);
 
-    while (true) { //
-      const { value, done } = await Promise.race([ //
-        reader.read(), //
-        new Promise(resolve => setTimeout(() => resolve({ done: true }), 5000)) //
+    while (true) {
+      const { value, done } = await Promise.race([
+        reader.read(),
+        new Promise(resolve => setTimeout(() => resolve({ done: true }), 5000))
       ]);
 
-      if (done) break; //
-      if (value) { //
-        const newData = new Uint8Array(responseData.length + value.length); //
-        newData.set(responseData); //
-        newData.set(value, responseData.length); //
-        responseData = newData; //
-        const responseText = new TextDecoder().decode(responseData); //
-        if (responseText.includes("\r\n\r\n") && //
+      if (done) break;
+      if (value) {
+        const newData = new Uint8Array(responseData.length + value.length);
+        newData.set(responseData);
+        newData.set(value, responseData.length);
+        responseData = newData;
+        const responseText = new TextDecoder().decode(responseData);
+        if (responseText.includes("\r\n\r\n") &&
           (responseText.includes("Connection: close") || responseText.includes("content-length"))) { //
           break; //
         }
