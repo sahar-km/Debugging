@@ -77,7 +77,7 @@ export default {
         );
       }
       if (!url.searchParams.has('domain'))
-        return new Response('Missing domain parameter', { status: 400 }); 
+        return new Response('Missing domain parameter', { status: 400 });
       const domain = url.searchParams.get('domain');
 
       try {
@@ -121,7 +121,7 @@ export default {
           },
         );
       }
-      let ip = url.searchParams.get('ip') || request.headers.get('CF-Connecting-IP'); 
+      let ip = url.searchParams.get('ip') || request.headers.get('CF-Connecting-IP');
       if (!ip) {
         return new Response(
           JSON.stringify(
@@ -302,7 +302,6 @@ async function CheckProxyIP(proxyIP) {
           responseText.includes('\r\n\r\n') &&
           (responseText.includes('Connection: close') || responseText.includes('content-length'))
         ) {
-         
           break;
         }
       }
@@ -366,7 +365,6 @@ async function 双重哈希(文本) {
 }
 
 async function nginx() {
- 
   const text = `
     <!DOCTYPE html>
     <html>
