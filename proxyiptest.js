@@ -1,9 +1,10 @@
-import { connect } from "cloudflare:sockets";
+import { connect } from 'cloudflare:sockets';
 let 临时TOKEN, 永久TOKEN;
 
 export default {
   async fetch(request, env, ctx) {
-    const 网站图标 = env.ICO || 'https://github.com/user-attachments/assets/31a6ced0-62b8-429f-a98e-082ea5ac1990';
+    const 网站图标 =
+      env.ICO || 'https://github.com/user-attachments/assets/31a6ced0-62b8-429f-a98e-082ea5ac1990';
     const url = new URL(request.url);
     const UA = request.headers.get('User-Agent') || 'null';
     const path = url.pathname;
@@ -14,22 +15,31 @@ export default {
     永久TOKEN = env.TOKEN || 临时TOKEN;
 
     if (path.toLowerCase() === '/check') {
-      if (!url.searchParams.has('proxyip')) return new Response('Missing proxyip parameter', { status: 400 });
-      if (url.searchParams.get('proxyip') === '') return new Response('Invalid proxyip parameter', { status: 400 });
+      if (!url.searchParams.has('proxyip'))
+        return new Response('Missing proxyip parameter', { status: 400 });
+      if (url.searchParams.get('proxyip') === '')
+        return new Response('Invalid proxyip parameter', { status: 400 });
 
       if (env.TOKEN) {
         if (!url.searchParams.has('token') || url.searchParams.get('token') !== 永久TOKEN) {
-          return new Response(JSON.stringify({
-            status: "error",
-            message: `ProxyIP Check Failed: Invalid TOKEN`,
-            timestamp: new Date().toISOString()
-          }, null, 4), {
-            status: 403,
-            headers: {
-              "content-type": "application/json; charset=UTF-8",
-              'Access-Control-Allow-Origin': '*'
-            }
-          });
+          return new Response(
+            JSON.stringify(
+              {
+                status: 'error',
+                message: `ProxyIP Check Failed: Invalid TOKEN`,
+                timestamp: new Date().toISOString(),
+              },
+              null,
+              4,
+            ),
+            {
+              status: 403,
+              headers: {
+                'content-type': 'application/json; charset=UTF-8',
+                'Access-Control-Allow-Origin': '*',
+              },
+            },
+          );
         }
       }
       const proxyIPInput = url.searchParams.get('proxyip').toLowerCase();
@@ -38,72 +48,100 @@ export default {
       return new Response(JSON.stringify(result, null, 2), {
         status: result.success ? 200 : 502,
         headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*"
-        }
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        },
       });
     } else if (path.toLowerCase() === '/resolve') {
-      if (!url.searchParams.has('token') || (url.searchParams.get('token') !== 临时TOKEN) && (url.searchParams.get('token') !== 永久TOKEN)) {
-        return new Response(JSON.stringify({
-          status: "error",
-          message: `Domain Resolve Failed: Invalid TOKEN`,
-          timestamp: new Date().toISOString()
-        }, null, 4), {
-          status: 403,
-          headers: {
-            "content-type": "application/json; charset=UTF-8",
-            'Access-Control-Allow-Origin': '*'
-          }
-        });
+      if (
+        !url.searchParams.has('token') ||
+        (url.searchParams.get('token') !== 临时TOKEN && url.searchParams.get('token') !== 永久TOKEN)
+      ) {
+        return new Response(
+          JSON.stringify(
+            {
+              status: 'error',
+              message: `Domain Resolve Failed: Invalid TOKEN`,
+              timestamp: new Date().toISOString(),
+            },
+            null,
+            4,
+          ),
+          {
+            status: 403,
+            headers: {
+              'content-type': 'application/json; charset=UTF-8',
+              'Access-Control-Allow-Origin': '*',
+            },
+          },
+        );
       }
-      if (!url.searchParams.has('domain')) return new Response('Missing domain parameter', { status: 400 }); //
+      if (!url.searchParams.has('domain'))
+        return new Response('Missing domain parameter', { status: 400 }); //
       const domain = url.searchParams.get('domain');
 
       try {
         const ips = await resolveDomain(domain);
         return new Response(JSON.stringify({ success: true, domain, ips }), {
           headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*"
-          }
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+          },
         });
       } catch (error) {
-        return new Response(JSON.stringify({ success: false, error: error.message }), { 
+        return new Response(JSON.stringify({ success: false, error: error.message }), {
           status: 500,
           headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*"
-          }
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+          },
         });
       }
     } else if (path.toLowerCase() === '/ip-info') {
-      if (!url.searchParams.has('token') || (url.searchParams.get('token') !== 临时TOKEN) && (url.searchParams.get('token') !== 永久TOKEN)) {
-        return new Response(JSON.stringify({
-          status: "error",
-          message: `IP Info Failed: Invalid TOKEN`,
-          timestamp: new Date().toISOString()
-        }, null, 4), {
-          status: 403,
-          headers: {
-            "content-type": "application/json; charset=UTF-8",
-            'Access-Control-Allow-Origin': '*'
-          }
-        });
+      if (
+        !url.searchParams.has('token') ||
+        (url.searchParams.get('token') !== 临时TOKEN && url.searchParams.get('token') !== 永久TOKEN)
+      ) {
+        return new Response(
+          JSON.stringify(
+            {
+              status: 'error',
+              message: `IP Info Failed: Invalid TOKEN`,
+              timestamp: new Date().toISOString(),
+            },
+            null,
+            4,
+          ),
+          {
+            status: 403,
+            headers: {
+              'content-type': 'application/json; charset=UTF-8',
+              'Access-Control-Allow-Origin': '*',
+            },
+          },
+        );
       }
       let ip = url.searchParams.get('ip') || request.headers.get('CF-Connecting-IP'); //
       if (!ip) {
-        return new Response(JSON.stringify({
-          status: "error",
-          message: "IP parameter not provided",
-          code: "MISSING_PARAMETER",
-          timestamp: new Date().toISOString()
-        }, null, 4), {
-          status: 400,
-          headers: {
-            "content-type": "application/json; charset=UTF-8",
-            'Access-Control-Allow-Origin': '*'
-          }
-        });
+        return new Response(
+          JSON.stringify(
+            {
+              status: 'error',
+              message: 'IP parameter not provided',
+              code: 'MISSING_PARAMETER',
+              timestamp: new Date().toISOString(),
+            },
+            null,
+            4,
+          ),
+          {
+            status: 400,
+            headers: {
+              'content-type': 'application/json; charset=UTF-8',
+              'Access-Control-Allow-Origin': '*',
+            },
+          },
+        );
       }
 
       if (ip.includes('[')) {
@@ -122,33 +160,39 @@ export default {
 
         return new Response(JSON.stringify(data, null, 4), {
           headers: {
-            "content-type": "application/json; charset=UTF-8",
-            'Access-Control-Allow-Origin': '*'
-          }
+            'content-type': 'application/json; charset=UTF-8',
+            'Access-Control-Allow-Origin': '*',
+          },
         });
-
       } catch (error) {
-        console.error("IP Info Fetch Error:", error);
-        return new Response(JSON.stringify({
-          status: "error",
-          message: `IP Info Fetch Error: ${error.message}`,
-          code: "API_REQUEST_FAILED",
-          query: ip,
-          timestamp: new Date().toISOString(),
-          details: {
-            errorType: error.name,
-            stack: error.stack ? error.stack.split('\n')[0] : null
-          }
-        }, null, 4), {
-          status: 500,
-          headers: {
-            "content-type": "application/json; charset=UTF-8",
-            'Access-Control-Allow-Origin': '*'
-          }
-        });
+        console.error('IP Info Fetch Error:', error);
+        return new Response(
+          JSON.stringify(
+            {
+              status: 'error',
+              message: `IP Info Fetch Error: ${error.message}`,
+              code: 'API_REQUEST_FAILED',
+              query: ip,
+              timestamp: new Date().toISOString(),
+              details: {
+                errorType: error.name,
+                stack: error.stack ? error.stack.split('\n')[0] : null,
+              },
+            },
+            null,
+            4,
+          ),
+          {
+            status: 500,
+            headers: {
+              'content-type': 'application/json; charset=UTF-8',
+              'Access-Control-Allow-Origin': '*',
+            },
+          },
+        );
       }
     } else {
-      const envKey = env.URL302 ? 'URL302' : (env.URL ? 'URL' : null);
+      const envKey = env.URL302 ? 'URL302' : env.URL ? 'URL' : null;
       if (envKey) {
         const URLs = await 整理(env[envKey]);
         const URL = URLs[Math.floor(Math.random() * URLs.length)];
@@ -164,7 +208,7 @@ export default {
       }
       return await HTML(hostname, 网站图标, 临时TOKEN);
     }
-  }
+  },
 };
 
 async function resolveDomain(domain) {
@@ -172,29 +216,26 @@ async function resolveDomain(domain) {
   try {
     const [ipv4Response, ipv6Response] = await Promise.all([
       fetch(`https://1.1.1.1/dns-query?name=${domain}&type=A`, {
-        headers: { 'Accept': 'application/dns-json' }
+        headers: { Accept: 'application/dns-json' },
       }),
       fetch(`https://1.1.1.1/dns-query?name=${domain}&type=AAAA`, {
-        headers: { 'Accept': 'application/dns-json' }
-      })
+        headers: { Accept: 'application/dns-json' },
+      }),
     ]);
 
-    const [ipv4Data, ipv6Data] = await Promise.all([
-      ipv4Response.json(),
-      ipv6Response.json()
-    ]);
+    const [ipv4Data, ipv6Data] = await Promise.all([ipv4Response.json(), ipv6Response.json()]);
 
     const ips = [];
     if (ipv4Data.Answer) {
-      const ipv4Addresses = ipv4Data.Answer
-        .filter(record => record.type === 1)
-        .map(record => record.data);
+      const ipv4Addresses = ipv4Data.Answer.filter(record => record.type === 1).map(
+        record => record.data,
+      );
       ips.push(...ipv4Addresses);
     }
     if (ipv6Data.Answer) {
-      const ipv6Addresses = ipv6Data.Answer
-        .filter(record => record.type === 28)
-        .map(record => `[${record.data}]`);
+      const ipv6Addresses = ipv6Data.Answer.filter(record => record.type === 28).map(
+        record => `[${record.data}]`,
+      );
       ips.push(...ipv6Addresses);
     }
     if (ips.length === 0) {
@@ -213,15 +254,15 @@ async function CheckProxyIP(proxyIP) {
   if (proxyIP.includes('.tp')) {
     const portMatch = proxyIP.match(/\.tp(\d+)\./);
     if (portMatch) portRemote = parseInt(portMatch[1]);
-     hostToCheck = proxyIP.split('.tp')[0];
+    hostToCheck = proxyIP.split('.tp')[0];
   } else if (proxyIP.includes('[') && proxyIP.includes(']:')) {
     portRemote = parseInt(proxyIP.split(']:')[1]);
     hostToCheck = proxyIP.split(']:')[0] + ']';
   } else if (proxyIP.includes(':') && !proxyIP.startsWith('[')) {
     const parts = proxyIP.split(':');
     if (parts.length === 2 && parts[0].includes('.')) {
-        hostToCheck = parts[0];
-        portRemote = parseInt(parts[1]) || 443;
+      hostToCheck = parts[0];
+      portRemote = parseInt(parts[1]) || 443;
     }
   }
 
@@ -232,10 +273,10 @@ async function CheckProxyIP(proxyIP) {
 
   try {
     const httpRequest =
-      "GET /cdn-cgi/trace HTTP/1.1\r\n" +
-      "Host: speed.cloudflare.com\r\n" +
-      "User-Agent: checkproxyip/saharkm/\r\n" +
-      "Connection: close\r\n\r\n";
+      'GET /cdn-cgi/trace HTTP/1.1\r\n' +
+      'Host: speed.cloudflare.com\r\n' +
+      'User-Agent: checkproxyip/saharkm/\r\n' +
+      'Connection: close\r\n\r\n';
 
     const writer = tcpSocket.writable.getWriter();
     await writer.write(new TextEncoder().encode(httpRequest));
@@ -247,7 +288,7 @@ async function CheckProxyIP(proxyIP) {
     while (true) {
       const { value, done } = await Promise.race([
         reader.read(),
-        new Promise(resolve => setTimeout(() => resolve({ done: true }), 5000))
+        new Promise(resolve => setTimeout(() => resolve({ done: true }), 5000)),
       ]);
 
       if (done) break;
@@ -257,8 +298,11 @@ async function CheckProxyIP(proxyIP) {
         newData.set(value, responseData.length);
         responseData = newData;
         const responseText = new TextDecoder().decode(responseData);
-        if (responseText.includes("\r\n\r\n") &&
-          (responseText.includes("Connection: close") || responseText.includes("content-length"))) { //
+        if (
+          responseText.includes('\r\n\r\n') &&
+          (responseText.includes('Connection: close') || responseText.includes('content-length'))
+        ) {
+          //
           break;
         }
       }
@@ -272,8 +316,9 @@ async function CheckProxyIP(proxyIP) {
     function isValidProxyResponse(responseText, responseData) {
       const statusMatch = responseText.match(/^HTTP\/\d\.\d\s+(\d+)/i);
       const statusCode = statusMatch ? parseInt(statusMatch[1]) : null;
-      const looksLikeCloudflare = responseText.includes("cloudflare"); //
-      const isExpectedError = responseText.includes("plain HTTP request") || responseText.includes("400 Bad Request"); //
+      const looksLikeCloudflare = responseText.includes('cloudflare'); //
+      const isExpectedError =
+        responseText.includes('plain HTTP request') || responseText.includes('400 Bad Request'); //
       const hasBody = responseData.length > 100; //
       return statusCode !== null && looksLikeCloudflare && isExpectedError && hasBody; //
     }
@@ -295,7 +340,7 @@ async function CheckProxyIP(proxyIP) {
       proxyIP: hostToCheck,
       portRemote: portRemote,
       timestamp: new Date().toISOString(),
-      error: error.message || error.toString()
+      error: error.message || error.toString(),
     };
   }
 }
@@ -309,7 +354,7 @@ async function 整理(内容) {
   return 整理数组;
 }
 
-async function 双重哈希(文本) { 
+async function 双重哈希(文本) {
   const 编码器 = new TextEncoder();
   const 第一次哈希 = await crypto.subtle.digest('MD5', 编码器.encode(文本));
   const 第一次哈希数组 = Array.from(new Uint8Array(第一次哈希));
@@ -320,7 +365,8 @@ async function 双重哈希(文本) {
   return 第二次十六进制.toLowerCase(); //
 }
 
-async function nginx() { //
+async function nginx() {
+  //
   const text = `
     <!DOCTYPE html>
     <html>
@@ -345,7 +391,7 @@ async function nginx() { //
     <p><em>Thank you for using nginx.</em></p>
     </body>
     </html>
-    ` //
+    `; //
   return text; //
 }
 
@@ -1042,6 +1088,6 @@ async function HTML(hostname, 网站图标, token) {
 `; //
 
   return new Response(html, {
-    headers: { "content-type": "text/html;charset=UTF-8" } //
+    headers: { 'content-type': 'text/html;charset=UTF-8' }, //
   });
-    }
+}
