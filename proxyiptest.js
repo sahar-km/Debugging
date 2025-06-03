@@ -77,7 +77,7 @@ export default {
         );
       }
       if (!url.searchParams.has('domain'))
-        return new Response('Missing domain parameter', { status: 400 }); //
+        return new Response('Missing domain parameter', { status: 400 }); 
       const domain = url.searchParams.get('domain');
 
       try {
@@ -121,7 +121,7 @@ export default {
           },
         );
       }
-      let ip = url.searchParams.get('ip') || request.headers.get('CF-Connecting-IP'); //
+      let ip = url.searchParams.get('ip') || request.headers.get('CF-Connecting-IP'); 
       if (!ip) {
         return new Response(
           JSON.stringify(
@@ -241,7 +241,7 @@ async function resolveDomain(domain) {
     if (ips.length === 0) {
       throw new Error('No A or AAAA records found');
     }
-    return ips; //
+    return ips;
   } catch (error) {
     throw new Error(`DNS resolution failed: ${error.message}`);
   }
@@ -302,7 +302,7 @@ async function CheckProxyIP(proxyIP) {
           responseText.includes('\r\n\r\n') &&
           (responseText.includes('Connection: close') || responseText.includes('content-length'))
         ) {
-          //
+         
           break;
         }
       }
@@ -316,13 +316,13 @@ async function CheckProxyIP(proxyIP) {
     function isValidProxyResponse(responseText, responseData) {
       const statusMatch = responseText.match(/^HTTP\/\d\.\d\s+(\d+)/i);
       const statusCode = statusMatch ? parseInt(statusMatch[1]) : null;
-      const looksLikeCloudflare = responseText.includes('cloudflare'); //
+      const looksLikeCloudflare = responseText.includes('cloudflare');
       const isExpectedError =
-        responseText.includes('plain HTTP request') || responseText.includes('400 Bad Request'); //
-      const hasBody = responseData.length > 100; //
-      return statusCode !== null && looksLikeCloudflare && isExpectedError && hasBody; //
+        responseText.includes('plain HTTP request') || responseText.includes('400 Bad Request');
+      const hasBody = responseData.length > 100;
+      return statusCode !== null && looksLikeCloudflare && isExpectedError && hasBody;
     }
-    const isSuccessful = isValidProxyResponse(responseText, responseData); //
+    const isSuccessful = isValidProxyResponse(responseText, responseData);
 
     const jsonResponse = {
       success: isSuccessful,
@@ -362,11 +362,11 @@ async function 双重哈希(文本) {
   const 第二次哈希 = await crypto.subtle.digest('MD5', 编码器.encode(第一次十六进制.slice(7, 27)));
   const 第二次哈希数组 = Array.from(new Uint8Array(第二次哈希));
   const 第二次十六进制 = 第二次哈希数组.map(字节 => 字节.toString(16).padStart(2, '0')).join('');
-  return 第二次十六进制.toLowerCase(); //
+  return 第二次十六进制.toLowerCase();
 }
 
 async function nginx() {
-  //
+ 
   const text = `
     <!DOCTYPE html>
     <html>
@@ -391,8 +391,8 @@ async function nginx() {
     <p><em>Thank you for using nginx.</em></p>
     </body>
     </html>
-    `; //
-  return text; //
+    `;
+  return text;
 }
 
 async function HTML(hostname, 网站图标, token) {
@@ -597,93 +597,93 @@ async function HTML(hostname, 网站图标, token) {
   <div id="toast" class="toast"></div>
 
   <script>
-    let isChecking = false; //
-    const ipCheckResults = new Map(); //
-    let pageLoadTimestamp; //
+    let isChecking = false;
+    const ipCheckResults = new Map();
+    let pageLoadTimestamp;
     const TEMP_TOKEN = "${token}"; 
     let rangeChartInstance = null;
-    let currentSuccessfulRangeIPs = []; // To store IPs for the copy button
+    let currentSuccessfulRangeIPs = [];
 
-    function calculateTimestamp() { //
-      const currentDate = new Date(); //
-      return Math.ceil(currentDate.getTime() / (1000 * 60 * 13)); //
+    function calculateTimestamp() {
+      const currentDate = new Date();
+      return Math.ceil(currentDate.getTime() / (1000 * 60 * 13));
     }
     
-    document.addEventListener('DOMContentLoaded', function() { //
-      pageLoadTimestamp = calculateTimestamp(); //
-      const singleIpInput = document.getElementById('proxyip'); //
+    document.addEventListener('DOMContentLoaded', function() {
+      pageLoadTimestamp = calculateTimestamp();
+      const singleIpInput = document.getElementById('proxyip');
       const rangeIpInput = document.getElementById('proxyipRange');
-      singleIpInput.focus(); //
+      singleIpInput.focus();
       
-      const urlParams = new URLSearchParams(window.location.search); //
-      let autoCheckValue = urlParams.get('autocheck'); //
-       if (!autoCheckValue) { //
-          const currentPath = window.location.pathname; //
-          if (currentPath.length > 1) { //
-            const pathContent = decodeURIComponent(currentPath.substring(1)); //
-            if (isValidProxyIPFormat(pathContent)) { //
-                autoCheckValue = pathContent; //
+      const urlParams = new URLSearchParams(window.location.search);
+      let autoCheckValue = urlParams.get('autocheck');
+       if (!autoCheckValue) {
+          const currentPath = window.location.pathname;
+          if (currentPath.length > 1) {
+            const pathContent = decodeURIComponent(currentPath.substring(1));
+            if (isValidProxyIPFormat(pathContent)) {
+                autoCheckValue = pathContent;
             }
           }
        }
 
-      if (autoCheckValue) { //
-        singleIpInput.value = autoCheckValue; //
-        const newUrl = new URL(window.location); //
-        newUrl.searchParams.delete('autocheck'); //
-        newUrl.pathname = '/'; //
-        window.history.replaceState({}, '', newUrl); //
-        setTimeout(() => { if (!isChecking) { checkInputs(); } }, 500); //
+      if (autoCheckValue) {
+        singleIpInput.value = autoCheckValue;
+        const newUrl = new URL(window.location);
+        newUrl.searchParams.delete('autocheck');
+        newUrl.pathname = '/';
+        window.history.replaceState({}, '', newUrl);
+        setTimeout(() => { if (!isChecking) { checkInputs(); } }, 500);
       } else {
-        try { //
-            const lastSearch = localStorage.getItem('lastProxyIP'); //
-            if (lastSearch) singleIpInput.value = lastSearch; //
-        } catch (e) { console.error('localStorage read error:', e); } //
+        try {
+            const lastSearch = localStorage.getItem('lastProxyIP');
+            if (lastSearch) singleIpInput.value = lastSearch;
+        } catch (e) { console.error('localStorage read error:', e); }
       }
       
-      singleIpInput.addEventListener('keypress', function(event) { if (event.key === 'Enter' && !isChecking) { checkInputs(); } }); //
+      singleIpInput.addEventListener('keypress', function(event) { if (event.key === 'Enter' && !isChecking) { checkInputs(); } });
       rangeIpInput.addEventListener('keypress', function(event) { if (event.key === 'Enter' && !isChecking) { checkInputs(); } });
       
-      document.addEventListener('click', function(event) { //
-        if (event.target.classList.contains('copy-btn')) { //
-          const text = event.target.getAttribute('data-copy'); //
-          if (text) copyToClipboard(text, event.target, "Copied!"); //
+      document.addEventListener('click', function(event) {
+        if (event.target.classList.contains('copy-btn')) {
+          const text = event.target.getAttribute('data-copy');
+          if (text) copyToClipboard(text, event.target, "Copied!");
         }
       });
     });
 
-    function showToast(message, duration = 3000) { //
-      const toast = document.getElementById('toast'); //
-      toast.textContent = message; //
-      toast.classList.add('show'); //
-      setTimeout(() => { toast.classList.remove('show'); }, duration); //
+    function showToast(message, duration = 3000) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => { toast.classList.remove('show'); }, duration);
     }
 
-    function copyToClipboard(text, element, successMessage = "Copied!") { //
-      navigator.clipboard.writeText(text).then(() => { //
-        const originalText = element ? element.textContent : ''; //
-        if(element) element.textContent = 'Copied ✓'; //
-        showToast(successMessage); //
-        if(element) setTimeout(() => { element.textContent = originalText; }, 2000); //
-      }).catch(err => { showToast('Copy failed. Please copy manually.'); }); //
+    function copyToClipboard(text, element, successMessage = "Copied!") {
+      navigator.clipboard.writeText(text).then(() => {
+        const originalText = element ? element.textContent : '';
+        if(element) element.textContent = 'Copied ✓';
+        showToast(successMessage);
+        if(element) setTimeout(() => { element.textContent = originalText; }, 2000);
+      }).catch(err => { showToast('Copy failed. Please copy manually.'); });
     }
     
-    function createCopyButton(text) { return \`<span class="copy-btn" data-copy="\${text}">\${text}</span>\`; } //
+    function createCopyButton(text) { return \`<span class="copy-btn" data-copy="\${text}">\${text}</span>\`; }
 
-    function isValidProxyIPFormat(input) { //
-        const domainRegex = /^[a-zA-Z0-9]([a-zA-Z0-9\\-]{0,61}[a-zA-Z0-9])?(\\.[a-zA-Z0-9]([a-zA-Z0-9\\-]{0,61}[a-zA-Z0-9])?)*$/; //
-        const ipv4Regex = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/; //
-        const ipv6Regex = /^\\[?([0-9a-fA-F]{0,4}:){1,7}[0-9a-fA-F]{0,4}\\]?$/; //
-        const withPortRegex = /^.+:\\d+$/; //
-        const tpPortRegex = /^.+\\.tp\\d+\\./; //
-        return domainRegex.test(input) || ipv4Regex.test(input) || ipv6Regex.test(input) || withPortRegex.test(input) || tpPortRegex.test(input); //
+    function isValidProxyIPFormat(input) {
+        const domainRegex = /^[a-zA-Z0-9]([a-zA-Z0-9\\-]{0,61}[a-zA-Z0-9])?(\\.[a-zA-Z0-9]([a-zA-Z0-9\\-]{0,61}[a-zA-Z0-9])?)*$/;
+        const ipv4Regex = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+        const ipv6Regex = /^\\[?([0-9a-fA-F]{0,4}:){1,7}[0-9a-fA-F]{0,4}\\]?$/;
+        const withPortRegex = /^.+:\\d+$/;
+        const tpPortRegex = /^.+\\.tp\\d+\\./;
+        return domainRegex.test(input) || ipv4Regex.test(input) || ipv6Regex.test(input) || withPortRegex.test(input) || tpPortRegex.test(input);
     }
-     function isIPAddress(input) { //
-      const ipv4Regex = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/; //
-      const ipv6Regex = /^\\[?([0-9a-fA-F]{0,4}:){1,7}[0-9a-fA-F]{0,4}\\]?$/; //
-      const ipv6WithPortRegex = /^\\[[0-9a-fA-F:]+\\]:\\d+$/; //
-      const ipv4WithPortRegex = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?):\\d+$/; //
-      return ipv4Regex.test(input) || ipv6Regex.test(input) || ipv6WithPortRegex.test(input) || ipv4WithPortRegex.test(input); //
+     function isIPAddress(input) {
+      const ipv4Regex = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+      const ipv6Regex = /^\\[?([0-9a-fA-F]{0,4}:){1,7}[0-9a-fA-F]{0,4}\\]?$/;
+      const ipv6WithPortRegex = /^\\[[0-9a-fA-F:]+\\]:\\d+$/;
+      const ipv4WithPortRegex = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?):\\d+$/;
+      return ipv4Regex.test(input) || ipv6Regex.test(input) || ipv6WithPortRegex.test(input) || ipv4WithPortRegex.test(input);
     }
 
     function parseIPRange(rangeInput) {
@@ -723,72 +723,72 @@ async function HTML(hostname, 网站图标, token) {
         return ips;
     }
     
-    function preprocessInput(input) { //
-      if (!input) return input; //
-      let processed = input.trim(); //
-      if (processed.includes(' ')) { //
-        processed = processed.split(' ')[0]; //
+    function preprocessInput(input) {
+      if (!input) return input;
+      let processed = input.trim();
+      if (processed.includes(' ')) {
+        processed = processed.split(' ')[0];
       }
-      return processed; //
+      return processed;
     }
 
     async function checkInputs() {
-      if (isChecking) return; //
+      if (isChecking) return;
 
-      const singleIpInputEl = document.getElementById('proxyip'); //
+      const singleIpInputEl = document.getElementById('proxyip');
       const rangeIpInputEl = document.getElementById('proxyipRange');
-      const resultDiv = document.getElementById('result'); //
+      const resultDiv = document.getElementById('result');
       const rangeResultCard = document.getElementById('rangeResultCard');
       const rangeResultSummary = document.getElementById('rangeResultSummary');
       const copyRangeBtn = document.getElementById('copyRangeBtn');
 
-      const checkBtn = document.getElementById('checkBtn'); //
-      const btnText = checkBtn.querySelector('.btn-text'); //
-      const spinner = checkBtn.querySelector('.loading-spinner'); //
+      const checkBtn = document.getElementById('checkBtn');
+      const btnText = checkBtn.querySelector('.btn-text');
+      const spinner = checkBtn.querySelector('.loading-spinner');
       
-      const rawSingleInput = singleIpInputEl.value; //
-      let singleIpToTest = preprocessInput(rawSingleInput); //
+      const rawSingleInput = singleIpInputEl.value;
+      let singleIpToTest = preprocessInput(rawSingleInput);
       
       const rawRangeInput = rangeIpInputEl.value;
       let rangeIpToTest = preprocessInput(rawRangeInput);
 
-      if (singleIpToTest && singleIpToTest !== rawSingleInput) { //
-        singleIpInputEl.value = singleIpToTest; //
-        showToast('Single IP input auto-corrected.'); //
+      if (singleIpToTest && singleIpToTest !== rawSingleInput) {
+        singleIpInputEl.value = singleIpToTest;
+        showToast('Single IP input auto-corrected.');
       }
        if (rangeIpToTest && rangeIpToTest !== rawRangeInput) {
         rangeIpInputEl.value = rangeIpToTest;
         showToast('IP Range input auto-corrected.');
       }
 
-      if (!singleIpToTest && !rangeIpToTest) { //
-        showToast('Please enter a single IP/Domain or an IP Range.'); //
-        singleIpInputEl.focus(); //
-        return; //
+      if (!singleIpToTest && !rangeIpToTest) {
+        showToast('Please enter a single IP/Domain or an IP Range.');
+        singleIpInputEl.focus();
+        return;
       }
       
-      const currentTimestamp = calculateTimestamp(); //
-      if (currentTimestamp !== pageLoadTimestamp) { //
-        const currentHost = window.location.host; //
-        const currentProtocol = window.location.protocol; //
-        let redirectPathVal = singleIpToTest || rangeIpToTest || ''; //
-        const redirectUrl = \`\${currentProtocol}//\${currentHost}/\${encodeURIComponent(redirectPathVal)}\`; //
-        showToast('TOKEN expired, refreshing page...'); //
-        setTimeout(() => { window.location.href = redirectUrl; }, 1000); //
-        return; //
+      const currentTimestamp = calculateTimestamp();
+      if (currentTimestamp !== pageLoadTimestamp) {
+        const currentHost = window.location.host;
+        const currentProtocol = window.location.protocol;
+        let redirectPathVal = singleIpToTest || rangeIpToTest || '';
+        const redirectUrl = \`\${currentProtocol}//\${currentHost}/\${encodeURIComponent(redirectPathVal)}\`;
+        showToast('TOKEN expired, refreshing page...');
+        setTimeout(() => { window.location.href = redirectUrl; }, 1000);
+        return;
       }
 
-      if (singleIpToTest) { //
-          try { localStorage.setItem('lastProxyIP', singleIpToTest); } catch (e) {} //
+      if (singleIpToTest) {
+          try { localStorage.setItem('lastProxyIP', singleIpToTest); } catch (e) {}
       }
       
-      isChecking = true; //
-      checkBtn.disabled = true; //
-      btnText.style.display = 'none'; //
-      spinner.style.display = 'inline-block'; //
+      isChecking = true;
+      checkBtn.disabled = true;
+      btnText.style.display = 'none';
+      spinner.style.display = 'inline-block';
       
-      resultDiv.innerHTML = ''; //
-      resultDiv.classList.remove('show'); //
+      resultDiv.innerHTML = '';
+      resultDiv.classList.remove('show');
       rangeResultCard.style.display = 'none';
       rangeResultSummary.innerHTML = '';
       copyRangeBtn.style.display = 'none';
@@ -800,10 +800,10 @@ async function HTML(hostname, 网站图标, token) {
 
       try {
         if (singleIpToTest) {
-            if (isIPAddress(singleIpToTest)) { //
-                await checkAndDisplaySingleIP(singleIpToTest, resultDiv); //
+            if (isIPAddress(singleIpToTest)) {
+                await checkAndDisplaySingleIP(singleIpToTest, resultDiv);
             } else { 
-                await checkAndDisplayDomain(singleIpToTest, resultDiv); //
+                await checkAndDisplayDomain(singleIpToTest, resultDiv);
             }
         }
 
@@ -815,7 +815,7 @@ async function HTML(hostname, 网站图标, token) {
                 
                 let successCount = 0;
                 let checkedCount = 0;
-                currentSuccessfulRangeIPs = []; // Reset for current test
+                currentSuccessfulRangeIPs = []; Reset for current test
 
                 const batchSize = 10; 
                 for (let i = 0; i < ipsInRange.length; i += batchSize) {
@@ -858,17 +858,17 @@ async function HTML(hostname, 网站图标, token) {
             }
         }
 
-      } catch (err) { //
-        const errorMsg = \`<div class="result-card result-error"><h3>❌ General Error</h3><p>\${err.message}</p></div>\`; //
-        if(resultDiv.innerHTML === '') resultDiv.innerHTML = errorMsg; //
+      } catch (err) {
+        const errorMsg = \`<div class="result-card result-error"><h3>❌ General Error</h3><p>\${err.message}</p></div>\`;
+        if(resultDiv.innerHTML === '') resultDiv.innerHTML = errorMsg;
         else rangeResultSummary.innerHTML = \`<p style="color:var(--error-color)">Error during range test: \${err.message}</p>\`;
-        if (resultDiv.innerHTML !== '') resultDiv.classList.add('show'); //
+        if (resultDiv.innerHTML !== '') resultDiv.classList.add('show');
         if (rangeIpToTest) rangeResultCard.style.display = 'block';
       } finally {
-        isChecking = false; //
-        checkBtn.disabled = false; //
-        btnText.style.display = 'inline-block'; //
-        spinner.style.display = 'none'; //
+        isChecking = false;
+        checkBtn.disabled = false;
+        btnText.style.display = 'inline-block';
+        spinner.style.display = 'none';
       }
     }
     
@@ -926,7 +926,7 @@ async function HTML(hostname, 网站图标, token) {
                                 return \`IP: \${context.label} - Status: Successful\`;
                             },
                              title: function() {
-                                return ''; // No title for tooltip
+                                return '';
                             }
                         }
                     }
@@ -952,18 +952,18 @@ async function HTML(hostname, 网站图标, token) {
     }
 
 
-    async function fetchSingleIPCheck(proxyipWithOptionalPort) { //
-        const requestUrl = \`./check?proxyip=\${encodeURIComponent(proxyipWithOptionalPort)}&token=\${TEMP_TOKEN}\`; //
-        const response = await fetch(requestUrl); //
-        return await response.json(); //
+    async function fetchSingleIPCheck(proxyipWithOptionalPort) {
+        const requestUrl = \`./check?proxyip=\${encodeURIComponent(proxyipWithOptionalPort)}&token=\${TEMP_TOKEN}\`;
+        const response = await fetch(requestUrl);
+        return await response.json();
     }
 
-    async function checkAndDisplaySingleIP(proxyip, resultDiv) { //
-      const data = await fetchSingleIPCheck(proxyip); //
+    async function checkAndDisplaySingleIP(proxyip, resultDiv) {
+      const data = await fetchSingleIPCheck(proxyip);
       
-      if (data.success) { //
-        const ipInfo = await getIPInfo(data.proxyIP); //
-        const ipInfoHTML = formatIPInfo(ipInfo); //
+      if (data.success) {
+        const ipInfo = await getIPInfo(data.proxyIP);
+        const ipInfoHTML = formatIPInfo(ipInfo);
         resultDiv.innerHTML = \` 
           <div class="result-card result-success">
             <h3>✅ ProxyIP Valid</h3>
@@ -971,8 +971,8 @@ async function HTML(hostname, 网站图标, token) {
             <p><strong>🔌 Port:</strong> \${createCopyButton(data.portRemote.toString())}</p>
             <p><strong>🕒 Check Time:</strong> \${new Date(data.timestamp).toLocaleString()}</p>
           </div>
-        \`; //
-      } else { //
+        \`;
+      } else {
         resultDiv.innerHTML = \`
           <div class="result-card result-error">
             <h3>❌ ProxyIP Invalid</h3>
@@ -980,39 +980,39 @@ async function HTML(hostname, 网站图标, token) {
             \${data.error ? \`<p><strong>Error:</strong> \${data.error}</p>\` : ''}
             <p><strong>🕒 Check Time:</strong> \${new Date(data.timestamp).toLocaleString()}</p>
           </div>
-        \`; //
+        \`;
       }
-      resultDiv.classList.add('show'); //
+      resultDiv.classList.add('show');
     }
 
-    async function checkAndDisplayDomain(domain, resultDiv) { //
-      let portRemote = 443; //
-      let cleanDomain = domain; //
+    async function checkAndDisplayDomain(domain, resultDiv) {
+      let portRemote = 443;
+      let cleanDomain = domain;
       
-      if (domain.includes('.tp')) { //
-        const portMatch = domain.match(/\\.tp(\\d+)\\./); //
-        if (portMatch) portRemote = parseInt(portMatch[1]); //
-        cleanDomain = domain.split('.tp')[0]; //
-      } else if (domain.includes('[') && domain.includes(']:')) { //
-        portRemote = parseInt(domain.split(']:')[1]) || 443; //
-        cleanDomain = domain.split(']:')[0] + ']'; //
-      } else if (domain.includes(':') && !domain.startsWith('[')) { //
-         const parts = domain.split(':'); //
-         if (parts.length === 2) { //
-            cleanDomain = parts[0]; //
-            const parsedPort = parseInt(parts[1]); //
-            if (!isNaN(parsedPort)) portRemote = parsedPort; //
+      if (domain.includes('.tp')) {
+        const portMatch = domain.match(/\\.tp(\\d+)\\./);
+        if (portMatch) portRemote = parseInt(portMatch[1]);
+        cleanDomain = domain.split('.tp')[0];
+      } else if (domain.includes('[') && domain.includes(']:')) {
+        portRemote = parseInt(domain.split(']:')[1]) || 443;
+        cleanDomain = domain.split(']:')[0] + ']';
+      } else if (domain.includes(':') && !domain.startsWith('[')) {
+         const parts = domain.split(':');
+         if (parts.length === 2) {
+            cleanDomain = parts[0];
+            const parsedPort = parseInt(parts[1]);
+            if (!isNaN(parsedPort)) portRemote = parsedPort;
          }
       }
       
-      const resolveResponse = await fetch(\`./resolve?domain=\${encodeURIComponent(cleanDomain)}&token=\${TEMP_TOKEN}\`); //
-      const resolveData = await resolveResponse.json(); //
+      const resolveResponse = await fetch(\`./resolve?domain=\${encodeURIComponent(cleanDomain)}&token=\${TEMP_TOKEN}\`);
+      const resolveData = await resolveResponse.json();
       
-      if (!resolveData.success) { throw new Error(resolveData.error || 'Domain resolution failed'); } //
-      const ips = resolveData.ips; //
-      if (!ips || ips.length === 0) { throw new Error('No IPs found for the domain.'); } //
+      if (!resolveData.success) { throw new Error(resolveData.error || 'Domain resolution failed'); }
+      const ips = resolveData.ips;
+      if (!ips || ips.length === 0) { throw new Error('No IPs found for the domain.'); }
       
-      ipCheckResults.clear(); //
+      ipCheckResults.clear();
       resultDiv.innerHTML = \`
         <div class="result-card result-warning">
           <h3>🔍 Domain Resolution Results</h3>
@@ -1028,66 +1028,66 @@ async function HTML(hostname, 网站图标, token) {
             \`).join('')}
           </div>
         </div>
-      \`; //
-      resultDiv.classList.add('show'); //
+      \`;
+      resultDiv.classList.add('show');
       
-      const checkPromises = ips.map((ip, index) => checkDomainIPWithIndex(ip, portRemote, index)); //
-      const ipInfoPromises = ips.map((ip, index) => getIPInfoWithIndex(ip, index)); //
+      const checkPromises = ips.map((ip, index) => checkDomainIPWithIndex(ip, portRemote, index));
+      const ipInfoPromises = ips.map((ip, index) => getIPInfoWithIndex(ip, index));
       
-      await Promise.all([...checkPromises, ...ipInfoPromises]); //
-      const validCount = Array.from(ipCheckResults.values()).filter(r => r.success).length; //
-      const resultCardHeader = resultDiv.querySelector('.result-card h3'); //
-      if(resultCardHeader){ //
-          if (validCount === ips.length) resultCardHeader.textContent = '✅ All Domain IPs Valid'; //
-          else if (validCount === 0) resultCardHeader.textContent = '❌ All Domain IPs Invalid'; //
-          else resultCardHeader.textContent = \`⚠️ Some Domain IPs Valid (\${validCount}/\${ips.length})\`; //
+      await Promise.all([...checkPromises, ...ipInfoPromises]);
+      const validCount = Array.from(ipCheckResults.values()).filter(r => r.success).length;
+      const resultCardHeader = resultDiv.querySelector('.result-card h3');
+      if(resultCardHeader){
+          if (validCount === ips.length) resultCardHeader.textContent = '✅ All Domain IPs Valid';
+          else if (validCount === 0) resultCardHeader.textContent = '❌ All Domain IPs Invalid';
+          else resultCardHeader.textContent = \`⚠️ Some Domain IPs Valid (\${validCount}/\${ips.length})\`;
       }
     }
 
-    async function checkDomainIPWithIndex(ip, port, index) { //
+    async function checkDomainIPWithIndex(ip, port, index) {
       try {
-        const ipToTest = ip.includes(':') || ip.includes(']:') ? ip : \`\${ip}:\${port}\`; //
-        const result = await fetchSingleIPCheck(ipToTest); //
-        ipCheckResults.set(ipToTest, result); //
+        const ipToTest = ip.includes(':') || ip.includes(']:') ? ip : \`\${ip}:\${port}\`;
+        const result = await fetchSingleIPCheck(ipToTest);
+        ipCheckResults.set(ipToTest, result);
         
-        const statusIcon = document.getElementById(\`status-icon-\${index}\`); //
-        if (statusIcon) statusIcon.textContent = result.success ? '✅' : '❌'; //
+        const statusIcon = document.getElementById(\`status-icon-\${index}\`);
+        if (statusIcon) statusIcon.textContent = result.success ? '✅' : '❌';
       } catch (error) {
-        const statusIcon = document.getElementById(\`status-icon-\${index}\`); //
-        if (statusIcon) statusIcon.textContent = '⚠️'; //
-        ipCheckResults.set(ip, { success: false, error: error.message }); //
+        const statusIcon = document.getElementById(\`status-icon-\${index}\`);
+        if (statusIcon) statusIcon.textContent = '⚠️';
+        ipCheckResults.set(ip, { success: false, error: error.message });
       }
     }
     
-    async function getIPInfoWithIndex(ip, index) { //
+    async function getIPInfoWithIndex(ip, index) {
       try {
-        const ipInfo = await getIPInfo(ip.split(':')[0]); //
-        const infoElement = document.getElementById(\`ip-info-\${index}\`); //
-        if (infoElement) infoElement.innerHTML = formatIPInfo(ipInfo, true); //
-      } catch (error) { /* Fail silently */ } //
+        const ipInfo = await getIPInfo(ip.split(':')[0]);
+        const infoElement = document.getElementById(\`ip-info-\${index}\`);
+        if (infoElement) infoElement.innerHTML = formatIPInfo(ipInfo, true);
+      } catch (error) { /* Fail silently */ }
     }
 
-    async function getIPInfo(ip) { //
+    async function getIPInfo(ip) {
       try {
-        const cleanIP = ip.replace(/[\\[\\]]/g, ''); //
-        const response = await fetch(\`./ip-info?ip=\${encodeURIComponent(cleanIP)}&token=\${TEMP_TOKEN}\`); //
-        return await response.json(); //
-      } catch (error) { return null; } //
+        const cleanIP = ip.replace(/[\\[\\]]/g, '');
+        const response = await fetch(\`./ip-info?ip=\${encodeURIComponent(cleanIP)}&token=\${TEMP_TOKEN}\`);
+        return await response.json();
+      } catch (error) { return null; }
     }
 
-    function formatIPInfo(ipInfo, isShort = false) { //
-      if (!ipInfo || ipInfo.status !== 'success') { return ''; } //
-      const country = ipInfo.country || 'N/A'; //
-      const as = ipInfo.as || 'N/A'; //
+    function formatIPInfo(ipInfo, isShort = false) {
+      if (!ipInfo || ipInfo.status !== 'success') { return ''; }
+      const country = ipInfo.country || 'N/A';
+      const as = ipInfo.as || 'N/A';
       if(isShort) return \`(\${country} - \${as.substring(0,15)}...)\`;
-      return \`<span style="font-size:0.85em; color:#555;">(\${country} - \${as})</span>\`; //
+      return \`<span style="font-size:0.85em; color:#555;">(\${country} - \${as})</span>\`;
     }
   </script>
 </body>
 </html>
-`; //
+`;
 
   return new Response(html, {
-    headers: { 'content-type': 'text/html;charset=UTF-8' }, //
+    headers: { 'content-type': 'text/html;charset=UTF-8' },
   });
 }
