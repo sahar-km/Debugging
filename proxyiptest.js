@@ -1,11 +1,11 @@
 import { connect } from "cloudflare:sockets";
-let 临时TOKEN, 永久TOKEN; //
+let 临时TOKEN, 永久TOKEN;
 
 export default {
   async fetch(request, env, ctx) {
     const 网站图标 = env.ICO || 'https://github.com/user-attachments/assets/31a6ced0-62b8-429f-a98e-082ea5ac1990';
     const url = new URL(request.url);
-    const UA = request.headers.get('User-Agent') || 'null'; //
+    const UA = request.headers.get('User-Agent') || 'null';
     const path = url.pathname;
     const hostname = url.hostname;
     const currentDate = new Date();
@@ -57,7 +57,7 @@ export default {
         });
       }
       if (!url.searchParams.has('domain')) return new Response('Missing domain parameter', { status: 400 }); //
-      const domain = url.searchParams.get('domain'); //
+      const domain = url.searchParams.get('domain');
 
       try {
         const ips = await resolveDomain(domain);
@@ -71,7 +71,7 @@ export default {
         return new Response(JSON.stringify({ success: false, error: error.message }), { 
           status: 500,
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
             "Access-Control-Allow-Origin": "*"
           }
         });
@@ -238,7 +238,7 @@ async function CheckProxyIP(proxyIP) {
       "Connection: close\r\n\r\n";
 
     const writer = tcpSocket.writable.getWriter();
-    await writer.write(new TextEncoder().encode(httpRequest)); //
+    await writer.write(new TextEncoder().encode(httpRequest));
     writer.releaseLock();
 
     const reader = tcpSocket.readable.getReader();
@@ -259,19 +259,19 @@ async function CheckProxyIP(proxyIP) {
         const responseText = new TextDecoder().decode(responseData);
         if (responseText.includes("\r\n\r\n") &&
           (responseText.includes("Connection: close") || responseText.includes("content-length"))) { //
-          break; //
+          break;
         }
       }
     }
-    reader.releaseLock(); //
+    reader.releaseLock();
 
-    const responseText = new TextDecoder().decode(responseData); //
-    const statusMatch = responseText.match(/^HTTP\/\d\.\d\s+(\d+)/i); //
-    const statusCode = statusMatch ? parseInt(statusMatch[1]) : null; //
+    const responseText = new TextDecoder().decode(responseData);
+    const statusMatch = responseText.match(/^HTTP\/\d\.\d\s+(\d+)/i);
+    const statusCode = statusMatch ? parseInt(statusMatch[1]) : null;
 
-    function isValidProxyResponse(responseText, responseData) { //
-      const statusMatch = responseText.match(/^HTTP\/\d\.\d\s+(\d+)/i); //
-      const statusCode = statusMatch ? parseInt(statusMatch[1]) : null; //
+    function isValidProxyResponse(responseText, responseData) {
+      const statusMatch = responseText.match(/^HTTP\/\d\.\d\s+(\d+)/i);
+      const statusCode = statusMatch ? parseInt(statusMatch[1]) : null;
       const looksLikeCloudflare = responseText.includes("cloudflare"); //
       const isExpectedError = responseText.includes("plain HTTP request") || responseText.includes("400 Bad Request"); //
       const hasBody = responseData.length > 100; //
@@ -279,44 +279,44 @@ async function CheckProxyIP(proxyIP) {
     }
     const isSuccessful = isValidProxyResponse(responseText, responseData); //
 
-    const jsonResponse = { //
-      success: isSuccessful, //
-      proxyIP: hostToCheck, //
-      portRemote: portRemote, //
-      statusCode: statusCode || null, //
-      responseSize: responseData.length, //
-      timestamp: new Date().toISOString(), //
+    const jsonResponse = {
+      success: isSuccessful,
+      proxyIP: hostToCheck,
+      portRemote: portRemote,
+      statusCode: statusCode || null,
+      responseSize: responseData.length,
+      timestamp: new Date().toISOString(),
     };
-    await tcpSocket.close(); //
-    return jsonResponse; //
+    await tcpSocket.close();
+    return jsonResponse;
   } catch (error) {
-    return { //
-      success: false, //
-      proxyIP: hostToCheck, //
-      portRemote: portRemote, //
-      timestamp: new Date().toISOString(), //
-      error: error.message || error.toString() //
+    return {
+      success: false,
+      proxyIP: hostToCheck,
+      portRemote: portRemote,
+      timestamp: new Date().toISOString(),
+      error: error.message || error.toString()
     };
   }
 }
 
-async function 整理(内容) { //
-  var 替换后的内容 = 内容.replace(/[\r\n]+/g, '|').replace(/\|+/g, '|'); //
-  const 地址数组 = 替换后的内容.split('|'); //
-  const 整理数组 = 地址数组.filter((item, index) => { //
-    return item !== '' && 地址数组.indexOf(item) === index; //
+async function 整理(内容) {
+  var 替换后的内容 = 内容.replace(/[\r\n]+/g, '|').replace(/\|+/g, '|');
+  const 地址数组 = 替换后的内容.split('|');
+  const 整理数组 = 地址数组.filter((item, index) => {
+    return item !== '' && 地址数组.indexOf(item) === index;
   });
-  return 整理数组; //
+  return 整理数组;
 }
 
-async function 双重哈希(文本) { //
-  const 编码器 = new TextEncoder(); //
-  const 第一次哈希 = await crypto.subtle.digest('MD5', 编码器.encode(文本)); //
-  const 第一次哈希数组 = Array.from(new Uint8Array(第一次哈希)); //
-  const 第一次十六进制 = 第一次哈希数组.map(字节 => 字节.toString(16).padStart(2, '0')).join(''); //
-  const 第二次哈希 = await crypto.subtle.digest('MD5', 编码器.encode(第一次十六进制.slice(7, 27))); //
-  const 第二次哈希数组 = Array.from(new Uint8Array(第二次哈希)); //
-  const 第二次十六进制 = 第二次哈希数组.map(字节 => 字节.toString(16).padStart(2, '0')).join(''); //
+async function 双重哈希(文本) { 
+  const 编码器 = new TextEncoder();
+  const 第一次哈希 = await crypto.subtle.digest('MD5', 编码器.encode(文本));
+  const 第一次哈希数组 = Array.from(new Uint8Array(第一次哈希));
+  const 第一次十六进制 = 第一次哈希数组.map(字节 => 字节.toString(16).padStart(2, '0')).join('');
+  const 第二次哈希 = await crypto.subtle.digest('MD5', 编码器.encode(第一次十六进制.slice(7, 27)));
+  const 第二次哈希数组 = Array.from(new Uint8Array(第二次哈希));
+  const 第二次十六进制 = 第二次哈希数组.map(字节 => 字节.toString(16).padStart(2, '0')).join('');
   return 第二次十六进制.toLowerCase(); //
 }
 
