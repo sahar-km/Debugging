@@ -15,7 +15,6 @@ export default defineConfig({
     ['meta', { property: 'og:title', content: 'windows and office ' }],
     ['meta', { property: 'og:description', content: 'activating methods, Change license' }]
   ],
-  ],
 
   markdown: {
     config: (md) => {
