@@ -1,6 +1,6 @@
-import { defineConfig } from 'vitepress'
-import footnote from 'markdown-it-footnote'
-import mathjax3 from 'markdown-it-mathjax3'
+import { defineConfig } from 'vitepress';
+import footnote from 'markdown-it-footnote';
+import mathjax3 from 'markdown-it-mathjax3';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -13,15 +13,15 @@ export default defineConfig({
     ['meta', { name: 'theme-color', content: '#646cff' }],
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:title', content: 'windows and office ' }],
-    ['meta', { property: 'og:description', content: 'activating methods, Change license' }]
+    ['meta', { property: 'og:description', content: 'activating methods, Change license' }],
   ],
 
   markdown: {
-    config: (md) => {
-      md.use(footnote)
-      md.use(mathjax3)
+    config: md => {
+      md.use(footnote);
+      md.use(mathjax3);
     },
-    lineNumbers: true
+    lineNumbers: true,
   },
 
   // --- I18n Configuration ---
@@ -34,7 +34,7 @@ export default defineConfig({
       themeConfig: {
         nav: [
           { text: 'Home', link: '/' },
-          { text: 'Guides', link: '/en/index' }
+          { text: 'Guides', link: '/en/index' },
         ],
         sidebar: {
           '/en/': [
@@ -44,7 +44,7 @@ export default defineConfig({
               items: [
                 { text: 'Introduction', link: '/en/index' },
                 { text: 'KMS Activation', link: '/en/kms' },
-              ]
+              ],
             },
             {
               text: 'Technical Details',
@@ -55,7 +55,7 @@ export default defineConfig({
                 { text: 'KMS38', link: '/en/kms38' },
                 { text: 'TSforge', link: '/en/tsforge' },
                 { text: '$OEM$ Folders (Pre-activation)', link: '/en/oem-folder' },
-              ]
+              ],
             },
             {
               text: 'Advanced Guides',
@@ -65,15 +65,15 @@ export default defineConfig({
                 { text: 'Office C2R Custom Install', link: '/en/office_c2r' },
                 { text: 'Fix WPA Registry', link: '/en/fix-wpa-registry' },
                 { text: 'Remove Malware', link: '/en/remove_malware' },
-              ]
-            }
-          ]
+              ],
+            },
+          ],
         },
         editLink: {
           pattern: 'https://github.com/NiREvil/windows-activation/edit/main/docs/:path',
-          text: 'Edit this page on GitHub'
+          text: 'Edit this page on GitHub',
         },
-      }
+      },
     },
     fa: {
       label: 'فارسی',
@@ -84,7 +84,7 @@ export default defineConfig({
       themeConfig: {
         nav: [
           { text: 'خانه', link: '/fa/' },
-          { text: 'راهنما', link: '/fa/README-FA' }
+          { text: 'راهنما', link: '/fa/README-FA' },
         ],
         sidebar: {
           '/fa/': [
@@ -94,43 +94,43 @@ export default defineConfig({
               items: [
                 { text: 'مقدمه و آموزش (فارسی)', link: '/fa/README-FA' },
                 // Note: Add other translated files here later
-              ]
-            }
-          ]
+              ],
+            },
+          ],
         },
         search: {
-      provider: 'local'
-    },
+          provider: 'local',
+        },
 
-    docFooter: {
-      prev: 'Previous page',
-      next: 'Next page'
-    },
+        docFooter: {
+          prev: 'Previous page',
+          next: 'Next page',
+        },
 
-    lastUpdated: {
-      text: 'Last updated',
-      formatOptions: {
-        dateStyle: 'short',
-        timeStyle: 'medium'
-      }
-    },
+        lastUpdated: {
+          text: 'Last updated',
+          formatOptions: {
+            dateStyle: 'short',
+            timeStyle: 'medium',
+          },
+        },
         editLink: {
           pattern: 'https://github.com/sahar-km/AEG/edit/main/docs/:path',
-          text: 'این صفحه را در گیت‌هاب ویرایش کنید'
+          text: 'این صفحه را در گیت‌هاب ویرایش کنید',
         },
-      }
-    }
+      },
+    },
   },
 
   themeConfig: {
     logo: '/logo.svg',
     socialLinks: [
       { icon: 'github', link: 'https://github.com/NiREvil/windows-activation' },
-      { icon: 'telegram', link: 'https://t.me/F_NiREvil/6448' }
+      { icon: 'telegram', link: 'https://t.me/F_NiREvil/6448' },
     ],
     footer: {
       message: 'Made with 🩶 using VitePress',
-      copyright: '© 2025 REvil - Sharing knowledge, one note at a time'
-    }
-  }
-})
+      copyright: '© 2025 REvil - Sharing knowledge, one note at a time',
+    },
+  },
+});
