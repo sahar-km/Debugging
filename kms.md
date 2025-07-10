@@ -29,7 +29,7 @@ head:
 
 </div><br/>
 
-## مرحله ۱:  اجرای Command Prompt با حالت مدیر سیستم
+## مرحله ۱: اجرای Command Prompt با حالت مدیر سیستم
 
 1. روی دکمه `Start` یا آیکون `Search` در taskbar کلیک کنید.
 2. عبارت `cmd` یا `Command Prompt` را تایپ کنید.
@@ -54,10 +54,9 @@ head:
 
 همچنین می‌توانید از [این لینک][2] برای مشاهده ۸ روش اجرای **cmd** و از [این لینک][1] برای اجرای PowerShell به 10روش مختلف در ویندوز استفاده کنید.
 
-
 :::
 
-## مرحله ۲:  نصب کلید عمومی KMS
+## مرحله ۲: نصب کلید عمومی KMS
 
 در پنجره Command Prompt، دستور زیر را اجرا کنید.
 حتماً `Your-License-Key` را با کلید مناسب از جدول زیر که با نسخه ویندوز شما هم‌خوانی دارد جایگزین کنید. <br/>
@@ -94,7 +93,7 @@ slmgr /ipk Your-License-Key
 
 - 1. کلیدهای `Win (⊞) + R` را فشار دهید تا Run dialog box باز شود.
 - 2. یکی از موارد `ms-settings:about` یا `winver` یا `msinfo32` را تایپ کنید و Enter را فشار دهید.
-     > پنجره‌ای ظاهر می‌شود که نسخه ویندوز،  Build number و سایر جزئیات را نشان می‌دهد. <br/>
+     > پنجره‌ای ظاهر می‌شود که نسخه ویندوز، Build number و سایر جزئیات را نشان می‌دهد. <br/>
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/f764797a-e07f-4c58-b932-bfe7b359a7bd" alt="winver-command" width="320px" /></p>
@@ -109,6 +108,7 @@ slmgr /ipk Your-License-Key
   <img src="https://github.com/user-attachments/assets/8592c1bd-4a1a-47c1-bd21-0eb17049db31" alt="msinfo32-response" width="320px" /></p><br/>
 
 **۴. استفاده از Command Prompt یا PowerShell** [^2]
+
 - 1. روی دکمه `Start` یا آیکون search کلیک کنید.
 - 2.**تایپ کنید:** `cmd` یا `Command Prompt`.
 - 3. در Command Prompt، `systeminfo` یا `systeminfo | findstr /B /C:"OS Name" /B /C:"OS Version"` را تایپ کرده و Enter را فشار دهید.
@@ -131,25 +131,25 @@ slmgr /ipk Your-License-Key
 
 ### کلیدهای لایسنس حجمی (GVLK)
 
-| نسخه ویندوز                   | کلید GVLK                   |
-| :---------------------------- | :--------------------------- |
-| Home                          | TX9XD-98N7V-6WMQ6-BX7FG-H8Q99 |
-| Home N                        | 3KHY7-WNT83-DGQKR-F7HPR-844BM |
-| Home SL [^3]                  | 7HNRX-D7KGG-3K4RQ-4WPJ4-YTDFH |
-| Home CS [^4]                  | PVMJN-6DFY6–9CCP6–7BKTT-D3WVR |
-| Pro                           | W269N-WFGWX-YVC9B-4J6C9-T83GX |
-| Pro N                         | MH37W-N47XK-V7XM9-C7227-GCQG9 |
-| Education                     | YNMGQ-8RYV3-4PGQ3-C8XTP-7CFBY |
-| Education N                   | 84NGF-MHBT6-FXBX8-QWJK7-DRR8H |
-| Pro Education                 | NW6C2-QMPVW-D7KKK-3GKT6-VCFB2 |
-| Pro Education N               | 2WH4N-8QGBV-H22JP-CT43Q-MDWWJ |
-| Pro for W [^5]                | DXG7C-N36C4-C4HTG-X4T3X-2YV77 |
-| Pro N for W [^6]              | WYPNQ-8C467-V2W6J-TX4WX-WT2RQ |
-| Enterprise                    | NPPR9-FWDCX-D2C8J-H872K-2YT43 |
-| Enterprise N                  | DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4 |
-| Team                          | XKCNC-J26Q9-KFHD2-FKTHY-KD72Y |
-| S                             | V3WVW-N2PV2-CGWC3-34QGF-VMJ2C |
-| SE                            | KY7PN-VR6RX-83W6Y-6DDYQ-T6R4W |
+| نسخه ویندوز      | کلید GVLK                     |
+| :--------------- | :---------------------------- |
+| Home             | TX9XD-98N7V-6WMQ6-BX7FG-H8Q99 |
+| Home N           | 3KHY7-WNT83-DGQKR-F7HPR-844BM |
+| Home SL [^3]     | 7HNRX-D7KGG-3K4RQ-4WPJ4-YTDFH |
+| Home CS [^4]     | PVMJN-6DFY6–9CCP6–7BKTT-D3WVR |
+| Pro              | W269N-WFGWX-YVC9B-4J6C9-T83GX |
+| Pro N            | MH37W-N47XK-V7XM9-C7227-GCQG9 |
+| Education        | YNMGQ-8RYV3-4PGQ3-C8XTP-7CFBY |
+| Education N      | 84NGF-MHBT6-FXBX8-QWJK7-DRR8H |
+| Pro Education    | NW6C2-QMPVW-D7KKK-3GKT6-VCFB2 |
+| Pro Education N  | 2WH4N-8QGBV-H22JP-CT43Q-MDWWJ |
+| Pro for W [^5]   | DXG7C-N36C4-C4HTG-X4T3X-2YV77 |
+| Pro N for W [^6] | WYPNQ-8C467-V2W6J-TX4WX-WT2RQ |
+| Enterprise       | NPPR9-FWDCX-D2C8J-H872K-2YT43 |
+| Enterprise N     | DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4 |
+| Team             | XKCNC-J26Q9-KFHD2-FKTHY-KD72Y |
+| S                | V3WVW-N2PV2-CGWC3-34QGF-VMJ2C |
+| SE               | KY7PN-VR6RX-83W6Y-6DDYQ-T6R4W |
 
 <br/>
 
@@ -161,24 +161,24 @@ slmgr /ipk Your-License-Key
 
 ::: details کلیدهای لایسنس جایگزین
 
-|            **کلید**            |  **نسخه**   |
-| :-----------------------------: | :----------: |
-| TX9XD-98N7V-6WMQ6-BX7FG-H8Q99 |     Home     |
-| 3KHY7-WNT83-DGQKR-F7HPR-844BM |   Home N     |
-| 7HNRX-D7KGG-3K4RQ-4WPJ4-YTDFH |   Home SL    |
-| PVMJN-6DFY6–9CCP6–7BKTT-D3WVR |   Home CS    |
-| W269N-WFGWX-YVC9B-4J6C9-T83GX | Professional |
+|           **کلید**            |    **نسخه**    |
+| :---------------------------: | :------------: |
+| TX9XD-98N7V-6WMQ6-BX7FG-H8Q99 |      Home      |
+| 3KHY7-WNT83-DGQKR-F7HPR-844BM |     Home N     |
+| 7HNRX-D7KGG-3K4RQ-4WPJ4-YTDFH |    Home SL     |
+| PVMJN-6DFY6–9CCP6–7BKTT-D3WVR |    Home CS     |
+| W269N-WFGWX-YVC9B-4J6C9-T83GX |  Professional  |
 | MH37W-N47XK-V7XM9-C7227-GCQG9 | Professional N |
-| NW6C2-QMPVW-D7KKK-3GKT6-VCFB2 |  Education   |
-| 2WH4N-8QGBV-H22JP-CT43Q-MDWWJ | Education N  |
-| NPPR9-FWDCX-D2C8J-H872K-2YT43 |  Enterprise  |
-| DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4 | Enterprise N |
+| NW6C2-QMPVW-D7KKK-3GKT6-VCFB2 |   Education    |
+| 2WH4N-8QGBV-H22JP-CT43Q-MDWWJ |  Education N   |
+| NPPR9-FWDCX-D2C8J-H872K-2YT43 |   Enterprise   |
+| DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4 |  Enterprise N  |
 
 :::
 
 <br/>
 
-## مرحله ۳:  تنظیم آدرس سرور KMS
+## مرحله ۳: تنظیم آدرس سرور KMS
 
 سپس، سیستم خود را به یک سرور KMS عمومی متصل کنید. این دستور را اجرا کنید:
 
@@ -189,7 +189,7 @@ slmgr /skms kms8.msguides.com
 <p align="center">
   <img src="https://github.com/user-attachments/assets/edd0835f-c314-4ef8-a87d-a33e29f3f7c0" alt="set-kms-server" width="540px" /></p><br/>
 
-## مرحله ۴:  فعال‌سازی ویندوز
+## مرحله ۴: فعال‌سازی ویندوز
 
 در نهایت، با اجرای این دستور فعال‌سازی را انجام دهید:
 
@@ -200,7 +200,7 @@ slmgr /ato
 <p align="center">
   <img src="https://github.com/user-attachments/assets/95e014e5-8946-4036-84ca-77ebb6122b1b" alt="active-windows" width="540px" /></p><br/>
 
-## مرحله ۵:  بررسی وضعیت فعال‌سازی
+## مرحله ۵: بررسی وضعیت فعال‌سازی
 
 **همه چیز آماده است!**
 
@@ -221,13 +221,13 @@ Settings → System → Activation. [^8] <br/>
 
 **کنجکاو باشید 🤍**
 
-<br><br/>  
+<br><br/>
 
 ### درباره کلیدهای میانبر
 
 ::: details از کلیدهای میانبر برای باز کردن برنامه‌های پیش‌فرض در منوی Win+X استفاده کنید.
 
-**منوی Power user** یک منوی کوتاه است که برخی از ابزارهای پیشرفته سیستم مانند event viewer، device manager، disk management، computer management، task manager و غیره را فهرست می‌کند. 
+**منوی Power user** یک منوی کوتاه است که برخی از ابزارهای پیشرفته سیستم مانند event viewer، device manager، disk management، computer management، task manager و غیره را فهرست می‌کند.
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/7fa52188-2ac2-4b4d-9600-cf3f92e11d3d" alt="windows-plus-x-menu" width="320px" /></p><br/>
@@ -241,37 +241,38 @@ Settings → System → Activation. [^8] <br/>
 
 در زیر کلیدهای میانبر متناظر با هر برنامه آمده است:
 
-| میانبر کیبورد                 | برنامه                    |
-| ----------------------------- | ------------------------ |
-| `Windows + X`, سپس `F`       | Apps and Features        |
-| `Windows + X`, سپس `B`       | Mobility Center          |
-| `Windows + X`, سپس `O`       | Power Options            |
-| `Windows + X`, سپس `V`       | Event Viewer             |
-| `Windows + X`, سپس `Y`       | System                   |
-| `Windows + X`, سپس `M`       | Device Manager           |
-| `Windows + X`, سپس `W`       | Network Connections      |
-| `Windows + X`, سپس `K`       | Disk Management          |
-| `Windows + X`, سپس `G`       | Computer Management      |
-| `Windows + X`, سپس `A`       | Windows Terminal (Admin) |
-| `Windows + X`, سپس `T`       | Task Manager             |
-| `Windows + X`, سپس `N`       | Settings                 |
-| `Windows + X`, سپس `E`       | File Explorer            |
-| `Windows + X`, سپس `S`       | Search                   |
-| `Windows + X`, سپس `R`       | Run                      |
-| `Windows + X`, سپس `U`, `I`  | Sign out                 |
-| `Windows + X`, سپس `U`, `S`  | Sleep                    |
-| `Windows + X`, سپس `U`, `U`  | Shut Down                |
-| `Windows + X`, سپس `U`, `R`  | Restart                  |
-| `Windows + X`, سپس `D`       | Desktop                  |
+| میانبر کیبورد               | برنامه                   |
+| --------------------------- | ------------------------ |
+| `Windows + X`, سپس `F`      | Apps and Features        |
+| `Windows + X`, سپس `B`      | Mobility Center          |
+| `Windows + X`, سپس `O`      | Power Options            |
+| `Windows + X`, سپس `V`      | Event Viewer             |
+| `Windows + X`, سپس `Y`      | System                   |
+| `Windows + X`, سپس `M`      | Device Manager           |
+| `Windows + X`, سپس `W`      | Network Connections      |
+| `Windows + X`, سپس `K`      | Disk Management          |
+| `Windows + X`, سپس `G`      | Computer Management      |
+| `Windows + X`, سپس `A`      | Windows Terminal (Admin) |
+| `Windows + X`, سپس `T`      | Task Manager             |
+| `Windows + X`, سپس `N`      | Settings                 |
+| `Windows + X`, سپس `E`      | File Explorer            |
+| `Windows + X`, سپس `S`      | Search                   |
+| `Windows + X`, سپس `R`      | Run                      |
+| `Windows + X`, سپس `U`, `I` | Sign out                 |
+| `Windows + X`, سپس `U`, `S` | Sleep                    |
+| `Windows + X`, سپس `U`, `U` | Shut Down                |
+| `Windows + X`, سپس `U`, `R` | Restart                  |
+| `Windows + X`, سپس `D`      | Desktop                  |
 
 :::
 
 [^1]: ۱۰ روش برای اجرای PowerShell در ویندوز [اینجا بخوانید][1].
 
 [^2]: ساده‌ترین روش دیگر برای اجرای **PowerShell** از طریق **Power User Menu** می‌باشد:
+
 - روی آیکون `Windows Start` در `Taskbar` کلیک راست کنید تا منوی حاوی میانبرهای ابزارهای پرکاربرد باز شود، همچنین می‌توانید این منو را با `Win (⊞) + x` باز کنید.
-- سپس بر روی گزینه **Windows Terminal (Admin)** در ویندوز 11 و یا **Windows PowerShell (Admin)** در ویندوز 10 کلیک کنید.  
- 
+- سپس بر روی گزینه **Windows Terminal (Admin)** در ویندوز 11 و یا **Windows PowerShell (Admin)** در ویندوز 10 کلیک کنید.
+
 [^3]: نسخه تک زبانه Home.
 
 [^4]: نسخه مخصوص کشور Home.
