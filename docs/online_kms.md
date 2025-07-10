@@ -1,8 +1,8 @@
 ---
 layout: doc
 outline: deep
-title: "Online KMS Activation"
-description: "online kms activation"
+title: 'Online KMS Activation'
+description: 'online kms activation'
 date: 2025-05-06
 editLink: true
 ---
@@ -13,14 +13,14 @@ editLink: true
 
 ## Overview
 
--   How to use it? Please find the instructions [Intro](../docs/index).
--   KMS activates Windows / Office for 180 Days. For Windows Core / ProWMC editions it is 30 / 45 Days.
--   This script can activate both Retail and Volume Windows installation.
--   This script can activate C2R Retail and VL Office, UWP Office, but not 2010 / 2013 MSI Retail Office.
--   This script skips the activation if Windows is permanently / KMS38 activated.
--   As mentioned, KMS activates only for a limited period and it's not permanent, read below on how to achieve lifetime activation.
+- How to use it? Please find the instructions [Intro](../docs/index).
+- KMS activates Windows / Office for 180 Days. For Windows Core / ProWMC editions it is 30 / 45 Days.
+- This script can activate both Retail and Volume Windows installation.
+- This script can activate C2R Retail and VL Office, UWP Office, but not 2010 / 2013 MSI Retail Office.
+- This script skips the activation if Windows is permanently / KMS38 activated.
+- As mentioned, KMS activates only for a limited period and it's not permanent, read below on how to achieve lifetime activation.
 
-<br/> 
+<br/>
 
 ## Activation Renewal
 
@@ -29,98 +29,103 @@ By design in the genuine [KMS][1] activation method, the system contacts the reg
 To get the lifetime activation, script by default creates auto renewal task.  
 It creates the following two files,  
 `C:\Program Files\Activation-Renewal\Activation_task.cmd`  
-`C:\Program Files\Activation-Renewal\Info.txt`  
+`C:\Program Files\Activation-Renewal\Info.txt`
 
 And creates a scheduled task `\Activation-Renewal` to run the script every 7 days. This task registers the working KMS server and triggers activation commands only for the installed Volume products. The scheduled task runs only if the system is connected to the Internet.
 
-If you don't want to install this renewal task, you can turn off the "Renewal Task With Activation" option in script menu <br/> 
+If you don't want to install this renewal task, you can turn off the "Renewal Task With Activation" option in script menu <br/>
 
 ## Remarks
 
--   With KMS Activation, you can update Windows/Office without any issues.
--   What is left in the system in the activation process?
-    -   **If Renewal Task is installed:** After activation, it leaves the KMS Server IP in the registry, which helps you to get the global activation feature whereby the system auto-renews the activation. About files and scheduled tasks, it has been mentioned above.
-    -   **If Renewal Task is NOT installed:** It leaves a non-existent IP 10.0.0.10 to avoid the Office Not Genuine Banner issue.
--   This script includes the most-stable KMS servers (16) list from all over the world. The server selection process is fully automatic. Script randomly selects a server, tests if it's online, if yes then apply the activation command, if fails, then retry this process maximum of total 3 times for a product. Such redundancy makes sure that we get the working KMS server at any time.
--   If your system date is incorrect (beyond 180 days) and you are offline, the system will be deactivated, but will automatically reactivate when you correct the system date.
--   The advantage of Online KMS activation is that it doesn't need any KMS binary file and the system can be activated using some manual commands or transparent batch script files. So this is for those who don't like/have difficulties/trust issues in offline KMS because of its binary files and antivirus detections.
-    But if you prefer offline KMS then checkout an open-source activator, abbodi1406's [KMS_VL_ALL][2].  
+- With KMS Activation, you can update Windows/Office without any issues.
+- What is left in the system in the activation process?
+  - **If Renewal Task is installed:** After activation, it leaves the KMS Server IP in the registry, which helps you to get the global activation feature whereby the system auto-renews the activation. About files and scheduled tasks, it has been mentioned above.
+  - **If Renewal Task is NOT installed:** It leaves a non-existent IP 10.0.0.10 to avoid the Office Not Genuine Banner issue.
+- This script includes the most-stable KMS servers (16) list from all over the world. The server selection process is fully automatic. Script randomly selects a server, tests if it's online, if yes then apply the activation command, if fails, then retry this process maximum of total 3 times for a product. Such redundancy makes sure that we get the working KMS server at any time.
+- If your system date is incorrect (beyond 180 days) and you are offline, the system will be deactivated, but will automatically reactivate when you correct the system date.
+- The advantage of Online KMS activation is that it doesn't need any KMS binary file and the system can be activated using some manual commands or transparent batch script files. So this is for those who don't like/have difficulties/trust issues in offline KMS because of its binary files and antivirus detections.
+  But if you prefer offline KMS then checkout an open-source activator, abbodi1406's [KMS_VL_ALL][2].
 
-<hr/><br/> 
+<hr/><br/>
 
 ## Supported Products
 
 ### Windows 10 / 11
-| Product Names                                          | EditionID                | Generic Volume License Key    |
-|--------------------------------------------------------|--------------------------|-------------------------------|
-| Education                                              | Education                | NW6C2-QMPVW-D7KKK-3GKT6-VCFB2 |
-| Education N                                            | EducationN               | 2WH4N-8QGBV-H22JP-CT43Q-MDWWJ |
-| Enterprise                                             | Enterprise               | NPPR9-FWDCX-D2C8J-H872K-2YT43 |
-| Enterprise N                                           | EnterpriseN              | DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4 |
-| Enterprise G                                           | EnterpriseG              | YYVX9-NTFWV-6MDM3-9PT4T-4M68B |
-| Enterprise G N                                         | EnterpriseGN             | 44RPN-FTY23-9VTTB-MP9BX-T84FV |
-| Enterprise LTSB 2016                                   | EnterpriseS              | DCPHK-NFMTC-H88MJ-PFHPY-QJ4BJ |
-| Enterprise LTSC 2019                                   | EnterpriseS              | M7XTQ-FN8P6-TTKYV-9D4CC-J462D |
-| Enterprise LTSC 2021                                   | EnterpriseS              | M7XTQ-FN8P6-TTKYV-9D4CC-J462D |
-| Enterprise LTSC 2024                                   | EnterpriseS              | M7XTQ-FN8P6-TTKYV-9D4CC-J462D |
-| Enterprise N LTSB 2016                                 | EnterpriseSN             | QFFDN-GRT3P-VKWWX-X7T3R-8B639 |
-| Enterprise N LTSC 2019                                 | EnterpriseSN             | 92NFX-8DJQP-P6BBQ-THF9C-7CG2H |
-| Enterprise N LTSC 2021                                 | EnterpriseSN             | 92NFX-8DJQP-P6BBQ-THF9C-7CG2H |
-| Enterprise N LTSC 2024                                 | EnterpriseSN             | 92NFX-8DJQP-P6BBQ-THF9C-7CG2H |
+
+| Product Names                                         | EditionID                | Generic Volume License Key    |
+| ----------------------------------------------------- | ------------------------ | ----------------------------- |
+| Education                                             | Education                | NW6C2-QMPVW-D7KKK-3GKT6-VCFB2 |
+| Education N                                           | EducationN               | 2WH4N-8QGBV-H22JP-CT43Q-MDWWJ |
+| Enterprise                                            | Enterprise               | NPPR9-FWDCX-D2C8J-H872K-2YT43 |
+| Enterprise N                                          | EnterpriseN              | DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4 |
+| Enterprise G                                          | EnterpriseG              | YYVX9-NTFWV-6MDM3-9PT4T-4M68B |
+| Enterprise G N                                        | EnterpriseGN             | 44RPN-FTY23-9VTTB-MP9BX-T84FV |
+| Enterprise LTSB 2016                                  | EnterpriseS              | DCPHK-NFMTC-H88MJ-PFHPY-QJ4BJ |
+| Enterprise LTSC 2019                                  | EnterpriseS              | M7XTQ-FN8P6-TTKYV-9D4CC-J462D |
+| Enterprise LTSC 2021                                  | EnterpriseS              | M7XTQ-FN8P6-TTKYV-9D4CC-J462D |
+| Enterprise LTSC 2024                                  | EnterpriseS              | M7XTQ-FN8P6-TTKYV-9D4CC-J462D |
+| Enterprise N LTSB 2016                                | EnterpriseSN             | QFFDN-GRT3P-VKWWX-X7T3R-8B639 |
+| Enterprise N LTSC 2019                                | EnterpriseSN             | 92NFX-8DJQP-P6BBQ-THF9C-7CG2H |
+| Enterprise N LTSC 2021                                | EnterpriseSN             | 92NFX-8DJQP-P6BBQ-THF9C-7CG2H |
+| Enterprise N LTSC 2024                                | EnterpriseSN             | 92NFX-8DJQP-P6BBQ-THF9C-7CG2H |
 | IoT Enterprise LTSC 2021 <br/> (19044.2788 and later) | IoTEnterpriseS           | KBN8V-HFGQ4-MGXVD-347P6-PDQGT |
-| IoT Enterprise LTSC 2024                               | IoTEnterpriseS           | KBN8V-HFGQ4-MGXVD-347P6-PDQGT |
-| Home                                                   | Core                     | TX9XD-98N7V-6WMQ6-BX7FG-H8Q99 |
-| Home N                                                 | CoreN                    | 3KHY7-WNT83-DGQKR-F7HPR-844BM |
-| Home China                                             | CoreCountrySpecific      | PVMJN-6DFY6-9CCP6-7BKTT-D3WVR |
-| Home Single Language                                   | CoreSingleLanguage       | 7HNRX-D7KGG-3K4RQ-4WPJ4-YTDFH |
-| Lean                                                   | CloudE                   | NBTWJ-3DR69-3C4V8-C26MC-GQ9M6 |
+| IoT Enterprise LTSC 2024                              | IoTEnterpriseS           | KBN8V-HFGQ4-MGXVD-347P6-PDQGT |
+| Home                                                  | Core                     | TX9XD-98N7V-6WMQ6-BX7FG-H8Q99 |
+| Home N                                                | CoreN                    | 3KHY7-WNT83-DGQKR-F7HPR-844BM |
+| Home China                                            | CoreCountrySpecific      | PVMJN-6DFY6-9CCP6-7BKTT-D3WVR |
+| Home Single Language                                  | CoreSingleLanguage       | 7HNRX-D7KGG-3K4RQ-4WPJ4-YTDFH |
+| Lean                                                  | CloudE                   | NBTWJ-3DR69-3C4V8-C26MC-GQ9M6 |
 | Enterprise multi-session <br/> (17763 and later)      | ServerRdsh               | CPWHC-NT2C7-VYW78-DHDB2-PG3GK |
 | Enterprise multi-session <br/> (17134 and before)     | ServerRdsh               | 7NBT4-WGBQX-MP4H7-QXFF8-YP3KX |
-| Pro                                                    | Professional             | W269N-WFGWX-YVC9B-4J6C9-T83GX |
-| Pro N                                                  | ProfessionalN            | MH37W-N47XK-V7XM9-C7227-GCQG9 |
-| Pro Education                                          | ProfessionalEducation    | 6TP4R-GNPTD-KYYHQ-7B7DP-J447Y |
-| Pro Education N                                        | ProfessionalEducationN   | YVWGF-BXNMC-HTQYQ-CPQ99-66QFC |
-| Pro for Workstations                                   | ProfessionalWorkstation  | NRG8B-VKK3Q-CXVCJ-9G2XF-6Q84J |
-| Pro N for Workstations                                 | ProfessionalWorkstationN | 9FNHH-K3HBT-3W4TD-6383H-6XYWF |
-| SE                                                     | CloudEdition             | 37D7F-N49CB-WQR8W-TBJ73-FM8RX |
-| SE N                                                   | CloudEditionN            | 6XN7V-PCBDC-BDBRH-8DQY7-G6R44 |
+| Pro                                                   | Professional             | W269N-WFGWX-YVC9B-4J6C9-T83GX |
+| Pro N                                                 | ProfessionalN            | MH37W-N47XK-V7XM9-C7227-GCQG9 |
+| Pro Education                                         | ProfessionalEducation    | 6TP4R-GNPTD-KYYHQ-7B7DP-J447Y |
+| Pro Education N                                       | ProfessionalEducationN   | YVWGF-BXNMC-HTQYQ-CPQ99-66QFC |
+| Pro for Workstations                                  | ProfessionalWorkstation  | NRG8B-VKK3Q-CXVCJ-9G2XF-6Q84J |
+| Pro N for Workstations                                | ProfessionalWorkstationN | 9FNHH-K3HBT-3W4TD-6383H-6XYWF |
+| SE                                                    | CloudEdition             | 37D7F-N49CB-WQR8W-TBJ73-FM8RX |
+| SE N                                                  | CloudEditionN            | 6XN7V-PCBDC-BDBRH-8DQY7-G6R44 |
 
-<br/> 
+<br/>
 
 ### Windows Server 2025 (LTSC)
+
 | Product Names                        | EditionID        | Generic Volume License Key    |
-|--------------------------------------|------------------|-------------------------------|
+| ------------------------------------ | ---------------- | ----------------------------- |
 | Windows Server 2025 Standard         | ServerStandard   | TVRH6-WHNXV-R9WG3-9XRFY-MY832 |
 | Windows Server 2025 Datacenter       | ServerDatacenter | D764K-2NDRG-47T6Q-P8T8W-YP6DF |
 | Windows Server 2025 Azure Core       | ServerAzureCor   | FCNV3-279Q9-BQB46-FTKXX-9HPRH |
 | Windows Server 2025 Azure Datacenter | ServerTurbine    | XGN3F-F394H-FD2MY-PP6FD-8MCRC |
 
-<br/> 
+<br/>
 
 ### Windows Server 2022 (LTSC)
+
 | Product Names                        | EditionID        | Generic Volume License Key    |
-|--------------------------------------|------------------|-------------------------------|
+| ------------------------------------ | ---------------- | ----------------------------- |
 | Windows Server 2022 Datacenter       | ServerDatacenter | WX4NM-KYWYW-QJJR4-XV3QB-6VM33 |
 | Windows Server 2022 Standard         | ServerStandard   | VDYBN-27WPP-V4HQT-9VMD4-VMK7H |
 | Windows Server 2022 Azure Core       | ServerAzureCor   | 6N379-GGTMK-23C6M-XVVTC-CKFRQ |
 | Windows Server 2022 Azure Datacenter | ServerTurbine    | NTBV8-9K7Q8-V27C6-M2BTV-KHMXV |
 
-<br/> 
+<br/>
 
 ### Windows Server 2019 (LTSC)
+
 | Product Names                  | EditionID        | Generic Volume License Key    |
-|--------------------------------|------------------|-------------------------------|
+| ------------------------------ | ---------------- | ----------------------------- |
 | Windows Server 2019 Datacenter | ServerDatacenter | WMDGN-G9PQG-XVVXX-R3X43-63DFG |
 | Windows Server 2019 Standard   | ServerStandard   | N69G4-B89J2-4G8F4-WWYCC-J464C |
 | Windows Server 2019 Essentials | ServerSolution   | WVDHN-86M7X-466P6-VHXV7-YY726 |
 | Windows Server 2019 Azure Core | ServerAzureCor   | FDNH6-VW9RW-BXPJ7-4XTYG-239TB |
 | Windows Server 2019 ARM64      | ServerARM64      | GRFBW-QNDC4-6QBHG-CCK3B-2PR88 |
 
-<br/> 
+<br/>
 
 ### Windows Server 2016 (LTSC)
+
 | Product Names                     | EditionID          | Generic Volume License Key    |
-|-----------------------------------|--------------------|-------------------------------|
+| --------------------------------- | ------------------ | ----------------------------- |
 | Windows Server 2016 ARM64         | ServerARM64        | K9FYF-G6NCK-73M32-XMVPY-F9DRR |
 | Windows Server 2016 Datacenter    | ServerDatacenter   | CB7KF-BWN84-R7R2Y-793K2-8XDDG |
 | Windows Server 2016 Standard      | ServerStandard     | WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY |
@@ -128,42 +133,47 @@ If you don't want to install this renewal task, you can turn off the "Renewal Ta
 | Windows Server 2016 Cloud Storage | ServerCloudStorage | QN4C6-GBJD2-FB422-GHWJK-GJG2R |
 | Windows Server 2016 Azure Core    | ServerAzureCor     | VP34G-4NPPG-79JTQ-864T4-R3MQX |
 
-<br/> 
+<br/>
 
 ### Windows Server 23H2 (Annual Channel)
+
 | Product Names             | EditionID        | Generic Volume License Key    |
-|---------------------------|------------------|-------------------------------|
+| ------------------------- | ---------------- | ----------------------------- |
 | Windows Server Datacenter | ServerDatacenter | WX4NM-KYWYW-QJJR4-XV3QB-6VM33 |
 
-<br/> 
+<br/>
 
 ### Windows Server 20H2, 2004, 1909, 1903, and 1809 (Semi-Annual Channel)
+
 | Product Names             | EditionID            | Generic Volume License Key    |
-|---------------------------|----------------------|-------------------------------|
+| ------------------------- | -------------------- | ----------------------------- |
 | Windows Server Datacenter | ServerDatacenterACor | 6NMRW-2C8FM-D24W7-TQWMY-CWH2D |
 | Windows Server Standard   | ServerStandardACor   | N2KJX-J94YW-TQVFB-DG9YT-724CC |
 
-<br/> 
+<br/>
 
 ### Windows Server 1803 (Semi-Annual Channel)
+
 | Product Names             | EditionID            | Generic Volume License Key    |
-|---------------------------|----------------------|-------------------------------|
+| ------------------------- | -------------------- | ----------------------------- |
 | Windows Server Datacenter | ServerDatacenterACor | 2HXDN-KRXHB-GPYC7-YCKFJ-7FVDG |
 | Windows Server Standard   | ServerStandardACor   | PTXN8-JFHJM-4WC78-MPCBR-9W4KR |
 
-<br/> 
+<br/>
 
 ### Windows Server 1709 (Semi-Annual Channel)
+
 | Product Names             | EditionID            | Generic Volume License Key    |
-|---------------------------|----------------------|-------------------------------|
+| ------------------------- | -------------------- | ----------------------------- |
 | Windows Server Datacenter | ServerDatacenterACor | 6Y6KB-N82V8-D8CQV-23MJW-BWTG6 |
 | Windows Server Standard   | ServerStandardACor   | DPCNP-XQFKJ-BJF7R-FRC8D-GF6G4 |
 
-<br/> 
+<br/>
 
 ### Windows 8.1
+
 | EditionID                    | Generic Volume License Key    |
-|------------------------------|-------------------------------|
+| ---------------------------- | ----------------------------- |
 | Enterprise                   | MHF9N-XY6XB-WVXMC-BTDCT-MKKG7 |
 | EnterpriseN                  | TT4HM-HN7YT-62K67-RGRQJ-JFFXW |
 | Professional                 | GCRJD-8NW9H-F2CDX-CCM8D-9D6T9 |
@@ -184,21 +194,23 @@ If you don't want to install this renewal task, you can turn off the "Renewal Ta
 | ProfessionalStudent          | MX3RK-9HNGX-K3QKC-6PJ3F-W8D7B |
 | ProfessionalStudentN         | TNFGH-2R6PB-8XM3K-QYHX2-J4296 |
 
-<br/> 
+<br/>
 
 ### Windows Server 2012 R2
+
 | EditionID          | Generic Volume License Key    |
-|--------------------|-------------------------------|
+| ------------------ | ----------------------------- |
 | ServerStandard     | D2N9P-3P6X9-2R39C-7RTCD-MDVJX |
 | ServerDatacenter   | W3GGN-FT8W3-Y4M27-J84CP-Q3VJ9 |
 | ServerSolution     | KNC87-3J2TX-XB4WP-VCPJV-M4FWM |
 | ServerCloudStorage | 3NPTF-33KPT-GGBPR-YX76B-39KDD |
 
-<br/> 
+<br/>
 
 ### Windows 8
+
 | EditionID           | Generic Volume License Key    |
-|---------------------|-------------------------------|
+| ------------------- | ----------------------------- |
 | Enterprise          | 32JNW-9KQ84-P47T8-D8GGY-CWCK7 |
 | EnterpriseN         | JMNMF-RHW7P-DMY6X-RF3DR-X2BQT |
 | Professional        | NG4HW-VH26C-733KW-K6F98-J8CK4 |
@@ -212,22 +224,24 @@ If you don't want to install this renewal task, you can turn off the "Renewal Ta
 | Core                | BN3D2-R7TKB-3YPBD-8DRP2-27GG4 |
 | ProfessionalWMC     | GNBB8-YVD74-QJHX6-27H4K-8QHDG |
 
-<br/> 
+<br/>
 
 ### Windows Server 2012
+
 | EditionID                | Generic Volume License Key    |
-|--------------------------|-------------------------------|
+| ------------------------ | ----------------------------- |
 | ServerStandard           | XC9B7-NBPP2-83J2H-RHMBY-92BT4 |
 | ServerDatacenter         | 48HP8-DN98B-MYWDG-T2DCC-8W83P |
 | ServerSolution           | HTDQM-NBMMG-KGYDT-2DTKT-J2MPV |
 | ServerMultiPointStandard | HM7DN-YVMH3-46JC3-XYTG7-CYQJJ |
 | ServerMultiPointPremium  | XNH6W-2V9GX-RGJ4K-Y8X6F-QGJ2G |
 
-<br/> 
+<br/>
 
 ### Windows 7
+
 | EditionID         | Generic Volume License Key    |
-|-------------------|-------------------------------|
+| ----------------- | ----------------------------- |
 | Enterprise        | 33PXH-7Y6KF-2VJC9-XBBR8-HVTHH |
 | EnterpriseN       | YDRBP-3D83W-TY26F-D46B2-XCKRJ |
 | Professional      | FJ82H-XT6CR-J8D7P-XQJJ2-GPDD4 |
@@ -237,11 +251,12 @@ If you don't want to install this renewal task, you can turn off the "Renewal Ta
 | ProfessionalE     | W82YF-2Q76Y-63HXB-FGJG9-GF7QX |
 | EnterpriseE       | C29WB-22CC8-VJ326-GHFJW-H9DH4 |
 
-<br/> 
+<br/>
 
 ### Windows Server 2008 R2
+
 | EditionID              | Generic Volume License Key    |
-|------------------------|-------------------------------|
+| ---------------------- | ----------------------------- |
 | ServerStandard         | YC6KT-GKW9T-YTKYR-T4X34-R7VHC |
 | ServerDatacenter       | 74YFP-3QFB3-KQT8W-PMXWJ-7M648 |
 | ServerEnterprise       | 489J6-VHDMP-X63PK-3K798-CPX3Y |
@@ -254,21 +269,23 @@ If you don't want to install this renewal task, you can turn off the "Renewal Ta
 | ServerWebCore          | 6TPJF-RBVHG-WBW2R-86QPH-6RTM4 |
 | ServerEmbeddedSolution | 736RG-XDKJK-V34PF-BHK87-J6X3K |
 
-<br/> 
+<br/>
 
 ### Windows Vista
+
 | EditionID   | Generic Volume License Key    |
-|-------------|-------------------------------|
+| ----------- | ----------------------------- |
 | Enterprise  | VKK3X-68KWM-X2YGT-QR4M6-4BWMV |
 | Business    | YFKBB-PQJJV-G996G-VWGXY-2V3X8 |
 | BusinessN   | HMBQG-8H2RH-C77VX-27R82-VMQBT |
 | EnterpriseN | VTC42-BM838-43QHV-84HX6-XJXKV |
 
-<br/> 
+<br/>
 
 ### Windows Server 2008
+
 | EditionID            | Generic Volume License Key    |
-|----------------------|-------------------------------|
+| -------------------- | ----------------------------- |
 | ServerStandard       | TM24T-X9RMF-VWXK6-X8JC9-BFGM2 |
 | ServerDatacenter     | 7M67G-PC374-GR742-YH8V4-TCBY3 |
 | ServerEnterprise     | YQGMW-MPWTJ-34KDK-48M3W-X4Q6V |
@@ -279,11 +296,12 @@ If you don't want to install this renewal task, you can turn off the "Renewal Ta
 | ServerDatacenterV    | 22XQ2-VRXRG-P8D42-K34TD-G3QQC |
 | ServerEnterpriseV    | 39BXF-X8Q23-P2WWT-38T2F-G3FPG |
 
-<br/> 
+<br/>
 
 ### Office 2010
+
 | EditionID        | Generic Volume License Key    |
-|------------------|-------------------------------|
+| ---------------- | ----------------------------- |
 | AccessVL         | V7Y44-9T38C-R2VJK-666HK-T7DDX |
 | ExcelVL          | H62QG-HXVKF-PP4HP-66KMR-CW9BM |
 | GrooveVL         | QYYW6-QP4CB-MBV6G-HYMCJ-4T3J4 |
@@ -301,11 +319,12 @@ If you don't want to install this renewal task, you can turn off the "Renewal Ta
 | VisioSIVL        | D9DWC-HPYVV-JGF4P-BTWQB-WX8BJ |
 | WordVL           | HVHB3-C6FV7-KQX9W-YQG79-CRY7T |
 
-<br/> 
+<br/>
 
 ### Office 2013
+
 | EditionID        | Generic Volume License Key    |
-|------------------|-------------------------------|
+| ---------------- | ----------------------------- |
 | AccessVolume     | NG2JY-H4JBT-HQXYP-78QH9-4JM2D |
 | ExcelVolume      | VGPNG-Y7HQW-9RHP7-TKPV3-BG7GB |
 | GrooveVolume     | H7R7V-WPNXQ-WCYYC-76BGV-VT7GH |
@@ -325,11 +344,12 @@ If you don't want to install this renewal task, you can turn off the "Renewal Ta
 | VisioStdVolume   | J484Y-4NKBF-W2HMG-DBMJC-PGWR7 |
 | WordVolume       | 6Q7VD-NX8JD-WJ2VH-88V73-4GBJ7 |
 
-<br/> 
+<br/>
 
 ### Office 2016
+
 | EditionID              | Generic Volume License Key    |
-|------------------------|-------------------------------|
+| ---------------------- | ----------------------------- |
 | AccessVolume           | GNH9Y-D2J4T-FJHGG-QRVH7-QPFDW |
 | ExcelVolume            | 9C2PK-NWTVB-JMPW8-BFT28-7FTBF |
 | MondoRetail            | DMTCJ-KNRKX-26982-JYCKT-P7KB6 |
@@ -351,11 +371,12 @@ If you don't want to install this renewal task, you can turn off the "Renewal Ta
 | VisioStdXVolume        | NY48V-PPYYH-3F4PX-XJRKJ-W4423 |
 | WordVolume             | WXY84-JN2Q9-RBCCQ-3Q3J3-3PFJ6 |
 
-<br/> 
+<br/>
 
 ### Office 2019
+
 | EditionID                  | Generic Volume License Key    |
-|----------------------------|-------------------------------|
+| -------------------------- | ----------------------------- |
 | Access2019Volume           | 9N9PT-27V4Y-VJ2PD-YXFMF-YTFQT |
 | Excel2019Volume            | TMJWT-YYNMB-3BKTF-644FC-RVXBD |
 | Outlook2019Volume          | 7HD7K-N4PVK-BHBCQ-YWQRW-XW4VK |
@@ -370,11 +391,12 @@ If you don't want to install this renewal task, you can turn off the "Renewal Ta
 | VisioStd2019Volume         | 7TQNQ-K3YQQ-3PFH7-CCPPM-X4VQ2 |
 | Word2019Volume             | PBX3G-NWMT6-Q7XBW-PYJGG-WXD33 |
 
-<br/> 
+<br/>
 
 ### Office 2021
+
 | EditionID                  | Generic Volume License Key    |
-|----------------------------|-------------------------------|
+| -------------------------- | ----------------------------- |
 | Access2021Volume           | WM8YG-YNGDD-4JHDC-PG3F4-FC4T4 |
 | Excel2021Volume            | NWG3X-87C9K-TC7YY-BC2G7-G6RVC |
 | Outlook2021Volume          | C9FM6-3N72F-HFJXB-TM3V9-T86R9 |
@@ -389,11 +411,12 @@ If you don't want to install this renewal task, you can turn off the "Renewal Ta
 | VisioStd2021Volume         | MJVNY-BYWPY-CWV6J-2RKRT-4M8QG |
 | Word2021Volume             | TN8H9-M34D3-Y64V9-TR72V-X79KV |
 
-<br/> 
+<br/>
 
 ### Office 2024
+
 | EditionID                    | Generic Volume License Key    |
-|------------------------------|-------------------------------|
+| ---------------------------- | ----------------------------- |
 | ProPlus2024Volume-Preview    | 2TDPW-NDQ7G-FMG99-DXQ7M-TX3T2 |
 | ProjectPro2024Volume-Preview | D9GTG-NP7DV-T6JP3-B6B62-JB89R |
 | VisioPro2024Volume-Preview   | YW66X-NH62M-G6YFP-B7KCT-WXGKQ |
@@ -410,102 +433,103 @@ If you don't want to install this renewal task, you can turn off the "Renewal Ta
 | VisioStd2024Volume           | JMMVY-XFNQC-KK4HK-9H7R3-WQQTV |
 | Word2024Volume               | MQ84N-7VYDM-FXV7C-6K7CC-VFW9J |
 
-<hr/><br/> 
+<hr/><br/>
 
 ::: tip INFO
 
--   Systems in all architectures (x86, x64 and arm64) are supported.
--   Office C2R retail products are converted to thier corresponding Volume products to enable KMS activation.
--   These editions are only KMS-activatable for *45* days at max:  
-    -   Windows 10/11 Home edition variants
-    -   Windows 8.1 Core edition variants, Pro with Media Center, Pro for Students  
-    These editions are only KMS-activatable for *30* days at max:
-    -   Windows 8 Core edition variants, Pro with Media Center
+- Systems in all architectures (x86, x64 and arm64) are supported.
+- Office C2R retail products are converted to thier corresponding Volume products to enable KMS activation.
+- These editions are only KMS-activatable for _45_ days at max:
+  - Windows 10/11 Home edition variants
+  - Windows 8.1 Core edition variants, Pro with Media Center, Pro for Students  
+    These editions are only KMS-activatable for _30_ days at max:
+  - Windows 8 Core edition variants, Pro with Media Center
 
 :::
 
-<br/> 
+<br/>
 
 ## Unsupported Products
 
--   Office MSI Retail 2010/2013, Office 2010 C2R Retail
--   Any Evaluation version of Windows (i.e. 'EVAL' LTSB/C) [cannot be activated](./evaluation_editions) beyond the evaluation period. You can use TSforge option in MAS to reset the activation any given time.
--   Server Azure Datacenter (ServerTurbine) edition does not support activation on non-azure systems.
--   KMS activation on Windows 7 has a limitation related to OEM Activation 2.0 and Windows marker. For more info, see [support.microsoft.com][3] and here [technet.microsoft.com/activation-of-windows-oem-computers][4]
--   Windows editions that do not support KMS activation by design:  
-    Windows Evaluation Editions  
-    Windows 7 (Starter, HomeBasic, HomePremium, Ultimate)  
-    Windows 10 (Cloud "S", IoTEnterprise, ProfessionalSingleLanguage... etc)  
-    Windows Server (Server Foundation, Storage Server, Home Server 2011... etc)
+- Office MSI Retail 2010/2013, Office 2010 C2R Retail
+- Any Evaluation version of Windows (i.e. 'EVAL' LTSB/C) [cannot be activated](./evaluation_editions) beyond the evaluation period. You can use TSforge option in MAS to reset the activation any given time.
+- Server Azure Datacenter (ServerTurbine) edition does not support activation on non-azure systems.
+- KMS activation on Windows 7 has a limitation related to OEM Activation 2.0 and Windows marker. For more info, see [support.microsoft.com][3] and here [technet.microsoft.com/activation-of-windows-oem-computers][4]
+- Windows editions that do not support KMS activation by design:  
+  Windows Evaluation Editions  
+  Windows 7 (Starter, HomeBasic, HomePremium, Ultimate)  
+  Windows 10 (Cloud "S", IoTEnterprise, ProfessionalSingleLanguage... etc)  
+  Windows Server (Server Foundation, Storage Server, Home Server 2011... etc)
 
-<br/> 
+<br/>
 
 ## How does it work?
 
--   **What is KMS activation?**  
-    Key Management Service (KMS) is a genuine activation method provided by Microsoft for volume licensing customers (organizations, schools, or governments). The machines in those environments (called KMS clients) are activated via the Environment KMS Host Server (authorized Microsoft's licensing key), instead of Microsoft activation servers. By design, the KMS activation period lasts up to 180 Days (6 Months) at max, with the ability to renew and reinstate the period at any time. Activation renewal automatically happens every 7 days if the client can connect to the KMS host server. For more info, see [microsoft.com/licensing][5] and [technet.microsoft.com/kms-overview][6].
+- **What is KMS activation?**  
+  Key Management Service (KMS) is a genuine activation method provided by Microsoft for volume licensing customers (organizations, schools, or governments). The machines in those environments (called KMS clients) are activated via the Environment KMS Host Server (authorized Microsoft's licensing key), instead of Microsoft activation servers. By design, the KMS activation period lasts up to 180 Days (6 Months) at max, with the ability to renew and reinstate the period at any time. Activation renewal automatically happens every 7 days if the client can connect to the KMS host server. For more info, see [microsoft.com/licensing][5] and [technet.microsoft.com/kms-overview][6].
 
-<br/> 
+<br/>
 
--   **How are we getting it for free?**  
-    Developers reverse-engineered the KMS Host Server setup, so now anyone can host a KMS server and activate the systems without any limitations. KMS activators such as KMSpico, MTK, KMS_VL_ALL, etc., locally create an emulated KMS Host Server and activate Windows and Office.  
-    This locally-emulated KMS server requires you to run binary files which often cause anti-virus alerts (false positives).  
-    Another method of KMS activation is a publicly-available Online KMS Host Server. In this method, the site hosts the emulated KMS server, and anyone can simply use this server to activate their systems, there is no requirement for running any software on your system.
+- **How are we getting it for free?**  
+  Developers reverse-engineered the KMS Host Server setup, so now anyone can host a KMS server and activate the systems without any limitations. KMS activators such as KMSpico, MTK, KMS_VL_ALL, etc., locally create an emulated KMS Host Server and activate Windows and Office.  
+  This locally-emulated KMS server requires you to run binary files which often cause anti-virus alerts (false positives).  
+  Another method of KMS activation is a publicly-available Online KMS Host Server. In this method, the site hosts the emulated KMS server, and anyone can simply use this server to activate their systems, there is no requirement for running any software on your system.
 
-<br/> 
+<br/>
 
--   **Is Online KMS activation safe?**  
-    Yes.  
-    Let's go into the details. In the KMS protocol, there is a relationship between host and client. The client system asks the host system to grant the activation, and the host system grants the activation if it's eligible. In this process, the client system shares some of the system's data, which is not sensitive in nature. According to the [technet.microsoft.com/aspx#kms-overview][7], the client system shares the following data with the host system: Client FQDN, CMID, time-stamp, Product license state, expiration time, and IP address
-    In this shared info, the important part is your IP address. Below are some things regarding it which you should know.
-    -   Sharing your IP while going online is not a security concern. You can not go online to visit any website without having to share your IP address.
-    -   IP addresses do not necessarily represent a specific person. Internet Service Providers (ISPs) mostly use dynamic IP, which means the same IP address can be used by many different persons, and a dynamic IP address is periodically reassigned to different people all the time. But a static IP address is permanently assigned to a unique subscriber. The Internet Service Provider (ISP) won't reveal that information unless there is a legal reason to do so.
-    -   Microsoft has never tried to go after Home users in legal cases for using a few pirated activations (not talking about stolen legal keys) simply because the cost of legal actions would be much higher than the amount of money gained by forcing a few people to purchase activations.
-    -   No law enforcement is going to take action based on IPs from all over the world without the consent of Microsoft itself.
+- **Is Online KMS activation safe?**  
+  Yes.  
+  Let's go into the details. In the KMS protocol, there is a relationship between host and client. The client system asks the host system to grant the activation, and the host system grants the activation if it's eligible. In this process, the client system shares some of the system's data, which is not sensitive in nature. According to the [technet.microsoft.com/aspx#kms-overview][7], the client system shares the following data with the host system: Client FQDN, CMID, time-stamp, Product license state, expiration time, and IP address
+  In this shared info, the important part is your IP address. Below are some things regarding it which you should know.
+  - Sharing your IP while going online is not a security concern. You can not go online to visit any website without having to share your IP address.
+  - IP addresses do not necessarily represent a specific person. Internet Service Providers (ISPs) mostly use dynamic IP, which means the same IP address can be used by many different persons, and a dynamic IP address is periodically reassigned to different people all the time. But a static IP address is permanently assigned to a unique subscriber. The Internet Service Provider (ISP) won't reveal that information unless there is a legal reason to do so.
+  - Microsoft has never tried to go after Home users in legal cases for using a few pirated activations (not talking about stolen legal keys) simply because the cost of legal actions would be much higher than the amount of money gained by forcing a few people to purchase activations.
+  - No law enforcement is going to take action based on IPs from all over the world without the consent of Microsoft itself.
 
 Feel free to contact us in case you have a contradictory point of view.
 
-<br/> 
+<br/>
 
 ## How to remove Online KMS?
 
--   In MAS, goto Online KMS activation and apply Uninstall option.
--   After that, In MAS, goto Troubleshoot and apply Fix Licensing option.
--   Done. <br/> 
+- In MAS, goto Online KMS activation and apply Uninstall option.
+- After that, In MAS, goto Troubleshoot and apply Fix Licensing option.
+- Done. <br/>
 
 ### Office 'Non-genuine' Banner
 
--   Office Click-to-Run builds (since February 2021) that are activated with KMS check the existence of the KMS server name in the registry.
--   If KMS server is not present, a banner is shown in Office programs notifying that "Office isn't licensed properly".  
--   Therefore in manual mode, `KeyManagementServiceName` value containing a non-existent IP address 10.0.0.10 will be kept in the below registry keys:  
+- Office Click-to-Run builds (since February 2021) that are activated with KMS check the existence of the KMS server name in the registry.
+- If KMS server is not present, a banner is shown in Office programs notifying that "Office isn't licensed properly".
+- Therefore in manual mode, `KeyManagementServiceName` value containing a non-existent IP address 10.0.0.10 will be kept in the below registry keys:
+
 ```
 HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform
 HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform
 ```
--   This is perfectly fine to keep, and it does not affect Windows or Office activation. For more explanation, visit [Office license is not genuine](./office-license-is-not-genuine). <br/> 
+
+- This is perfectly fine to keep, and it does not affect Windows or Office activation. For more explanation, visit [Office license is not genuine](./office-license-is-not-genuine). <br/>
 
 ### Office Retail to Volume
 
 Office Retail must be converted to Volume first before it can be activated with KMS.  
 By default, this activation script will convert Office C2R Retail to Volume.
 
--   Supported Click-to-Run products: Office 365 (Microsoft 365 Apps), Office 2024 / 2021 / 2019 / 2016, Office 2013
--   Office 365 itself does not have volume licenses, therefore it will be converted to Office Mondo licenses
--   Office Professional suite will be converted with Office Professional Plus licenses
--   Office HomeBusiness/HomeStudent suites will be converted with Office Standard licenses
--   Office 2013 products follow the same logic
+- Supported Click-to-Run products: Office 365 (Microsoft 365 Apps), Office 2024 / 2021 / 2019 / 2016, Office 2013
+- Office 365 itself does not have volume licenses, therefore it will be converted to Office Mondo licenses
+- Office Professional suite will be converted with Office Professional Plus licenses
+- Office HomeBusiness/HomeStudent suites will be converted with Office Standard licenses
+- Office 2013 products follow the same logic
 
-If you don't want the script to convert the Retail Office to Volume, you can turn off "Change Edition If Needed" option in the script. <br/> 
+If you don't want the script to convert the Retail Office to Volume, you can turn off "Change Edition If Needed" option in the script. <br/>
 
 ### Command line Switches
 
--   Check [Command line switches](./command_line_switches). <br/> 
+- Check [Command line switches](./command_line_switches). <br/>
 
 ### Setup Preactivate
 
 - Check the Extract OEM option in the MAS `Extras` section if you want pre-activated Windows installation.
 - Further read [OEM Folder](./oem-folder).
-
 
 [1]: https://docs.microsoft.com/en-us/previous-versions/tn-archive/ee939272(v=technet.10)?redirectedfrom=MSDN#kms-overview
 [2]: https://github.com/abbodi1406/KMS_VL_ALL_AIO/
