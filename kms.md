@@ -1,111 +1,107 @@
 ---
 layout: doc
 outline: deep
-title: 'فعال‌سازی ویندوز و آفیس با hwid'
-description: 'یک جعبه ابزار فعال‌سازی قابل اعتماد و متن باز برای ویندوز و آفیس.'
+title: 'Introduction to Activation Enhancement guides like hwid, kms, tsforge.'
+description: 'A reliable, open-source activation toolkit for Windows and Office.'
 date: 2024-05-05
 editLink: true
 head:
   - - meta
     - name: keywords
-      content: فعال ساز, لایسنس, ویندوز, آفیس, اسکریپت, kms, hwid
+      content: kms, alternative method, office, hwid, digital license, Windows 10, windows 11
 ---
 
-<div class="rtl">
-  
-# راهنمای جامع فعال‌سازی ویندوز 10 و 11
+# Welcome to the Activation Enhancement guide.
 
-این پروژه مجموعه‌ای از ابزارهای فعال‌سازی قابل اعتماد و متن‌باز برای `ویندوز` و `آفیس` را فراهم می‌کند.
-اسکریپت‌های ما از روش‌های مختلفی برای کمک به شما در فعال‌سازی سریع و ایمن محصولاتتان استفاده می‌کنند. <br/>
+This project provides a collection of reliable, open-source activation tools for `Windows` and `Office`.  
+Our scripts leverage various methods to help you activate your products quickly and safely. <br/>
 
-::: tip چند نکته از نویسنده
+::: tip **Author's Notes**
 
-- بعد از فعال‌سازی با روش `HWID` ممکن است مشکلاتی با لاگین کردن در اکانت مایکروسافت در تنظیمات مرورگر **Microsoft Edge** داشته باشید!
-- **راهکار اول:** رد شدن از این روش فعال‌سازی و استفاده از [KMS](./kms-fa) به جای آن (کمتر از 2 دقیقه طول می‌کشد و هر 6 ماه نیاز به تجدید دارد).
-- **راهکار دوم:** کنار گذاشتن مرورگر پیشفرض Microsoft Edge و استفاده از مرورگرهای جایگزین مانند **Chrome** یا **Firefox**.
+- After activation via the `HWID` method, you may encounter issues signing into your Microsoft account in **Microsoft Edge** browser settings!
+- **Solution 1:** Skip this activation method< and use [KMS](./kms) instead (takes less than 2 minutes and requires renewal every 6 months).
+- **Solution 2:** Avoid Edge and switch to alternative browsers like **Chrome** or **Firefox**.
 
-::: details برای مشاهده جزئیات کلیک کنید
+::: details Click here to see the details
 
-- **برای ویندوز:** شخصاً از روش **KMS** ([راهنمای kms](./kms-fa)) برای فعال‌سازی ویندوز 10/11 خودم استفاده می‌کنم. این روش رسمی است، هیچ فایلی روی سیستم ذخیره نمی‌کند و کمتر از 3 دقیقه زمان می‌برد. اگر به هر دلیلی این روش کار نکرد و ناموفق بود، انتخاب بعدی من HWID است، زیرا آن هم رسمی و بدون ذخیره داده‌ای در لوکال سیستم ما است.
-- **برای آفیس:** من از Ohook، TSforge یا Online KMS استفاده می‌کنم. تفاوت‌های جزئی بین آن‌ها وجود دارد که در جدول زیر ذکر شده است.
-- **نیاز به کمک دارید؟** اگر با مشکلی مواجه شدید، می‌توانید در بخش [بحث‌های گیت‌هاب][3] سوالتان را مطرح کنید و همچنین در هنگام ضرورت می‌توانید مستقیماً به خودم [ایمیل][4] بزنید.
+- **For Windows:** I personally use the **KMS method** [[see guides](./kms)] for my Windows 10/11 activations. It's official, leaves no files on the system, and takes less than 3 minutes. If for some reason that fails, HWID is my go-to, as it's also official and file-less.
+- **For Office:** I use Ohook, TSforge, or Online KMS. The small differences are noted in the summary table above.  
+- **Need Help?** If you run into any issues, feel free to ask in the [GitHub Discussions][3] or [Email me][4] directly.
 
 :::
 
 <br/>
 
-## خلاصه‌ی روش‌های فعال‌سازی
+## Activation Methods Summary
 
-برای یک نمای کلی، در ادامه خلاصه‌ای از روش‌های فعال‌سازی موجود آمده است:
+For a quick overview, here is a summary of the activation methods available:
 
-</div>
-
-| نوع فعال‌سازی  | محصولات پشتیبانی شده |       مدت زمان فعال‌سازی       |      نیاز به اینترنت؟      |       اطلاعات بیشتر       |
-| :------------: | :------------------: | :----------------------------: | :------------------------: | :-----------------------: |
-|    **HWID**    |     ویندوز ۱۰-۱۱     |             دائمی              |            بله             |    [جزئیات](./hwid-fa)    |
-|    **KMS**     |     ویندوز ۱۰-۱۱     |         ۱۸۰ روز (دستی)         |            بله             |    [جزئیات](./kms-fa)     |
-|   **Ohook**    |         آفیس         |             دائمی              |            خیر             |             -             |
-|  **TSforge**   | ویندوز / ESU / آفیس  |             دائمی              | بله (در بیلد ۱۹۰۴۱ به بعد) |  [جزئیات](./tsforge-fa)   |
-|   **KMS38**    | ویندوز ۱۰-۱۱-Server  |          تا سال ۲۰۳۸           |            خیر             |   [جزئیات](./kms38-fa)    |
-| **Online KMS** |    ویندوز / آفیس     | ۱۸۰ روز (مادام‌العمر با تمدید) |            بله             | [جزئیات](./online_kms-fa) |
+| Activation Type | Supported Product      | Activation Period                | Internet Needed?      | More Info               |
+| :-------------: | :--------------------- | :------------------------------- | :-------------------- | :---------------------- |
+|    **HWID**     | Windows 10-11          | Permanent                        | Yes                   | [Details](./hwid)       |
+|     **KMS**     | Windows 10-11          | 180 Days (Manual)                | Yes                   | [Details](./kms)        |
+|    **Ohook**    | Office                 | Permanent                        | No                    | -                       |
+|   **TSforge**   | Windows / ESU / Office | Permanent                        | Yes (on build 19041+) | [Details](./tsforge)    |
+|    **KMS38**    | Windows 10-11-Server   | Until 2038                       | No                    | [Details](./kms38)      |
+| **Online KMS**  | Windows / Office       | 180 Days (Lifetime with Renewal) | Yes                   | [Details](./online_kms) |
 
 <p style="text-align: center;">
-  برای مقایسه دقیق تمام روش‌ها، به <a href="./chart-fa">جدول مقایسه روش‌های فعال‌سازی</a> مراجعه کنید.</p><br/>
+  For a detailed comparison of all methods, check out the <a href="./chart">Activation Methods Chart</a>.</p><br/>
 
-# روش ۱. فعال‌سازی دائمی با HWID
+# Method 1.  Permanent Activation with HWID
 
-برای اکثر کاربران، روش **HWID (Hardware ID)** ساده‌ترین راه برای دریافت لایسنس دیجیتال دائمی برای ویندوز ۱۰ و ۱۱ است. <br/>
+For most users, the **HWID (Hardware ID)** method is the simplest way to get a permanent digital license for Windows 10 and 11. <br/>
 
-## مرحله ۱. اجرای PowerShell با حالت Administrator
+## Step 1.  Open PowerShell as Administrator
 
-**اجرای PowerShell از طریق نوار جستجو**
+**Run PowerShell using search bar**
 
-- ۱. روی دکمه `Start` ویندوز یا آیکون `Search` در نوار وظیفه کلیک کنید.
-- ۲. تایپ کنید: `powershell`.
-- ۳. در نهایت گزینه `Run as administrator` را انتخاب کنید. <br/>
+- 1. Click on windows `Start` button or `Search` icon in the taskbar.  
+- 2. Type `powershell`.  
+- 3. Select **Run as administrator**. <br/>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/5638557d-9bfe-4e7c-a851-218bec6559bf" alt="اجرای-پاورشل-با-حالت-ادمین" width="540px" /></p><br/>
+  <img src="https://github.com/user-attachments/assets/5638557d-9bfe-4e7c-a851-218bec6559bf" alt="open-powershell-as-admin" width="540px" /></p><br/>
+  
+::: tip Another ways to run PowerShell
 
-::: tip روش‌های دیگر برای اجرای PowerShell
+::: Click here to see more details
 
-::: details برای مشاهده جزئیات بیشتر کلیک کنید
+**1. Using search bar**
 
-**۱. استفاده از نوار جستجو**
+- 1. Click on windows `Start` button or `Search` icon in the taskbar.  
+2.  Type `powershell`.
+3.  Select **Run as administrator**. <br/>
 
-- ۱. روی دکمه `Start` ویندوز یا آیکون `Search` در نوار وظیفه کلیک کنید.
-- ۲. تایپ کنید: `powershell`.
-- ۳. در نهایت گزینه **Run as administrator** را انتخاب کنید. <br/>
+**2. Using the Run box**
 
-**۲. استفاده از Run باکس**
+- 1. **Open the Run dialog box:** Simultaneously Press `Win (⊞) + R` keys on your keyboard.  
+- 2. **Type:** `powershell`.  
+- 3. **Run as administrator:** Instead of just pressing Enter, press `Ctrl + Shift + Enter`. This combination will launch PowerShell with elevated (administrator) privileges.
+- 4. If prompted by the User Account Control dialog, click `Yes` to grant administrative privileges. <br/>
 
-- ۱. **اجرای Run:** کلیدهای `Win (⊞) + R` را همزمان فشار دهید.
-- ۲. **تایپ کنید:** `powershell`.
-- ۳. **اجرا به صورت administrator:** به جای فشردن Enter، کلیدهای `Ctrl + Shift + Enter` را فشار دهید. این ترکیب PowerShell را با مجوزهای مدیریتی سیستم (administrator) اجرا می‌کند.
-- ۴. اگر دیالوگ User Account Control ظاهر شد، روی `Yes` کلیک کنید تا مجوز اعطا شود. <br/>
+**3. Using Power User Menu (Win+X)**
 
-**۳. استفاده از Power User Menu**
+- 1. Right-click on the **Start menu**.
+- 2. Then select **Windows Terminal (Admin)** on Windows 11 or **Windows PowerShell (Admin)** on Windows 10 to run PowerShell. <br/>
 
-- 1. روی آیکون `Windows Start` در `Taskbar` کلیک راست کنید تا منوی حاوی میانبرهای ابزارهای پرکاربرد باز شود، همچنین می‌توانید این منو را با `Win (⊞) + x` باز کنید.
-- 2. سپس بر روی گزینه **Windows Terminal (Admin)** در ویندوز 11 و یا **Windows PowerShell (Admin)** در ویندوز 10 کلیک کنید.
-
-همچنین می‌توانید از [این لینک][1] برای مشاهده ۱۰ روش اجرای **PowerShell** و از [این لینک][2] برای اجرای CMD به ۸ روش مختلف در ویندوز استفاده کنید.
+Or You can visit [this Link][1] to see 10 ways to run **PowerShell** And [this link][2] For Running CMD in your windows.  
 
 :::
 
-## مرحله ۲. اجرای اسکریپت فعال‌سازی
+## Step 2.  Run the Activation Script
 
-دستور زیر را کپی کرده و، در پنجره PowerShell جای‌گذاری و سپس کلید `Enter` را فشار دهید.
+Copy the following command, paste it into the PowerShell window and press `Enter` key.
 
-> شما می‌توانید هر چیزی را که قبلا کپی کرده‌اید با عمل **راست‌کلیک** در داخل CMD یا PowerShell یا سایر ترمینال‌ها جای‌گذاری کنید، در واقع در ترمینال‌ها از راست‌کلیک برای عمل paste استفاده می‌شود.
+> You can `paste` everything you copied by **Right-clicking** in CMD Or PowerShell Or other terminals.
 
 ::: code-group
 
-```powershell [پیشنهادی]
+```powershell [Recommended]
 irm https://get.activated.win | iex
 ```
 
-```powershell [جایگزین]
+```powershell [Alternative]
 irm https://massgrave.dev/get | iex
 ```
 
@@ -114,43 +110,41 @@ irm https://massgrave.dev/get | iex
 <br/>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/dfaa3f27-efb8-4979-bc32-081362274a2e" alt="جای‌گذاری-دستور-در-PowerShell" width="540px" /></p><br/>
+  <img src="https://github.com/user-attachments/assets/dfaa3f27-efb8-4979-bc32-081362274a2e" alt="Paste command in PowerShell" width="540px" /></p><br/>
 
-## مرحله ۳. انتخاب گزینه HWID
+## Step 3.  Choose the HWID Option
 
-یک منو در پنجره جدید ظاهر می‌شود. کلید شماره `1` را روی کیبورد خود فشار دهید تا **HWID Activation** انتخاب شود سپس چند لحظه منتظر بمانید تا فرآیند کامل شود.
+A menu will appear in a new window. Press `1` number on your keyboard to select **HWID Activation** and wait a few moments for the process to complete.
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/c4289236-1d5d-421f-984f-5b3816575273" alt="انتخاب-متود-hwid" width="540px" /></p><br/>
+  <img src="https://github.com/user-attachments/assets/c4289236-1d5d-421f-984f-5b3816575273" alt="Select HWID Activation" width="540px" /></p><br/>
 
-**تبریک!**  
-ویندوز شما اکنون با لایسنس دیجیتال به صورت دائمی فعال شده است. <br/>
+**Congratulations!**   
+Your Windows is now permanently activated with a digital license. <br/>
 
-برای بررسی وضعیت فعال‌سازی **`ویندوز ۱۰`**، از این طریق اقدام کنید:  
- **Settings → Update & Security → Activation**. [^1]
+To check the activation status of `Windows 10`, navigate to **Settings → Update & Security → Activation.** [^1]
 
-برای بررسی وضعیت فعال‌سازی **`ویندوز ۱۱`**، بر روی دکمه Start کلیک کرده و سپس از این طریق اقدام کنید:  
-Settings → System → Activation. [^2] <br/>
+To check the activation status of `Windows 11`, open Settings by clicking the Start button and then selecting **Settings → System → Activation.** [^2] <br/>
 
-## اطلاعات تکمیلی
+## Additional Information
 
-::: danger چگونه فعال‌سازی را حذف کنیم؟
+::: danger How to Remove Activations
 
-::: details برای مشاهده جزئیات کلیک کنید
+::: details Click here to see the details
 
-- **HWID:** لایسنس دیجیتال روی سرورهای مایکروسافت ذخیره شده و به سخت‌افزار شما متصل است. این نمی‌تواند به معنای سنتی "حذف" شود. تغییر عمده سخت‌افزار (مانند مادربرد) آن را باطل می‌کند. برای بازگشت به حالت غیرفعال، می‌توانید یک کلید عمومی KMS نصب کنید. [جزئیات تکمیلی hwid](./hwid-fa)
-- **Online KMS / Ohook / KMS38:** از گزینه متناظر "Uninstall" یا "Remove" در منوی اسکریپت MAS استفاده کنید، سپس گزینه "Fix Licensing" را از منوی Troubleshoot اجرا کنید. [جزئیات KMS](./kms-fa) و [جزئیات KMS38](./kms38-fa)
-- **TSforge:** این روش فقط داده‌ها را اضافه می‌کند و فایلی نصب نمی‌کند. برای بازنشانی آن، کافی است گزینه "Fix Licensing" را از منوی Troubleshoot در اسکریپت MAS اجرا کنید. [جزئیات TSforge](./tsforge-fa)
+- **HWID:** A digital license is stored on Microsoft's servers and tied to your hardware. It cannot be "removed" in the traditional sense. A major hardware change (like the motherboard) will invalidate it. To return to an unactivated state, you can install a generic KMS key. [Extended hwid details](./hwid)
+- **Online KMS / Ohook / KMS38:** Use the corresponding "Uninstall" or "Remove" option within the MAS script menu, then run the "Fix Licensing" option from the Troubleshoot menu. [KMS details](./kms) and [KMS38 details](./kms38)
+- **TSforge:** This method only appends data and doesn't install files. To reset it, simply run the "Fix Licensing" option from the Troubleshoot menu in the MAS script. [TSforge details](./tsforge)
 
 :::
 
 <br/>
 
-::: info محصولات پشتیبانی شده ویندوز ۱۰/۱۱ برای HWID
+::: info Supported Windows 10/11 Products for HWID
 
-::: details برای مشاهده محصولات کلیک کنید
+::: details Click here to see the products  
 
-|       نام محصولات ویندوز ۱۰/۱۱        |        EditionID         |   کلید عمومی Retail/OEM/MAK   |
+|      Windows 10/11 Product Names      |        EditionID         |  Generic Retail/OEM/MAK Key   |
 | :-----------------------------------: | :----------------------: | :---------------------------: |
 |               Education               |        Education         | YNMGQ-8RYV3-4PGQ3-C8XTP-7CFBY |
 |              Education N              |        EducationN        | 84NGF-MHBT6-FXBX8-QWJK7-DRR8H |
@@ -174,31 +168,32 @@ Settings → System → Activation. [^2] <br/>
 |                 Pro N                 |      ProfessionalN       | 2B87N-8KFHP-DKV6R-Y2C8J-PKCKT |
 |             Pro Education             |  ProfessionalEducation   | 8PTT6-RNW4C-6V7J2-C2D3X-MHBPB |
 |            Pro Education N            |  ProfessionalEducationN  | GJTYN-HDMQY-FRR76-HVGC7-QPF8P |
-|       Pro for Workstations [^5]       | ProfessionalWorkstation  | DXG7C-N36C4-C4HTG-X4T3X-2YV77 |
-|      Pro N for Workstations [^6]      | ProfessionalWorkstationN | WYPNQ-8C467-V2W6J-TX4WX-WT2RQ |
+|       Pro for Workstations [^5]      | ProfessionalWorkstation  | DXG7C-N36C4-C4HTG-X4T3X-2YV77 |
+|      Pro N for Workstations [^6]     | ProfessionalWorkstationN | WYPNQ-8C467-V2W6J-TX4WX-WT2RQ |
 |                   S                   |          Cloud           | V3WVW-N2PV2-CGWC3-34QGF-VMJ2C |
 |                  S N                  |          CloudN          | NH9J3-68WK7-6FB93-4K3DF-DJ4F6 |
 |                  SE                   |       CloudEdition       | KY7PN-VR6RX-83W6Y-6DDYQ-T6R4W |
 |                 SE N                  |      CloudEditionN       | K9VKN-3BGWV-Y624W-MCRMQ-BHDCD |
 |                 Team                  |          PPIPro          | XKCNC-J26Q9-KFHD2-FKTHY-KD72Y |
 
-_کلید عمومی به صورت خودکار توسط اسکریپت در صورت نیاز اعمال می‌شود._
+_A generic key is automatically applied by the script where needed._
 
 :::
 
-[^1]: برای بررسی وضعیت فعال‌سازی ویندوز ۱۰، به مسیر Settings → Update & Security → Activation بروید. وضعیت فعال‌سازی خود را در آنجا مشاهده خواهید کرد. اگر ویندوز فعال باشد، باید "Activated" را با تیک سبز ببینید.
+[^1]: To check the activation status of Windows 10, navigate to Settings → Update & Security → Activation. You will see your activation status listed there. If Windows is activated, you should see "Activated" with a green checkmark.
 
-[^2]: برای بررسی وضعیت فعال‌سازی ویندوز ۱۱، با کلیک بر روی دکمه **Start** و سپس انتخاب Settings → System → Activation بروید. وضعیت فعال‌سازی نمایش داده می‌شود و جزئیات روش فعال‌سازی و حساب مایکروسافت مرتبط را نشان می‌دهد.
+[^2]: To check the activation status of Windows 11, open Settings by clicking the **Start button** and then selecting Settings → System → Activation. The activation status will be displayed, showing whether Windows is activated, along with details about the activation method and any linked Microsoft account.
 
-[^3]: نسخه مخصوص کشور چین.
+[^3]: Home China Country Specific version.
 
-[^4]: نسخه تک‌زبانه.
+[^4]: Home Single language version.
 
-[^5]: Professional for Workstations.
+[^5]: Professional for Workstations
 
 [^6]: Professional N for Workstations.
 
 [1]: https://www.minitool.com/news/open-windows-11-powershell.html
 [2]: https://www.minitool.com/news/open-command-prompt-windows-11.html
-[3]: https://github.com/NiREvil/windows-activation/discussions/
+[3]: https://github.com/NiREvil/windows-activation/discussions
 [4]: mailto:diana.clk01@gmail.com
+[rainbow]: https://github.com/NiREvil/vless/assets/126243832/1aca7f5d-6495-44b7-aced-072bae52f256
