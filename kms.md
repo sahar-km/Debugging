@@ -34,11 +34,11 @@ head:
 
 <br/>
 
-## Step 1: Open Command Prompt as Administrator {#open-cmd}  
+## Step 1: Open Command Prompt as Administrator {#open-cmd}
 
-1. Click the `Start` button  or `Search` icon in the taskbar.  
+1. Click the `Start` button or `Search` icon in the taskbar.
 2. Type `cmd` or `Command Prompt`.
-3. Select **Run as administrator**. <br/>  
+3. Select **Run as administrator**. <br/>
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/4465a2d3-6c93-4ee1-bb63-94ab7b8e06ac" alt="run-cmd-as-dmin" width="320px" /></p><br/>
@@ -49,8 +49,8 @@ head:
 
 **2. Using the Run box**
 
-- 1. **Open the Run box:** Simultaneously Press `Win (⊞) + R` keys on your keyboard.  
-- 2. **Type:** `cmd` or `command prompt`.  
+- 1. **Open the Run box:** Simultaneously Press `Win (⊞) + R` keys on your keyboard.
+- 2. **Type:** `cmd` or `command prompt`.
 - 3. **Run as administrator:** Instead of just pressing Enter, press `Ctrl + Shift + Enter`. This combination will launch command prompt with elevated (administrator) privileges.
 - 4. If prompted by the User Account Control dialog, click `Yes` to grant administrative privileges. <br/>
 
@@ -59,10 +59,9 @@ head:
 - 1. Right-click the **Start menu**.
 - 2. Select **Windows Terminal (Admin)** on Windows 11 or **Windows PowerShell (Admin)** on Windows 10.
 
-Or You can visit [this Link][2] to see 8 ways to run **cmd**, And [This Link][1] For Running PowerShell.  
+Or You can visit [this Link][2] to see 8 ways to run **cmd**, And [This Link][1] For Running PowerShell.
 
 :::
-
 
 ## Step 2: Install a Generic KMS Client Key
 
@@ -89,14 +88,13 @@ slmgr /ipk Your-License-Key
 
 - Simultaneously Press **`Win (⊞) + Pause/Break`** on your keyboard.
   - This will open the **About** section in **Settings** directly. and you will see the Edition of your Windows under **Windows specifications**. <br/>
-  
+
 **2. Using system settings**
 
 - 1. Click the 🪟`Start` button and then click ⚙️`Settings`.
 - 2. Click on 💻`System`.
 - 3. Scroll down and click on ℹ️`About`.
 - 4. Under `Windows specifications`, you will see the Edition of your Windows. <br/>
-
 
 **3. Using the Run dialog**
 
@@ -167,7 +165,7 @@ Please select one of the **license keys** from the list that **matches your vers
 <p align="center">
   <img src="https://github.com/user-attachments/assets/50c23cad-7690-49fb-bf1c-d1c7cc66f0fe" alt="install-KMS-keyy" width="540px" /></p><br/>
  
-::: details An alternative license keys    
+::: details An alternative license keys
 
 |            **Key**            |  **Version**   |
 | :---------------------------: | :------------: |
