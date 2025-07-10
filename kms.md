@@ -25,7 +25,7 @@ Our scripts leverage various methods to help you activate your products quickly 
 ::: details Click here to see the details
 
 - **For Windows:** I personally use the **KMS method** [[see guides](./kms)] for my Windows 10/11 activations. It's official, leaves no files on the system, and takes less than 3 minutes. If for some reason that fails, HWID is my go-to, as it's also official and file-less.
-- **For Office:** I use Ohook, TSforge, or Online KMS. The small differences are noted in the summary table above.  
+- **For Office:** I use Ohook, TSforge, or Online KMS. The small differences are noted in the summary table above.
 - **Need Help?** If you run into any issues, feel free to ask in the [GitHub Discussions][3] or [Email me][4] directly.
 
 :::
@@ -48,16 +48,16 @@ For a quick overview, here is a summary of the activation methods available:
 <p style="text-align: center;">
   For a detailed comparison of all methods, check out the <a href="./chart">Activation Methods Chart</a>.</p><br/>
 
-# Method 1.  Permanent Activation with HWID
+# Method 1. Permanent Activation with HWID
 
 For most users, the **HWID (Hardware ID)** method is the simplest way to get a permanent digital license for Windows 10 and 11. <br/>
 
-## Step 1.  Open PowerShell as Administrator
+## Step 1. Open PowerShell as Administrator
 
 **Run PowerShell using search bar**
 
-- 1. Click on windows `Start` button or `Search` icon in the taskbar.  
-- 2. Type `powershell`.  
+- 1. Click on windows `Start` button or `Search` icon in the taskbar.
+- 2. Type `powershell`.
 - 3. Select **Run as administrator**. <br/>
 
 <p align="center">
@@ -69,14 +69,15 @@ For most users, the **HWID (Hardware ID)** method is the simplest way to get a p
 
 **1. Using search bar**
 
-- 1. Click on windows `Start` button or `Search` icon in the taskbar.  
+- 1. Click on windows `Start` button or `Search` icon in the taskbar.
+
 2.  Type `powershell`.
 3.  Select **Run as administrator**. <br/>
 
 **2. Using the Run box**
 
-- 1. **Open the Run dialog box:** Simultaneously Press `Win (⊞) + R` keys on your keyboard.  
-- 2. **Type:** `powershell`.  
+- 1. **Open the Run dialog box:** Simultaneously Press `Win (⊞) + R` keys on your keyboard.
+- 2. **Type:** `powershell`.
 - 3. **Run as administrator:** Instead of just pressing Enter, press `Ctrl + Shift + Enter`. This combination will launch PowerShell with elevated (administrator) privileges.
 - 4. If prompted by the User Account Control dialog, click `Yes` to grant administrative privileges. <br/>
 
@@ -85,11 +86,11 @@ For most users, the **HWID (Hardware ID)** method is the simplest way to get a p
 - 1. Right-click on the **Start menu**.
 - 2. Then select **Windows Terminal (Admin)** on Windows 11 or **Windows PowerShell (Admin)** on Windows 10 to run PowerShell. <br/>
 
-Or You can visit [this Link][1] to see 10 ways to run **PowerShell** And [this link][2] For Running CMD in your windows.  
+Or You can visit [this Link][1] to see 10 ways to run **PowerShell** And [this link][2] For Running CMD in your windows.
 
 :::
 
-## Step 2.  Run the Activation Script
+## Step 2. Run the Activation Script
 
 Copy the following command, paste it into the PowerShell window and press `Enter` key.
 
@@ -112,14 +113,14 @@ irm https://massgrave.dev/get | iex
 <p align="center">
   <img src="https://github.com/user-attachments/assets/dfaa3f27-efb8-4979-bc32-081362274a2e" alt="Paste command in PowerShell" width="540px" /></p><br/>
 
-## Step 3.  Choose the HWID Option
+## Step 3. Choose the HWID Option
 
 A menu will appear in a new window. Press `1` number on your keyboard to select **HWID Activation** and wait a few moments for the process to complete.
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/c4289236-1d5d-421f-984f-5b3816575273" alt="Select HWID Activation" width="540px" /></p><br/>
 
-**Congratulations!**   
+**Congratulations!**  
 Your Windows is now permanently activated with a digital license. <br/>
 
 To check the activation status of `Windows 10`, navigate to **Settings → Update & Security → Activation.** [^1]
@@ -142,7 +143,7 @@ To check the activation status of `Windows 11`, open Settings by clicking the St
 
 ::: info Supported Windows 10/11 Products for HWID
 
-::: details Click here to see the products  
+::: details Click here to see the products
 
 |      Windows 10/11 Product Names      |        EditionID         |  Generic Retail/OEM/MAK Key   |
 | :-----------------------------------: | :----------------------: | :---------------------------: |
@@ -168,8 +169,8 @@ To check the activation status of `Windows 11`, open Settings by clicking the St
 |                 Pro N                 |      ProfessionalN       | 2B87N-8KFHP-DKV6R-Y2C8J-PKCKT |
 |             Pro Education             |  ProfessionalEducation   | 8PTT6-RNW4C-6V7J2-C2D3X-MHBPB |
 |            Pro Education N            |  ProfessionalEducationN  | GJTYN-HDMQY-FRR76-HVGC7-QPF8P |
-|       Pro for Workstations [^5]      | ProfessionalWorkstation  | DXG7C-N36C4-C4HTG-X4T3X-2YV77 |
-|      Pro N for Workstations [^6]     | ProfessionalWorkstationN | WYPNQ-8C467-V2W6J-TX4WX-WT2RQ |
+|       Pro for Workstations [^5]       | ProfessionalWorkstation  | DXG7C-N36C4-C4HTG-X4T3X-2YV77 |
+|      Pro N for Workstations [^6]      | ProfessionalWorkstationN | WYPNQ-8C467-V2W6J-TX4WX-WT2RQ |
 |                   S                   |          Cloud           | V3WVW-N2PV2-CGWC3-34QGF-VMJ2C |
 |                  S N                  |          CloudN          | NH9J3-68WK7-6FB93-4K3DF-DJ4F6 |
 |                  SE                   |       CloudEdition       | KY7PN-VR6RX-83W6Y-6DDYQ-T6R4W |
