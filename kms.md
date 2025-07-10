@@ -1,200 +1,294 @@
 ---
 layout: doc
 outline: deep
-title: 'Introduction to Activation Enhancement guides like hwid, kms, tsforge.'
-description: 'A reliable, open-source activation toolkit for Windows and Office.'
-date: 2024-05-05
+title: 'Official KMS Activation Guide — 180 Days, Renewable'
+description: 'Step-by-step guide to activating Windows and Office using the official KMS method for volume licensing.'
+date: 2024-04-17
 editLink: true
 head:
   - - meta
+    - name: description
+      content: Activate Windows 10, 11 and Microsoft Office safely using the KMS method. Official, renewable every 180 days, and file-free.
+  - - meta
     - name: keywords
-      content: kms, alternative method, office, hwid, digital license, Windows 10, windows 11
+      content: KMS, Windows activation, Office activation, Windows 10, Windows 11, volume license, activate Office 2021, digital license
+  - - meta
+    - property: og:title
+      content: Activate Windows and Office Using the Official KMS Method
+  - - meta
+    - property: og:description
+      content: A complete guide to activating Windows and Office using the secure, renewable KMS method.
 ---
 
-# Welcome to the Activation Enhancement guide.
+# Manual KMS Activation for Windows & Office
 
-This project provides a collection of reliable, open-source activation tools for `Windows` and `Office`.  
-Our scripts leverage various methods to help you activate your products quickly and safely. <br/>
+> This guide walks you through activating Windows and Office for 180 days using Microsoft’s official Key Management Service (KMS) method.
+>
+> It is a safe and trusted activation approach for volume-licensed products, and can be renewed indefinitely. <br/>
 
-::: tip **Author's Notes**
+::: tip Prerequisites
 
-- After activation via the `HWID` method, you may encounter issues signing into your Microsoft account in **Microsoft Edge** browser settings!
-- **Solution 1:** Skip this activation method< and use [KMS](./kms) instead (takes less than 2 minutes and requires renewal every 6 months).
-- **Solution 2:** Avoid Edge and switch to alternative browsers like **Chrome** or **Firefox**.
-
-::: details Click here to see the details
-
-- **For Windows:** I personally use the **KMS method** [[see guides](./kms)] for my Windows 10/11 activations. It's official, leaves no files on the system, and takes less than 3 minutes. If for some reason that fails, HWID is my go-to, as it's also official and file-less.
-- **For Office:** I use Ohook, TSforge, or Online KMS. The small differences are noted in the summary table above.
-- **Need Help?** If you run into any issues, feel free to ask in the [GitHub Discussions][3] or [Email me][4] directly.
-
-:::
+- A stable internet connection.
+- Administrator privileges for CMD on your computer.  
+  :::
 
 <br/>
 
-## Activation Methods Summary
+## Step 1: Open Command Prompt as Administrator {#open-cmd}  
 
-For a quick overview, here is a summary of the activation methods available:
-
-| Activation Type | Supported Product      | Activation Period                | Internet Needed?      | More Info               |
-| :-------------: | :--------------------- | :------------------------------- | :-------------------- | :---------------------- |
-|    **HWID**     | Windows 10-11          | Permanent                        | Yes                   | [Details](./hwid)       |
-|     **KMS**     | Windows 10-11          | 180 Days (Manual)                | Yes                   | [Details](./kms)        |
-|    **Ohook**    | Office                 | Permanent                        | No                    | -                       |
-|   **TSforge**   | Windows / ESU / Office | Permanent                        | Yes (on build 19041+) | [Details](./tsforge)    |
-|    **KMS38**    | Windows 10-11-Server   | Until 2038                       | No                    | [Details](./kms38)      |
-| **Online KMS**  | Windows / Office       | 180 Days (Lifetime with Renewal) | Yes                   | [Details](./online_kms) |
-
-<p style="text-align: center;">
-  For a detailed comparison of all methods, check out the <a href="./chart">Activation Methods Chart</a>.</p><br/>
-
-# Method 1. Permanent Activation with HWID
-
-For most users, the **HWID (Hardware ID)** method is the simplest way to get a permanent digital license for Windows 10 and 11. <br/>
-
-## Step 1. Open PowerShell as Administrator
-
-**Run PowerShell using search bar**
-
-- 1. Click on windows `Start` button or `Search` icon in the taskbar.
-- 2. Type `powershell`.
-- 3. Select **Run as administrator**. <br/>
+1. Click the `Start` button  or `Search` icon in the taskbar.  
+2. Type `cmd` or `Command Prompt`.
+3. Select **Run as administrator**. <br/>  
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/5638557d-9bfe-4e7c-a851-218bec6559bf" alt="open-powershell-as-admin" width="540px" /></p><br/>
-  
-::: tip Another ways to run PowerShell
+  <img src="https://github.com/user-attachments/assets/4465a2d3-6c93-4ee1-bb63-94ab7b8e06ac" alt="run-cmd-as-dmin" width="320px" /></p><br/>
+
+::: Another ways to run CMD
 
 ::: Click here to see more details
 
-**1. Using search bar**
-
-- 1. Click on windows `Start` button or `Search` icon in the taskbar.
-
-2.  Type `powershell`.
-3.  Select **Run as administrator**. <br/>
-
 **2. Using the Run box**
 
-- 1. **Open the Run dialog box:** Simultaneously Press `Win (⊞) + R` keys on your keyboard.
-- 2. **Type:** `powershell`.
-- 3. **Run as administrator:** Instead of just pressing Enter, press `Ctrl + Shift + Enter`. This combination will launch PowerShell with elevated (administrator) privileges.
+- 1. **Open the Run box:** Simultaneously Press `Win (⊞) + R` keys on your keyboard.  
+- 2. **Type:** `cmd` or `command prompt`.  
+- 3. **Run as administrator:** Instead of just pressing Enter, press `Ctrl + Shift + Enter`. This combination will launch command prompt with elevated (administrator) privileges.
 - 4. If prompted by the User Account Control dialog, click `Yes` to grant administrative privileges. <br/>
 
-**3. Using Power User Menu (Win+X)**
+**3. Using Power User Menu**
 
-- 1. Right-click on the **Start menu**.
-- 2. Then select **Windows Terminal (Admin)** on Windows 11 or **Windows PowerShell (Admin)** on Windows 10 to run PowerShell. <br/>
+- 1. Right-click the **Start menu**.
+- 2. Select **Windows Terminal (Admin)** on Windows 11 or **Windows PowerShell (Admin)** on Windows 10.
 
-Or You can visit [this Link][1] to see 10 ways to run **PowerShell** And [this link][2] For Running CMD in your windows.
+Or You can visit [this Link][2] to see 8 ways to run **cmd**, And [This Link][1] For Running PowerShell.  
 
 :::
 
-## Step 2. Run the Activation Script
 
-Copy the following command, paste it into the PowerShell window and press `Enter` key.
+## Step 2: Install a Generic KMS Client Key
 
-> You can `paste` everything you copied by **Right-clicking** in CMD Or PowerShell Or other terminals.
+In the Command Prompt window, run the following command.  
+You must replace `Your-License-Key` with the key from the table below that matches your Windows edition. <br/>
 
-::: code-group
-
-```powershell [Recommended]
-irm https://get.activated.win | iex
+```powershell
+slmgr /ipk Your-License-Key
 ```
 
-```powershell [Alternative]
-irm https://massgrave.dev/get | iex
-```
+::: tip To find your Windows edition
+
+**1. Using a keyboard shortcut**
+
+- Simultaneously Press **`Win (⊞) + Pause/Break`** on your keyboard.
+  - This will open the **About** section in **Settings** directly. and you will see the Edition of your Windows under **Windows specifications**. <br/>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/647ef16b-9208-4ff3-a94b-825ffa99721f" alt="about-system" width="320px" /></p><br/>
+  
+::: details Click here to see more ways
+
+**1. Using a keyboard shortcut**
+
+- Simultaneously Press **`Win (⊞) + Pause/Break`** on your keyboard.
+  - This will open the **About** section in **Settings** directly. and you will see the Edition of your Windows under **Windows specifications**. <br/>
+  
+**2. Using system settings**
+
+- 1. Click the 🪟`Start` button and then click ⚙️`Settings`.
+- 2. Click on 💻`System`.
+- 3. Scroll down and click on ℹ️`About`.
+- 4. Under `Windows specifications`, you will see the Edition of your Windows. <br/>
+
+
+**3. Using the Run dialog**
+
+- 1. Press the `Win (⊞) + R` to open the Run dialog box.
+- 2. Type the `ms-settings:about` Or `winver` Or `msinfo32` and press Enter key.
+     > A window will appear showing the Windows version and build number and other details. <br/>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/f764797a-e07f-4c58-b932-bfe7b359a7bd" alt="winver-command" width="320px" /></p>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/4c7edc15-1c02-4d7b-ab5f-df70eaff8ad7" alt="winver-response" width="320px" /></p><br/>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/a6360712-0ad0-4be4-b0a4-01171d293d83" alt="msinfo32-command" width="320px" /></p>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/8592c1bd-4a1a-47c1-bd21-0eb17049db31" alt="msinfo32-response" width="320px" /></p><br/>
+  
+**4. Using Command Prompt or PowerShell** [^2]  
+- 1.  Click the `Start` button or search icon.
+- 2.  Type `cmd` or `Command Prompt`.
+- 3. At the Command Prompt, type `systeminfo` Or `systeminfo | findstr /B /C:"OS Name" /B /C:"OS Version"` and then press Enter
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/4c7edc15-1c02-4d7b-ab5f-df70eaff8ad7" alt="findstdr command" width="320px" /></p><br/>
+
+- Also you can run the PowerShell or Command Prompt, and type `slmgr /dlv`, and then press Enter.
+  - The /dlv command displays the detailed licensing information.
+    - Notice the output displays "Home" as seen in the following image:
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/86925e56-7cac-4b53-8ccf-6addcd799ece" alt="slmgr-command" width="320px" /></p><br/>
+
+:::
+
+Please select one of the **license keys** from the list that **matches your version of Windows** and replace it with the phrase `Your-License-Key` in the command.
+
+> You can `paste` everything you copied by **Right-clicking** in CMD Or PowerShell Or anoter terminals.
+
+### Generic Volume License Keys (GVLK)
+
+| Windows Edition               | GVLK Key         |
+| :---------------------------- | :--------------- |
+| TX9XD-98N7V-6WMQ6-BX7FG-H8Q99 | Home             |
+| 3KHY7-WNT83-DGQKR-F7HPR-844BM | Home N           |
+| 7HNRX-D7KGG-3K4RQ-4WPJ4-YTDFH | Home sl [^3]     |
+| PVMJN-6DFY6–9CCP6–7BKTT-D3WVR | Home cs [^4]     |
+| W269N-WFGWX-YVC9B-4J6C9-T83GX | Pro              |
+| MH37W-N47XK-V7XM9-C7227-GCQG9 | Pro N            |
+| YNMGQ-8RYV3-4PGQ3-C8XTP-7CFBY | Education        |
+| 84NGF-MHBT6-FXBX8-QWJK7-DRR8H | Education N      |
+| NW6C2-QMPVW-D7KKK-3GKT6-VCFB2 | Pro Education    |
+| 2WH4N-8QGBV-H22JP-CT43Q-MDWWJ | Pro Education N  |
+| DXG7C-N36C4-C4HTG-X4T3X-2YV77 | Pro for W [^5]   |
+| WYPNQ-8C467-V2W6J-TX4WX-WT2RQ | Pro N for W [^6] |
+| NPPR9-FWDCX-D2C8J-H872K-2YT43 | Enterprise       |
+| DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4 | Enterprise N     |
+| XKCNC-J26Q9-KFHD2-FKTHY-KD72Y | Team             |
+| V3WVW-N2PV2-CGWC3-34QGF-VMJ2C | S                |
+| KY7PN-VR6RX-83W6Y-6DDYQ-T6R4W | SE               |
+
+<br/>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/d5d93702-7865-4552-85d0-6916b1331bc0" alt="Install-KMS-Key" width="540px" /></p>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/50c23cad-7690-49fb-bf1c-d1c7cc66f0fe" alt="install-KMS-keyy" width="540px" /></p><br/>
+ 
+::: details An alternative license keys    
+
+|            **Key**            |  **Version**   |
+| :---------------------------: | :------------: |
+| TX9XD-98N7V-6WMQ6-BX7FG-H8Q99 |      Home      |
+| 3KHY7-WNT83-DGQKR-F7HPR-844BM |     Home N     |
+| 7HNRX-D7KGG-3K4RQ-4WPJ4-YTDFH |    Home sl     |
+| PVMJN-6DFY6–9CCP6–7BKTT-D3WVR |    Home cs     |
+| W269N-WFGWX-YVC9B-4J6C9-T83GX |  Professional  |
+| MH37W-N47XK-V7XM9-C7227-GCQG9 | Professional N |
+| NW6C2-QMPVW-D7KKK-3GKT6-VCFB2 |   Education    |
+| 2WH4N-8QGBV-H22JP-CT43Q-MDWWJ |  Education N   |
+| NPPR9-FWDCX-D2C8J-H872K-2YT43 |   Enterprise   |
+| DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4 |  Enterprise N  |
 
 :::
 
 <br/>
 
+## Step 3: Set the KMS Server Address
+
+Next, point your system to a public KMS server. Run this command:
+
+```powershell
+slmgr /skms kms8.msguides.com
+```
+
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/dfaa3f27-efb8-4979-bc32-081362274a2e" alt="Paste command in PowerShell" width="540px" /></p><br/>
+  <img src="https://github.com/user-attachments/assets/edd0835f-c314-4ef8-a87d-a33e29f3f7c0" alt="set-kms-server" width="540px" /></p><br/>
 
-## Step 3. Choose the HWID Option
+## Step 4: Activate Windows
 
-A menu will appear in a new window. Press `1` number on your keyboard to select **HWID Activation** and wait a few moments for the process to complete.
+Finally, trigger the activation by running command:
+
+```powershell
+slmgr /ato
+```
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/c4289236-1d5d-421f-984f-5b3816575273" alt="Select HWID Activation" width="540px" /></p><br/>
+  <img src="https://github.com/user-attachments/assets/95e014e5-8946-4036-84ca-77ebb6122b1b" alt="active-windows" width="540px" /></p><br/>
 
-**Congratulations!**  
-Your Windows is now permanently activated with a digital license. <br/>
+## Step 5: Check Activation Status
 
-To check the activation status of `Windows 10`, navigate to **Settings → Update & Security → Activation.** [^1]
+**You're all set!**  
+To check the activation status of `Windows 10`, navigate to **Settings → Update & Security → Activation.**. [^7]
 
-To check the activation status of `Windows 11`, open Settings by clicking the Start button and then selecting **Settings → System → Activation.** [^2] <br/>
+To check the activation status of `Windows 11`, open Settings by clicking the Start button and then selecting **Settings → System → Activation.**. [^8]
 
-## Additional Information
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/da52f1bb-79c9-45db-bade-a0f56cd0a739" alt="activated" width="540px" /></p><br/>
 
-::: danger How to Remove Activations
+### Troubleshooting
 
-::: details Click here to see the details
+- **Error 0xC004F074:** This usually means your internet connection is unstable or the server is busy. Ensure you are online and try the `slmgr /ato` command again.
+- **Method Not Working?** If you're still having trouble, try the **HWID method** from the [Main guide](./index).
+  - For additional help, visit the **[Discussion Section][3]** Or send [Email][4] Directly to me. <br/>
 
-- **HWID:** A digital license is stored on Microsoft's servers and tied to your hardware. It cannot be "removed" in the traditional sense. A major hardware change (like the motherboard) will invalidate it. To return to an unactivated state, you can install a generic KMS key. [Extended hwid details](./hwid)
-- **Online KMS / Ohook / KMS38:** Use the corresponding "Uninstall" or "Remove" option within the MAS script menu, then run the "Fix Licensing" option from the Troubleshoot menu. [KMS details](./kms) and [KMS38 details](./kms38)
-- **TSforge:** This method only appends data and doesn't install files. To reset it, simply run the "Fix Licensing" option from the Troubleshoot menu in the MAS script. [TSforge details](./tsforge)
+**Be curious 🤍**
 
-:::
+### About Hotkeys
 
-<br/>
+::: details Use the hotkeys to open default programs in the Win+X Menu.
 
-::: info Supported Windows 10/11 Products for HWID
+**Power user menu** is a brief menu listing some advanced system tools like event viewer, device manager, disk management, computer management, task manager, etc.  
+So, you can quickly access those tools through the Power user menu.
 
-::: details Click here to see the products
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/7fa52188-2ac2-4b4d-9600-cf3f92e11d3d" alt="windows-plus-x-menu" width="320px" /></p><br/>
+  
+The default programs in the Power User Menu have a corresponding hotkey. Familiarity with the hotkeys of common programs can save a lot of time and improve efficiency.  
+For example:
 
-|      Windows 10/11 Product Names      |        EditionID         |  Generic Retail/OEM/MAK Key   |
-| :-----------------------------------: | :----------------------: | :---------------------------: |
-|               Education               |        Education         | YNMGQ-8RYV3-4PGQ3-C8XTP-7CFBY |
-|              Education N              |        EducationN        | 84NGF-MHBT6-FXBX8-QWJK7-DRR8H |
-|              Enterprise               |        Enterprise        | XGVPP-NMH47-7TTHJ-W3FW7-8HV2C |
-|             Enterprise N              |       EnterpriseN        | 3V6Q6-NQXCX-V8YXR-9QCYV-QPFCT |
-|         Enterprise LTSB 2015          |       EnterpriseS        | FWN7H-PF93Q-4GGP8-M8RF3-MDWWW |
-|         Enterprise LTSB 2016          |       EnterpriseS        | NK96Y-D9CD8-W44CQ-R8YTK-DYJWX |
-|         Enterprise LTSC 2019          |       EnterpriseS        | 43TBQ-NH92J-XKTM7-KT3KK-P39PB |
-|        Enterprise N LTSB 2015         |       EnterpriseSN       | NTX6B-BRYC2-K6786-F6MVQ-M7V2X |
-|        Enterprise N LTSB 2016         |       EnterpriseSN       | 2DBW3-N2PJG-MVHW3-G7TDK-9HKR4 |
-|                 Home                  |           Core           | YTMG3-N6DKC-DKB77-7M9GH-8HVX7 |
-|                Home N                 |          CoreN           | 4CPRK-NM3K3-X6XXQ-RXX86-WXCHW |
-|            Home China [^3]            |   CoreCountrySpecific    | N2434-X9D7W-8PF6X-8DV9T-8TYMD |
-|       Home Single Language [^4]       |    CoreSingleLanguage    | BT79Q-G7N6G-PGBYW-4YWX6-6F4BT |
-|            IoT Enterprise             |      IoTEnterprise       | XQQYW-NFFMW-XJPBH-K8732-CKFFD |
-|      IoT Enterprise Subscription      |      IoTEnterpriseK      | P8Q7T-WNK7X-PMFXY-VXHBG-RRK69 |
-|       IoT Enterprise LTSC 2021        |      IoTEnterpriseS      | QPM6N-7J2WJ-P88HH-P3YRH-YY74H |
-|       IoT Enterprise LTSC 2024        |      IoTEnterpriseS      | CGK42-GYN6Y-VD22B-BX98W-J8JXD |
-| IoT Enterprise LTSC Subscription 2024 |     IoTEnterpriseSK      | N979K-XWD77-YW3GB-HBGH6-D32MH |
-|                  Pro                  |       Professional       | VK7JG-NPHTM-C97JM-9MPGT-3V66T |
-|                 Pro N                 |      ProfessionalN       | 2B87N-8KFHP-DKV6R-Y2C8J-PKCKT |
-|             Pro Education             |  ProfessionalEducation   | 8PTT6-RNW4C-6V7J2-C2D3X-MHBPB |
-|            Pro Education N            |  ProfessionalEducationN  | GJTYN-HDMQY-FRR76-HVGC7-QPF8P |
-|       Pro for Workstations [^5]       | ProfessionalWorkstation  | DXG7C-N36C4-C4HTG-X4T3X-2YV77 |
-|      Pro N for Workstations [^6]      | ProfessionalWorkstationN | WYPNQ-8C467-V2W6J-TX4WX-WT2RQ |
-|                   S                   |          Cloud           | V3WVW-N2PV2-CGWC3-34QGF-VMJ2C |
-|                  S N                  |          CloudN          | NH9J3-68WK7-6FB93-4K3DF-DJ4F6 |
-|                  SE                   |       CloudEdition       | KY7PN-VR6RX-83W6Y-6DDYQ-T6R4W |
-|                 SE N                  |      CloudEditionN       | K9VKN-3BGWV-Y624W-MCRMQ-BHDCD |
-|                 Team                  |          PPIPro          | XKCNC-J26Q9-KFHD2-FKTHY-KD72Y |
+- Press **`Windows + X`** opens the **Power User Menu** (Win+X Menu).
+- The second keypress (e.g., `F`, `B`, `U`) selects the corresponding program.
+- For shutdown/restart options, `U` opens the submenu, followed by `I`, `S`, `U`, or press `R` for reatart system.
 
-_A generic key is automatically applied by the script where needed._
+The following are the hotkeys corresponding to each program:
 
-:::
+| Keyboard Shortcut            | Program                  |
+| ---------------------------- | ------------------------ |
+| `Windows + X`, then `F`      | Apps and Features        |
+| `Windows + X`, then `B`      | Mobility Center          |
+| `Windows + X`, then `O`      | Power Options            |
+| `Windows + X`, then `V`      | Event Viewer             |
+| `Windows + X`, then `Y`      | System                   |
+| `Windows + X`, then `M`      | Device Manager           |
+| `Windows + X`, then `W`      | Network Connections      |
+| `Windows + X`, then `K`      | Disk Management          |
+| `Windows + X`, then `G`      | Computer Management      |
+| `Windows + X`, then `A`      | Windows Terminal (Admin) |
+| `Windows + X`, then `T`      | Task Manager             |
+| `Windows + X`, then `N`      | Settings                 |
+| `Windows + X`, then `E`      | File Explorer            |
+| `Windows + X`, then `S`      | Search                   |
+| `Windows + X`, then `R`      | Run                      |
+| `Windows + X`, then `U`, `I` | Sign out                 |
+| `Windows + X`, then `U`, `S` | Sleep                    |
+| `Windows + X`, then `U`, `U` | Shut Down                |
+| `Windows + X`, then `U`, `R` | Restart                  |
+| `Windows + X`, then `D`      | Desktop                  |
 
-[^1]: To check the activation status of Windows 10, navigate to Settings → Update & Security → Activation. You will see your activation status listed there. If Windows is activated, you should see "Activated" with a green checkmark.
+[^1]: 10 Ways to run PowerShell in windows [read here][1].
 
-[^2]: To check the activation status of Windows 11, open Settings by clicking the **Start button** and then selecting Settings → System → Activation. The activation status will be displayed, showing whether Windows is activated, along with details about the activation method and any linked Microsoft account.
+[^2]: Another easiest way to run **PowerShell** is **Using Power User Menu**.
 
-[^3]: Home China Country Specific version.
+- 1. Right-click the Windows Start icon on the Taskbar to open the menu containing shortcuts to frequently used tools. Also you can open this menu with `Win (⊞) + x`.
+- 1. Select **Windows Terminal (admin)** at windows 11 Or **Windows PowerShell (admin)** at Windows 10.
 
-[^4]: Home Single language version.
+[^3]: Home Single language version.
 
-[^5]: Professional for Workstations
+[^4]: Home Country Specific version.
+
+[^5]: Professional for Workstations.
 
 [^6]: Professional N for Workstations.
 
+[^7]: To check the activation status of Windows 10, navigate to Settings → Update & Security → Activation. You will see your activation status listed there. If Windows is activated, you should see "Activated" with a green checkmark.
+
+[^8]: To check the activation status of Windows 11, open Settings by clicking the Start button and then selecting Settings → System → Activation. The activation status will be displayed, showing whether Windows is activated, along with details about the activation method and any linked Microsoft account.
+
 [1]: https://www.minitool.com/news/open-windows-11-powershell.html
 [2]: https://www.minitool.com/news/open-command-prompt-windows-11.html
-[3]: https://github.com/NiREvil/windows-activation/discussions
+[3]: https://github.com/NiREvil/windows-activation/discussions/
 [4]: mailto:diana.clk01@gmail.com
 [rainbow]: https://github.com/NiREvil/vless/assets/126243832/1aca7f5d-6495-44b7-aced-072bae52f256
