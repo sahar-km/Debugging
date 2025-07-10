@@ -42,8 +42,8 @@ head:
 
 | نوع فعال‌سازی  | محصولات پشتیبانی شده |       مدت زمان فعال‌سازی       |      نیاز به اینترنت؟      |       اطلاعات بیشتر       |
 | :------------: | :------------------: | :----------------------------: | :------------------------: | :-----------------------: |
-|    **HWID**    |    ویندوز ۱۰-۱۱     |             دائمی              |            بله             |    [جزئیات](./hwid-fa)    |
-|    **KMS**     |    ویندوز ۱۰-۱۱     |         ۱۸۰ روز (دستی)         |            بله             |    [جزئیات](./kms-fa)     |
+|    **HWID**    |     ویندوز ۱۰-۱۱     |             دائمی              |            بله             |    [جزئیات](./hwid-fa)    |
+|    **KMS**     |     ویندوز ۱۰-۱۱     |         ۱۸۰ روز (دستی)         |            بله             |    [جزئیات](./kms-fa)     |
 |   **Ohook**    |         آفیس         |             دائمی              |            خیر             |             -             |
 |  **TSforge**   | ویندوز / ESU / آفیس  |             دائمی              | بله (در بیلد ۱۹۰۴۱ به بعد) |  [جزئیات](./tsforge-fa)   |
 |   **KMS38**    | ویندوز ۱۰-۱۱-Server  |          تا سال ۲۰۳۸           |            خیر             |   [جزئیات](./kms38-fa)    |
@@ -87,9 +87,9 @@ head:
 **۳. استفاده از Power User Menu**
 
 - 1. روی آیکون `Windows Start` در `Taskbar` کلیک راست کنید تا منوی حاوی میانبرهای ابزارهای پرکاربرد باز شود، همچنین می‌توانید این منو را با `Win (⊞) + x` باز کنید.
-- 2. سپس بر روی گزینه **Windows Terminal (Admin)** در ویندوز 11 و یا **Windows PowerShell (Admin)** در ویندوز 10 کلیک کنید.  
+- 2. سپس بر روی گزینه **Windows Terminal (Admin)** در ویندوز 11 و یا **Windows PowerShell (Admin)** در ویندوز 10 کلیک کنید.
 
-همچنین می‌توانید از [این لینک][1] برای مشاهده ۱۰ روش اجرای **PowerShell** و از [این لینک][2] برای اجرای CMD به ۸ روش مختلف در ویندوز استفاده کنید.  
+همچنین می‌توانید از [این لینک][1] برای مشاهده ۱۰ روش اجرای **PowerShell** و از [این لینک][2] برای اجرای CMD به ۸ روش مختلف در ویندوز استفاده کنید.
 
 :::
 
@@ -97,7 +97,7 @@ head:
 
 دستور زیر را کپی کرده و، در پنجره PowerShell جای‌گذاری و سپس کلید `Enter` را فشار دهید.
 
-> شما می‌توانید هر چیزی را که قبلا کپی کرده‌اید با عمل **راست‌کلیک** در داخل CMD یا PowerShell یا سایر ترمینال‌ها جای‌گذاری کنید، در واقع در ترمینال‌ها از راست‌کلیک برای عمل paste استفاده می‌شود.  
+> شما می‌توانید هر چیزی را که قبلا کپی کرده‌اید با عمل **راست‌کلیک** در داخل CMD یا PowerShell یا سایر ترمینال‌ها جای‌گذاری کنید، در واقع در ترمینال‌ها از راست‌کلیک برای عمل paste استفاده می‌شود.
 
 ::: code-group
 
@@ -150,7 +150,7 @@ Settings → System → Activation. [^2] <br/>
 
 ::: details برای مشاهده محصولات کلیک کنید
 
-|      نام محصولات ویندوز ۱۰/۱۱      |        EditionID         |  کلید عمومی Retail/OEM/MAK   |
+|       نام محصولات ویندوز ۱۰/۱۱        |        EditionID         |   کلید عمومی Retail/OEM/MAK   |
 | :-----------------------------------: | :----------------------: | :---------------------------: |
 |               Education               |        Education         | YNMGQ-8RYV3-4PGQ3-C8XTP-7CFBY |
 |              Education N              |        EducationN        | 84NGF-MHBT6-FXBX8-QWJK7-DRR8H |
@@ -174,8 +174,8 @@ Settings → System → Activation. [^2] <br/>
 |                 Pro N                 |      ProfessionalN       | 2B87N-8KFHP-DKV6R-Y2C8J-PKCKT |
 |             Pro Education             |  ProfessionalEducation   | 8PTT6-RNW4C-6V7J2-C2D3X-MHBPB |
 |            Pro Education N            |  ProfessionalEducationN  | GJTYN-HDMQY-FRR76-HVGC7-QPF8P |
-|         Pro for Workstations [^5]     | ProfessionalWorkstation  | DXG7C-N36C4-C4HTG-X4T3X-2YV77 |
-|        Pro N for Workstations [^6]   | ProfessionalWorkstationN | WYPNQ-8C467-V2W6J-TX4WX-WT2RQ |
+|       Pro for Workstations [^5]       | ProfessionalWorkstation  | DXG7C-N36C4-C4HTG-X4T3X-2YV77 |
+|      Pro N for Workstations [^6]      | ProfessionalWorkstationN | WYPNQ-8C467-V2W6J-TX4WX-WT2RQ |
 |                   S                   |          Cloud           | V3WVW-N2PV2-CGWC3-34QGF-VMJ2C |
 |                  S N                  |          CloudN          | NH9J3-68WK7-6FB93-4K3DF-DJ4F6 |
 |                  SE                   |       CloudEdition       | KY7PN-VR6RX-83W6Y-6DDYQ-T6R4W |
