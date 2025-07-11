@@ -2,151 +2,115 @@
 layout: doc
 outline: deep
 title: 'Windows Evaluation Editions'
-description: 'Windows evaluation editions are trial versions of Windows operating systems provided by Microsoft.'
+description: 'A complete guide to Windows Evaluation Editions for IT professionals, plus Persian translation.'
 date: 2023-02-05
 editLink: true
 ---
 
 # Windows Evaluation Editions
 
-Windows evaluation editions are trial versions of Windows operating systems provided by Microsoft. These editions allow users, especially IT professionals,  
-to test and evaluate the features and capabilities of different Windows versions before making a purchase decision.
+Windows Evaluation Editions are official trial versions of Windows operating systems released by Microsoft. They’re designed to help IT professionals and advanced users test the features and compatibility of Windows (Enterprise & Server) before committing to a purchase.
 
-[microsoft.com/evalcenter]
-
-Microsoft provides Windows 10/11 Enterprise and Server in evaluation version.
+- **Where to get:** [Microsoft Eval Center][1]
+- **Available:** Windows 10/11 Enterprise & all current Server editions
 
 ::: warning
 
-Evaluation editions can not be activated beyond the evaluation period. Avoid using them, download the [full versions](./genuine-installation-media) instead.
+You _cannot_ activate evaluation editions after the trial period. For long-term use, always install a [genuine full version](./genuine-installation-media) instead.
 
 :::
 
-<br/>
+### Main Differences: Full vs. Evaluation
 
-## Difference between the full and evaluation
+- **Trial Period:** 90 days for Enterprise, 180 days for Server.
+- **Activation:** Not possible with product keys, digital licenses, or KMS after the trial expires.
+- **Post-trial:** The system will display activation warnings and may restart automatically.
+- **Permanent Activation:** Not supported on evaluation builds.
 
-Both versions are almost the same feature-wise. The main difference lies in the **activation**.
+---
 
-- The evaluation version of Windows typically comes with a 90-day (180-day for Server) trial period.
-- Evaluation Editions cannot be activated outside of the evaluation period.
-- After the trial period, the system will start showing notifications and may shut down periodically.
-- To be clear, you can not permanently activate it with your genuine key, digital license, KMS, etc.
+### How to Convert Evaluation to Full Version
 
-<br/>
+#### Windows 10/11 Enterprise
 
-## Convert evaluation to the full version
-
-### Windows 10/11 Enterprise Evaluation
-
-Officially, converting Windows 10/11 Enterprise eval to full version is not supported.  
-However, you can use an alternative method to change to the full version by doing an in-place upgrade with an ISO **(keeping files and apps)** and with a registry tweak.
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+Officially, you can’t directly convert evaluation to full.  
+However, you can upgrade using an ISO and a registry tweak:
 
 <Tabs>
-<TabItem value="eval_ltsc" label="Windows 10/11 Enterprise Evaluation (LTSC)" default>
+<TabItem value="LTSC" label="Enterprise LTSC">
 
-LTSC means long-term servicing channel. Microsoft provides longer update support for them.
+**For LTSC editions:**
 
-- Download Windows 10/11 Enterprise LTSC ISO from [here](windows_ltsc_links.md) in the same Windows language, and architecture.
-- Right-click on the downloaded ISO file, Open With > Windows Explorer
-- A new DVD drive will appear in Windows Explorer, which means the installation image has been mounted successfully.
-- Now open the command prompt as admin and enter,  
-  `reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v EditionID /d EnterpriseS /f`
-  - If you are on Windows 11 with unsupported hardware then enter,  
-    `reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v EditionID /d IoTEnterpriseS /f`
-- Go into that DVD drive and run setup.exe, continue until you reach the final confirmation screen.
-- Make sure it says "**Keep personal files and apps**" on the final screen. Then you can continue the process and wait until it is done.
-
-It will upgrade your eval Windows version to the full version.
+1. Download the same-language/architecture LTSC ISO from [windows ltsc links][2]
+2. Mount the ISO (right-click → Open with Windows Explorer).
+3. As administrator, run:
+   ```
+   reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v EditionID /d EnterpriseS /f
+   ```
+   _(For Windows 11 on unsupported hardware, use `IoTEnterpriseS` instead of `EnterpriseS`)_
+4. Run `setup.exe` from the mounted ISO, make sure “Keep personal files and apps” is selected.
+5. Complete the upgrade.
 
 </TabItem>
+<TabItem value="GAC" label="Enterprise GAC">
 
-<TabItem value="eval_gac" label="Windows 10/11 Enterprise Evaluation (GAC)" default>
+**For General Availability Channel (GAC):**
 
-GAC means general availability channel, aka normal version.
+1. Download the ISO from [MSDL][3].
+2. Mount the ISO.
+3. As administrator, run:
+   ```
+   reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v EditionID /d Enterprise /f
+   ```
+   _(For Windows 11 on unsupported hardware, use `IoTEnterprise`)_
+4. Run `setup.exe` and use key `NPPR9-FWDCX-D2C8J-H872K-2YT43` if prompted.
+5. On the confirmation screen, ensure “Keep personal files and apps” is selected.
 
-- Download genuine Windows 10/11 ISO from [MSDL](https://msdl.gravesoft.dev/) in the same Windows language, and architecture.
-- Right-click on the downloaded ISO file, Open With > Windows Explorer
-- A new DVD drive will appear in Windows Explorer, which means the installation image has been mounted successfully.
-- Now open the command prompt as admin and enter,  
-  `reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v EditionID /d Enterprise /f`
-  - If you are on Windows 11 with unsupported hardware then enter,  
-    `reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v EditionID /d IoTEnterprise /f`
-- Go into that DVD drive and run setup.exe, enter this key if the setup is asking for it `NPPR9-FWDCX-D2C8J-H872K-2YT43`
-- Continue until you reach the final confirmation screen.
-- Make sure it says "**Keep personal files and apps**" on the final screen. Then you can continue the process and wait until it is done.
-
-It will upgrade your eval Windows version to the full version.
 </TabItem>
 </Tabs>
 
-### Windows Server Evaluation
+#### Windows Server
 
-Changing Windows Server eval to the full version is officially supported.  
-You can use the official method here [learn.microsoft.com/get-started/upgrade-conversion-options]  
-or  
-Use the change edition option in the [MAS script](./index).
+- Official conversion is supported. See [Microsoft guide][4] or use the [AEG script](./index).
 
-<hr/><br/>
+<br/>
 
-## Extend evaluation activation period
+### Extending the Evaluation Period
 
-Windows 10/11 Enterprise evaluation version typically comes with a 90-day trial period and it automatically gets activated when the system connects to the Internet.
+- **Default:** 90 days (Enterprise), can be extended 2 more times (up to 270 days) with
+  ```
+  slmgr /rearm
+  ```
+- **Other methods:** Use the TSforge option in MAS or reset WPA registry keys (see [gravesoft.dev][5]).
 
-### Extend 90 days, 2 more times
+::: info
 
-When the 90-day activation period has expired or is about to expire, you can extend it for 90 days more.  
-Open the command prompt as admin and enter,  
-`slmgr /rearm`
-
-You can repeat this process 2 times (a total of 270 days of activation).
-
-**Reset the activation at any given time**
-
-#### Method -1
-
-You can use TSforge option in MAS to reset the activation (trial) period at any given time.
-
-#### Method -2
-
-WPA registry keys at `HKEY_LOCAL_MACHINE\SYSTEM\WPA` hold the records of the trial period. By clearing this registry we can simply reset the activation (trial) period at any given time. You can follow below guide to do this.  
-https://gravesoft.dev/fix-wpa-registry
-
-::: info Note
-
-- The eval activation for Windows 10 Enterprise LTSC 2021 is not working because of the incorrect key used by Microsoft.
-- However, TSforge option in MAS can fix this and reset the activation (trial) period.
+- Evaluation activation for Windows 10 Enterprise LTSC 2021 may fail—use MAS TSforge to fix.
 
 :::
 
 <br/>
 
-## Avoid license swapping
+### Avoid License File Swapping
 
-Some people suggest installing license files of the full version of Windows Enterprise to activate the evaluation installation.  
-This is not a good idea for many reasons,
+::: tip Avoiding
 
-- If you apply this method then the below commands will show errors  
-  `dism /online /english /Get-CurrentEdition`  
-  `dism /online /english /Get-TargetEditions`
-- Windows update can't update license files, Microsoft applies policy fixes through Windows updates. For example, 19044.1288 RTM release of IoT enterprise LTSC didn't support sandbox, but with later updates it started supporting it. KMS activation support was enabled with later updates as well. They update license files quite often, it's better to have updated windows and license files.
-- Furthermore, installed edition packages would be missing, which can have undocumented side effects.
-
-It's better to either upgrade to the full version or extend the activation period as mentioned above on this page.
-
-<br/>
-
-::: tip
-
-You can [connect with us][1] for help if you need.
+Applying full-version license files to eval builds is _not_ recommended and can break system updates, edition queries, and more.    
+Always use official upgrade or extension methods.
 
 :::
 
-<hr/><br/>
+<br/>
 
-[microsoft.com/evalcenter]: https://www.microsoft.com/en-us/evalcenter
-[learn.microsoft.com/get-started/upgrade-conversion-options]: https://learn.microsoft.com/en-us/windows-server/get-started/upgrade-conversion-options
-[1]: https://github.com/NiREvil/windows-activation/discussions
+### Need Help?
+
+[Open a discussion for help.][6]
+
+<hr/><br/> 
+
+[1]: https://www.microsoft.com/en-us/evalcenter
+[2]: https://massgrave.dev/windows_ltsc_links
+[3]: https://msdl.gravesoft.dev/
+[4]: https://learn.microsoft.com/en-us/windows-server/get-started/upgrade-conversion-options
+[5]: https://gravesoft.dev/fix-wpa-registry
+[6]: https://github.com/NiREvil/windows-activation/discussions
