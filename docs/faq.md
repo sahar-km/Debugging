@@ -2,26 +2,28 @@
 layout: doc
 outline: deep
 title: 'FAQ'
-description: 'Frequently Asked Questions about MAS'
+description: 'Frequently Asked Questions about Activation Methods' 
 date: 2023-02-04
 editLink: true
 ---
 
 # Frequently Asked Questions (FAQ)
 
-Welcome to the MAS FAQ! Here you'll find answers to the most common questions. If you don't see your question here, feel free to [contact us](#contact-us) — we're happy to help!
+Welcome to the AEG FAQ! Here you'll find answers to the most common questions. If you don't see your question here, feel free to [contact us](#contact-us) — we're happy to help!
 
 <br/>
 
 ## Getting Started
 
-### How do I use MAS?
+<br/> 
+
+### How do I use AEG?
 
 For a full guide on permanent activation with HWID, see [this section](./index#method-1--permanent-activation-with-hwid).
 
 ### How can I activate Windows permanently?
 
-Select the HWID activation option in MAS.
+Select the HWID activation option in AEG.
 
 ### How do I download and install Office?
 
@@ -29,7 +31,7 @@ Follow the steps in the [genuine installation media guide](./genuine-installatio
 
 ### How do I activate Office permanently?
 
-Choose the Ohook activation method within MAS.
+Choose the Ohook activation method within AEG.
 
 <br/>
 
@@ -39,7 +41,7 @@ Choose the Ohook activation method within MAS.
 
 See our [troubleshooting guide](./troubleshoot) for common solutions.
 
-### Is MAS safe? How do I know it’s not malware?
+### Is AEG safe? How do I know it’s not malware?
 
 MAS is fully open-source, with over 125K stars on [GitHub][1] and millions of users worldwide. You can inspect the batch files in any text editor, or use ChatGPT for code review.  
 If you prefer, you can also perform manual activation — see [this guide](./manual_hwid_activation).
@@ -48,11 +50,11 @@ If you prefer, you can also perform manual activation — see [this guide](./man
 
 Check out these guides for removing each activation type:
 
-- [Remove HWID](./hwid.md#how-to-remove-hwid)
-- [Remove Ohook](./ohook.md#how-to-remove-ohook)
-- [Remove TSforge](./tsforge.md#how-to-remove-tsforge)
-- [Remove KMS38](./kms38.md#how-to-remove-kms38)
-- [Remove Online KMS](./online_kms.md#how-to-remove-online-kms)
+- [Remove HWID](./hwid#how-to-remove-hwid)
+- [Remove Ohook](./ohook#how-to-remove-ohook)
+- [Remove TSforge](./tsforge#how-to-remove-tsforge)
+- [Remove KMS38](./kms38#how-to-remove-kms38)
+- [Remove Online KMS](./online_kms#how-to-remove-online-kms)
 
 <br/>
 
@@ -64,7 +66,7 @@ Refer to the [genuine installation media guide](./genuine-installation-media).
 
 ### Can I upgrade Windows from Home to Pro?
 
-Yes! In MAS, select the “Change Windows Edition” option.
+Yes! In AEG, select the “Change Windows Edition” option.
 
 ### Will I lose my files when upgrading from Home to Pro?
 
@@ -74,7 +76,7 @@ No, your data will remain safe.
 
 Just run HWID activation again. Each Windows edition needs its own activation.
 
-### Is it safe to connect my Microsoft account after activating with MAS?
+### Is it safe to connect my Microsoft account after activating with AEG?
 
 Absolutely, it’s safe.
 
@@ -82,9 +84,11 @@ Absolutely, it’s safe.
 
 Yes — updates will work as usual.
 
-<br/>
+<hr/><br/>
 
 ## Office-Specific
+
+<br/> 
 
 ### I’m in Russia and can’t download Office. Any workaround?
 
@@ -92,39 +96,41 @@ See [this guide][2] for bypassing regional restrictions.
 
 ### Can I activate Office 365?
 
-Yes, with the Ohook activation. Note: MAS does not unlock server-side Office 365 features such as 1TB OneDrive, but you get almost all other features and 5GB of free OneDrive storage.
+Yes, with the `Ohook` activation. Note: AEG does not unlock server-side Office 365 features such as 1TB OneDrive, but you get almost all other features and 5GB of free OneDrive storage.
 
-### Can I get the Copilot feature in Office with MAS?
+### Can I get the Copilot feature in Office with AEG?
 
 No. [Copilot][3] is an add-on available only to official Microsoft 365 subscribers.
 
-### Can I use Python in Excel after MAS activation?
+### Can I use Python in Excel after AEG activation?
 
 No. [Python in Excel][4] is a cloud feature for Microsoft 365 subscribers.
 
 ### I see an “Office is not genuine” banner — what should I do?
 
-Simply re-run the Ohook activation from the latest MAS version.
+Simply re-run the Ohook activation from the latest AEG version.
 
 <hr/><br/>
 
 ## Other Common Questions
 
+<br/> 
+
 ### Can I delete the MAS folder after activation?
 
 Yes, it’s safe to delete the MAS folder once activation is complete.
 
-### How does MAS activation actually work?
+### How does AEG activation actually work?
 
 See the Docs section for detailed info.
 
-### Does MAS work for Windows Vista/7/8.1?
+### Does AEG work for Windows Vista/7/8.1?
 
 Yes, TSforge, Ohook, and Online KMS options work for these versions.
 
 ### Can I donate or support the project?
 
-The MASSGRAVE project doesn’t accept donations and is completely free. It’s a community-driven project, and profiting from piracy is not supported.
+This project doesn’t accept donations and is completely free. It’s a community-driven project, and profiting from piracy is not supported.
 
 <br/>
 
