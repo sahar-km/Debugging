@@ -1,209 +1,265 @@
 ---
 layout: doc
 outline: deep
-title: 'HWID (digital license): Windows & Office Activation Guide'
-description: 'Comprehensive open-source guide to safely activate Windows 10/11 and Office using HWID in under 40 seconds. Includes troubleshooting tips and detailed comparisons.'
+title: 'HWID (digital license): Windows Activation Guide'
+description: 'Comprehensive open-source guide to safely activate Windows 10/11 using HWID in under 40 seconds. Includes troubleshooting tips and detailed comparisons.'
 date: 2025-05-04
 editLink: true
 head:
   - - meta
     - name: description
-      content: Safely activate Windows 10/11 and Microsoft Office using official open-source methods like HWID. Includes permanent and renewable options with full guides.
+      content: Safely activate Windows 10/11 using official open-source methods like HWID. Includes permanent and renewable options with full guides.
   - - meta
     - name: keywords
       content: digital license generation without kms, windows activation, office activation, hwid, activate windows 11, activate office 2021, open-source tools
   - - meta
     - property: og:title
-      content: Safe and Permanent Activation for Windows and Office
+      content: Safe and Permanent Activation for Windows
   - - meta
     - property: og:description
-      content: A full open-source guide to activating Windows 10/11 and Microsoft Office using reliable tools like HWID
+      content: A full open-source guide to activating Windows 10/11 using reliable tools like HWID
 ---
 
-# HWID : Windows & Office Activation Guide
+# HWID Activation
 
-::: tip Instant Windows 10/11 and Office Activation in under 40-Second.
 
-- This has some details about the **HWID** (Digital License) method.
-- Comprehensive open-source guide to safely activate Microsoft products using `HWID`. Includes troubleshooting tips and detailed comparisons.'
+## Overview
+
+-   How to use it? Please find the instructions [here](/en/index).
+-   This activation method supports Windows 10/11 only.
+-   This activation method does not store or modify any files in your system.
+-   This activation method gives you permanent Windows activation for your system hardware.
+-   All activations can be linked to a Microsoft account without any issues.
+-   Once the system is activated, this activation cannot be removed because the license is stored on Microsoft's servers, not on the user's system. Microsoft checks the hardware ID (HWID), and if a license is found in their database, the system will automatically activate. This is how all digital licenses work.
+-   Any significant changes to the hardware (such as a motherboard) may deactivate the system. It is possible to reactivate a system that was deactivated because of significant hardware changes, IF your activation, was linked to an online Microsoft account.
+-   For activation to succeed, Internet connectivity must be enabled. If you are trying to activate without these conditions being met, then the system will auto-activate later when the conditions are met.
+-   The following is required for Windows to reactivate itself after Windows reinstall:
+    -   Internet connectivity is required. (Only at the time of activation)
+    -   The system will auto-activate only if Retail (Consumer) media was used for installing Windows.
+    -   The system will NOT auto-activate if VL (Business) media was used for the installation. In this case, the user will have to insert the generic Retail/OEM key corresponding to the Windows edition currently running to activate if the user doesn't want to use the script again. (Those keys can be found below on this page)
+
+<br/><br/>
+
+## HWID History
+
+## How does it work?
+
+#### HWID 1 (Now defunct) (Summer of 2018 - Sep 26 2023)
+
+-   In the official upgrade process from Windows 7 to Windows 10, if your copy of Windows 7 was activated, Microsoft provided a digital license for Windows 10 without any cost.
+-   In the background, the upgrade process runs a file named gatherosstate.exe (available in Windows 10/11 ISO) and it checks the license of the current Windows installation. If it detected that it is activated, it generates a valid GenuineTicket.xml **ticket** which is sent to Microsoft and in return, MS authorizes a license.
+-   So, if we can convince the gatherosstate.exe file that the conditions are met for ticket generation by fooling it, it will generate a valid ticket, which can be used to get the valid digital license.
+-   How to convince gatherosstate.exe that Windows is activated?  
+    There are two methods for it.  
+    **1-** Place a [custom slc.dll](https://github.com/asdcorp/Integrated_Patcher_3) file beside gatherosstate.exe:  
+    gatherosstate.exe uses the system's `C:\Windows\System32\slc.dll` file to gather the system's info. If we place a custom slc.dll file beside gatherosstate.exe, it can send rubbish data to it, then it will simply accept it and generate a valid ticket.  
+    **2-** [Modify](https://github.com/asdcorp/GamersOsState) the gatherosstate.exe file directly so that it doesn't check the system's activation status at all and create a valid ticket.
+-   You can find the workings of this old method here: [MAS-Legacy-Methods][1]
+-   Microsoft [made][2] server-side changes to their licensing servers to block the free upgrade, and with that server-side change, this method stopped working. To be clear, only new activation requests coming from new hardware were blocked, already established digital licenses with this method are fine.
+
+#### HWID 2 (Currently working) (03 Oct 2023 - Current)
+
+-   When Microsoft stopped the free upgrade, it started requiring a genuine valid key in the ticket to authorize a digital license. In the new method, we use the Installation ID of a genuine, valid key. This gets accepted by the server and allows us to get a digital license for free. Check the manual activation process in below section to know how to make working universal tickets.
+
+<br/>
+
+Now a question, can Microsoft block the new requests or revoke already established digital licenses?
+
+-   Revoking the licenses would be too extreme and will face many complications and create a risk of voiding valid licenses. However, they can very easily block the new activation requests for new hardware coming from the methods mentioned here.
+
+<br/>
+
+## Supported Products
+
+| Windows 10/11 Product Names           | EditionID                | Generic Retail/OEM/MAK Key    |
+|---------------------------------------|--------------------------|-------------------------------|
+| Education                             | Education                | YNMGQ-8RYV3-4PGQ3-C8XTP-7CFBY |
+| Education N                           | EducationN               | 84NGF-MHBT6-FXBX8-QWJK7-DRR8H |
+| Enterprise                            | Enterprise               | XGVPP-NMH47-7TTHJ-W3FW7-8HV2C |
+| Enterprise N                          | EnterpriseN              | 3V6Q6-NQXCX-V8YXR-9QCYV-QPFCT |
+| Enterprise LTSB 2015                  | EnterpriseS              | FWN7H-PF93Q-4GGP8-M8RF3-MDWWW |
+| Enterprise LTSB 2016                  | EnterpriseS              | NK96Y-D9CD8-W44CQ-R8YTK-DYJWX |
+| Enterprise LTSC 2019                  | EnterpriseS              | 43TBQ-NH92J-XKTM7-KT3KK-P39PB |
+| Enterprise N LTSB 2015                | EnterpriseSN             | NTX6B-BRYC2-K6786-F6MVQ-M7V2X |
+| Enterprise N LTSB 2016                | EnterpriseSN             | 2DBW3-N2PJG-MVHW3-G7TDK-9HKR4 |
+| Home                                  | Core                     | YTMG3-N6DKC-DKB77-7M9GH-8HVX7 |
+| Home N                                | CoreN                    | 4CPRK-NM3K3-X6XXQ-RXX86-WXCHW |
+| Home China                            | CoreCountrySpecific      | N2434-X9D7W-8PF6X-8DV9T-8TYMD |
+| Home Single Language                  | CoreSingleLanguage       | BT79Q-G7N6G-PGBYW-4YWX6-6F4BT |
+| IoT Enterprise                        | IoTEnterprise            | XQQYW-NFFMW-XJPBH-K8732-CKFFD |
+| IoT Enterprise Subscription           | IoTEnterpriseK           | P8Q7T-WNK7X-PMFXY-VXHBG-RRK69 |
+| IoT Enterprise LTSC 2021              | IoTEnterpriseS           | QPM6N-7J2WJ-P88HH-P3YRH-YY74H |
+| IoT Enterprise LTSC 2024              | IoTEnterpriseS           | CGK42-GYN6Y-VD22B-BX98W-J8JXD |
+| IoT Enterprise LTSC Subscription 2024 | IoTEnterpriseSK          | N979K-XWD77-YW3GB-HBGH6-D32MH |
+| Pro                                   | Professional             | VK7JG-NPHTM-C97JM-9MPGT-3V66T |
+| Pro N                                 | ProfessionalN            | 2B87N-8KFHP-DKV6R-Y2C8J-PKCKT |
+| Pro Education                         | ProfessionalEducation    | 8PTT6-RNW4C-6V7J2-C2D3X-MHBPB |
+| Pro Education N                       | ProfessionalEducationN   | GJTYN-HDMQY-FRR76-HVGC7-QPF8P |
+| Pro for Workstations                  | ProfessionalWorkstation  | DXG7C-N36C4-C4HTG-X4T3X-2YV77 |
+| Pro N for Workstations                | ProfessionalWorkstationN | WYPNQ-8C467-V2W6J-TX4WX-WT2RQ |
+| S                                     | Cloud                    | V3WVW-N2PV2-CGWC3-34QGF-VMJ2C |
+| S N                                   | CloudN                   | NH9J3-68WK7-6FB93-4K3DF-DJ4F6 |
+| SE                                    | CloudEdition             | KY7PN-VR6RX-83W6Y-6DDYQ-T6R4W |
+| SE N                                  | CloudEditionN            | K9VKN-3BGWV-Y624W-MCRMQ-BHDCD |
+| Team                                  | PPIPro                   | XKCNC-J26Q9-KFHD2-FKTHY-KD72Y |
+
+<br/> 
+
+::: tip Info
+
+-   Systems in all architectures (x86, x64 and arm64) are supported.
+-   Any evaluation version of Windows (i.e. 'EVAL' LTSB/C) [cannot be activated](/en/evaluation_editions) beyond the evaluation period. You can use TSforge option in MAS to reset the activation any given time.
+-   IoTEnterpriseS (LTSC) 2021 key will be used to activate the unsupported EnterpriseS (LTSC) 2021 edition.
+-   IoTEnterpriseS (LTSC) 2024 key will be used to activate the unsupported EnterpriseS (LTSC) 2024 edition.
+-   Windows Server does not support HWID activation.
+-   Enterprise multi-session (ServerRdsh) edition can be activated with only a key NJCF7-PW8QT-3324D-688JX-2YV66, but it does not support real digital license activation.
 
 :::
 
 <br/>
 
-## Scope
+## How to remove HWID?
 
-How and why `HWID` works is somewhat complicated because of all the preliminary "knowledge" required to know why the very thing abused by HWID activators exists at all. Hence, this document. <br/>
+-   **HWID (Digital license) activation cannot be removed** because the license is stored in the Microsoft servers and not in the user's system.
+-   Microsoft checks the hardware ID (HWID) and if a license is found in their database, the system will automatically activate. This is how the official digital license activation process works.
 
-## Digital Licenses
+**What if you still want to remove it?**
 
-`Digital Licenses` (recently renamed to `Digital Entitlements`, but no one cares) are a fancy DRM invention by the geniuses over at Microsoft to make the Microsoft Store at least somewhat relevant.
+-   As explained above, you cannot remove it for your hardware, only major hardware change such as CPU, motherboard can remove the activation.
 
-Their purpose is to be proof of being licensed to use a piece of software (Please note that **You will own nothing and you will be happy** and **This software is licensed, not sold)** assigned to a Microsoft account.
-
-There is a very long explanation for what keeps track of digital licenses, but that's somewhat complicated and I don't know everything.
-
-Basically, there is a couple of components that keep track of these licenses and manage all the talking with the Microsoft Store and that talk to software components to tell them what Windows users are allowed to do with their computers. These are the things we want to accept our forgeries. <br/>
-
-## The Free Windows 10 Upgrade
-
-This activation method was at one point referred to as the "Digital License Generation without KMS or predecessor install/upgrade" and that name is just a tiny bit better and more descriptive than "HWID/KMS38".
-
-During the free Windows 10 upgrade period, any activated system (this is the "predecessor") that upgraded to Windows 10 got a free digital license. This promotion is long over, but the free upgrade still works.
-
-This type of reactivation/transfer (legal or otherwise) is actually used during **every single upgrade**, including between individual versions of Windows 10. This mode of activation is what we fake at the moment of writing. <br/>
-
-## Mechanism of Activation Transfer
-
-The main tool that facilitates the license transfer is called **GatherOsState** (full name: _Gather Downlevel OS Activation State_).
-
-This tool collects, other than the titular activation state, the following information:
-
-- Pre-upgrade **Windows Version** (eg. "NT 10.0.10240")
-- **Hardware ID**
-- One of the following:
-  - OS **Product family name**
-  - KMS Activation expiration time
-- MSDM OEM product key
-
-These are put into a file called the Genuine Authorization Ticket (`GenuineTicket.xml`) and used by `ClipUp.exe` in a process referred to as "License Migration". <br/>
-
-## Hardware ID
-
-The activation method's name - "HWID" - refers to this very parameter so it must be important.
-
-The Hardware ID is a magical data structure built by evaluating the system's hardware. In the ticket, it is found under the base64 string `SessionId`. The `Hwid` string is the base64 representation of the `HWID_BLOCK` structure. <br/>
-
-## HWID_BLOCK
-
-```c
-struct HWID_BLOCK {
-    uint16_t wSize;
-    uint16_t wVersion; // 0 for all
-    uint16_t threshold; // Set to 0x13
-    struct HWID hwid; // variable length
-    struct TIMEWEIGHT tw; // variable length
-}
-```
+**What if you just want to keep Windows in the unactivated stage?**  
+- To do that, you can install the [KMS key](/en/kms38#supported-products) in the Windows settings activation page  
+  Or
+- Change the edition using Change Windows edition option in MAS.  
+- **Note:** 
+  - Windows settings will instantly show that Windows is not activated but it usually takes 3 hours for the Activation Watermark to appear.
+  - These options will simply hide the HWID activation. If you reinstall Windows with the same edition or restore the default generic Retail/OEM keys, the system will automatically activate again if an Internet connection is found.
 
 <br/>
 
-## HWID
+### Command line Switches
 
-```c
-struct HWID {
-    uint16_t size;
-    uint16_t version;
-    uint16_t instances[9];
-    uint16_t dock_or_PCMCIA;
-    uint16_t hashRAM;
-    uint16_t hashBIOS;
-    uint16_t instanceHashes[];
-};
-```
-
-The hashes are all SHA-256 truncated to 15 bits; the 16th bit is set to whether the device is removable (1 if removable). <br/>
+-   Check [here - Command line switches](/en/command_line_switches).
 
 <br/>
 
-### version
+### Manual Activation
 
-This is the version of the hardware ID. It is set to `0` for all implementations I'm aware of. <br/>
-
-### nInstances
-
-This is an array of 9 counts of instances of hardware per type of hardware. The types are, in order (by 0-based index):
-
-0.  `CDROM` or `Mobile Broadband`
-1.  `Hard Disk Controllers`
-2.  `Hard Disk Drives`
-3.  `Displays`
-4.  `SCSI Adapters` or `Bluetooth Controllers`
-5.  `Audio Adapters`
-6.  `Unused`
-7.  `Network Cards`
-8.  `CPUs`
-
-When there is an "or" betwen two types, the kind of device that has more instances is chosen. <br/>
+-   Check [here - Manual hwid activation](/en/manual_hwid_activation).
 
 <br/>
 
-### bDockOrPCMCIA
+### Manual Ticket Generation
 
-This is set to 1 if non-user-provided docking info or PCMCIA is present. <br/>
+This guide is for manually creating the same kind of tickets that are used in the MAS script.
 
-### hashRAM
+-   Download the .cab file from the following official Microsoft link:  
+    https://download.microsoft.com/download/9/A/E/9AE69DD5-BA93-44E0-864E-180F5E700AB4/adk/Installers/14f4df8a2a7fc82a4f415cf6a341415d.cab
+-   Find the file named `filf8377e82b29deadca67bc4858ed3fba9` (Size: 330 KB) and rename it to `gatherosstate.exe`.
+-   Make a folder named `Files` in the root of the C: drive (`C:\Files`) and copy the `gatherosstate.exe` file to that folder.
+-   Make sure you have a working Internet connection.
+-   Open Windows PowerShell as Administrator and enter the following commands.
+-   Copy the entire block of code below and enter it in PowerShell to patch the `gatherosstate.exe` file. The patches are based on [GamersOsState][3].  
 
-This is a hash of the amount of RAM in the local system. It is rather advanced (supports NUMA and such) and is more than just the amount or a hash thereof. <br/>
-
-### hashSMBIOS
-
-This is a hash of the entire SMBIOS table. <br/>
-
-### instanceHashes
-
-These are the hashes for all components as per `nInstances`. For removable devices, the least significant bit is used as a flag for whether the device is removable or not.
-
-Removability is assessed via PnP info. You can check it yourself with Powershell's `Get-PnpDeviceProperty -KeyName DEVPKEY_Device_RemovalPolicy` for any device you like. These values (`CM_REMOVAL_POLICY_[…]`) are mapped to a single bit set if the device is removable.
-
-Some of the devices are only counted when they are not removable. Exact info on that when I stop being lazy. <br/>
-
-## Timeweight
-
-```c
-struct TIMEWEIGHT {
-    struct weight {
-        uint8_t type;
-        uint16_t weight;
-    } weights[];
-}
+```yaml
+$bytes  = [System.IO.File]::ReadAllBytes("C:\Files\gatherosstate.exe")
+$bytes[320] = 0xf8
+$bytes[321] = 0xfb
+$bytes[322] = 0x05
+$bytes[324] = 0x03
+$bytes[13672] = 0x25
+$bytes[13674] = 0x73
+$bytes[13676] = 0x3b
+$bytes[13678] = 0x00
+$bytes[13680] = 0x00
+$bytes[13682] = 0x00
+$bytes[13684] = 0x00
+$bytes[32748] = 0xe9
+$bytes[32749] = 0x9e
+$bytes[32750] = 0x00
+$bytes[32751] = 0x00
+$bytes[32752] = 0x00
+$bytes[32894] = 0x8b
+$bytes[32895] = 0x44
+$bytes[32897] = 0x64
+$bytes[32898] = 0x85
+$bytes[32899] = 0xc0
+$bytes[32900] = 0x0f
+$bytes[32901] = 0x85
+$bytes[32902] = 0x1c
+$bytes[32903] = 0x02
+$bytes[32904] = 0x00
+$bytes[32906] = 0xe9
+$bytes[32907] = 0x3c
+$bytes[32908] = 0x01
+$bytes[32909] = 0x00
+$bytes[32910] = 0x00
+$bytes[32911] = 0x85
+$bytes[32912] = 0xdb
+$bytes[32913] = 0x75
+$bytes[32914] = 0xeb
+$bytes[32915] = 0xe9
+$bytes[32916] = 0x69
+$bytes[32917] = 0xff
+$bytes[32918] = 0xff
+$bytes[32919] = 0xff
+$bytes[33094] = 0xe9
+$bytes[33095] = 0x80
+$bytes[33096] = 0x00
+$bytes[33097] = 0x00
+$bytes[33098] = 0x00
+$bytes[33449] = 0x64
+$bytes[33576] = 0x8d
+$bytes[33577] = 0x54
+$bytes[33579] = 0x24
+$bytes[33580] = 0xe9
+$bytes[33581] = 0x55
+$bytes[33582] = 0x01
+$bytes[33583] = 0x00
+$bytes[33584] = 0x00
+$bytes[33978] = 0xc3
+$bytes[34189] = 0x59
+$bytes[34190] = 0xeb
+$bytes[34191] = 0x28
+$bytes[34238] = 0xe9
+$bytes[34239] = 0x4f
+$bytes[34240] = 0x00
+$bytes[34241] = 0x00
+$bytes[34242] = 0x00
+$bytes[34346] = 0x24
+$bytes[34376] = 0xeb
+$bytes[34377] = 0x63
+[System.IO.File]::WriteAllBytes("C:\Files\gatherosstatemodified.exe", $bytes)
 ```
+-   Right click on the newly created file, `gatherosstatemodified.exe`, click the "Properties" option and set the Compatibility mode to Windows XP SP3.
+-   To generate the ticket using our modified `gatherosstate.exe`, run these commands:  
+```         
+$value = (Get-ItemProperty HKLM:\SYSTEM\CurrentControlSet\Control\ProductOptions).OSProductPfn
 
-The timeweight is a structure that contains information on how important certain hardware elements are. The structure is constant across Windows 10's history (not thoroughly verified).
-
-The type corresponds to identifiers of Hardware Collectors in the HWID algorithm (you can find the values in the [massgravel/hwid-stuff][1] repo) and the weight is how "important" a component is.
-
-When **locally** verifying a hardware ID, you sum all the weights of components matching with the license's HWID and determine if they are equal to or over the threshold. If they aren't, the HWID does not match (`ClipUp` exits with an error).
-
-### Further reading
-
-If you're interested, the (somewhat outdated but still matching) patent for this type of Hardware ID can be found [patents.googlr.com/][2]. <br/>
-
-## Product Family Name
-
-The **Product family name** is a string that identifies a product family in the Microsoft store. When it comes to Windows, it is composed of a few mostly stationary parts:
-
-```bash
-Microsoft.Windows.191.X21-99682_8wekyb3d8bbwe
+C:\Files\gatherosstatemodified.exe /c Pfn=$value`;PKeyIID=465145217131314304264339481117862266242033457260311819664735280
 ```
+-   A GenuineTicket.xml file should be created in the `C:\Files\` folder.
 
-The above PFN corresponds to the following fields:
+**Notes:**
 
-```bash
-Package Identity Name: Microsoft.Windows.191.X21-99682
-Publisher String: 8wekyb3d8bbwe
-```
+-   There are two types of tickets: Lockbox and Downlevel. If the system is already activated, then the created ticket will be a Lockbox ticket. If not, it will be a Downlevel ticket.
+-   To make the exact ticket used by the MAS script for HWID activation, make sure the system is already activated and change the time with the below PowerShell command. Then, start the ticket generation process according to the steps above.\
+    `Set-TimeZone -Id "UTC"; $date=[datetime]"2022/10/11 12:00";while($true){set-date $date; start-sleep -milliseconds 10}`
 
-In turn, the parts of Package Identity Name are:
+## Setup Preactivate
 
-- **Product**: `Microsoft Windows`
-- **SKU ID**: `191` (IoT Enterprise LTSC)
-- **Product Key Part Number**: `X21-99682`
+-   Check the Extract OEM option in the MAS `Extras` section if you want pre-activated Windows installation.
+-   Further, read [here - OEM Folder](/en/oem-folder).
 
-### Publish string
+<hr/><br/>
 
-The publisher string is made by hashing some data about the publisher [stackoverflow.com/questions/][3]. For all intents and purposes, it's a constant value. <br/>
+## Troubleshooting
 
-### SKU ID
+-   Check [here](/en/troubleshoot).
 
-This value corresponds to the edition. You can find an (almost) full list of these IDs in Windows SDK's `winnt.h`. <br/>
 
-### Product Key Part Number
+[1]: https://github.com/massgravel/MAS-Legacy-Methods
+[2]: https://devicepartner.microsoft.com/en-us/communications/comm-windows-ends-installation-path-for-free-windows-7-8-upgrade
+[3]: https://github.com/asdcorp/GamersOsState
 
-The product key part number is a value specific to a given range of product key IDs belonging to a given group. Most commonly, you can find it on COA stickers. It's basically the "signature" of a key range; different ranges can have different policies, some ranges can be reserved for testing, etc. etc.
 
-The part numbers can also be specific to markets (basically countries) in the Store itself, though I have no concrete examples of this.
-
-[1]: https://github.com/massgravel/hwid-stuff
-[2]: https://patents.google.com/patent/US7302590B2
-[3]: https://stackoverflow.com/questions/21568483/how-to-calculate-publisherid-from-publisher
