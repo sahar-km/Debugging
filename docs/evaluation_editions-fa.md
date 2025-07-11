@@ -3,7 +3,7 @@ layout: doc
 outline: deep
 title: 'Windows Evaluation Editions | نسخه‌های ارزیابی ویندوز'
 description: 'A complete guide to Windows Evaluation Editions for IT professionals, plus Persian translation. | راهنمای جامع نسخه‌های ارزیابی ویندوز برای متخصصان IT و ترجمه فارسی'
-date: 2025-07-11
+date: 2024-04-11
 editLink: true
 ---
 
@@ -11,15 +11,13 @@ editLink: true
 
 # نسخه‌های ارزیابی ویندوز
 
-> **English ⬇ | فارسی ⬇**
-
 ---
 
 ## English
 
 Windows Evaluation Editions are official trial versions of Windows operating systems released by Microsoft. They’re designed to help IT professionals and advanced users test the features and compatibility of Windows (Enterprise & Server) before committing to a purchase.
 
-- **Where to get:** [Microsoft Eval Center](https://www.microsoft.com/en-us/evalcenter)
+- **Where to get:** [Microsoft Eval Center][1]
 - **Available:** Windows 10/11 Enterprise & all current Server editions
 
 ::: warning
@@ -47,7 +45,7 @@ However, you can upgrade using an ISO and a registry tweak:
 
 **For LTSC editions:**
 
-1. Download the same-language/architecture LTSC ISO from [here](windows_ltsc_links.md).
+1. Download the same-language/architecture LTSC ISO from [windows ltsc links][2]
 2. Mount the ISO (right-click → Open with Windows Explorer).
 3. As administrator, run:
    ```
@@ -62,7 +60,7 @@ However, you can upgrade using an ISO and a registry tweak:
 
 **For General Availability Channel (GAC):**
 
-1. Download the ISO from [MSDL](https://msdl.gravesoft.dev/).
+1. Download the ISO from [MSDL][3].  
 2. Mount the ISO.
 3. As administrator, run:
    ```
@@ -77,47 +75,50 @@ However, you can upgrade using an ISO and a registry tweak:
 
 #### Windows Server
 
-- Official conversion is supported. See [Microsoft guide](https://learn.microsoft.com/en-us/windows-server/get-started/upgrade-conversion-options) or use the [MAS script](./index).
+- Official conversion is supported. See [Microsoft guide][4] or use the [AEG script](./index).
 
----
+<br/> 
 
 ### Extending the Evaluation Period
 
-- **Default:** 90 days (Enterprise), can be extended 2 more times (up to 270 days) with
+- **Default:** 90 days (Enterprise), can be extended 2 more times (up to 270 days) with  
   ```
   slmgr /rearm
-  ```
-- **Other methods:** Use the TSforge option in MAS or reset WPA registry keys (see [gravesoft.dev](https://gravesoft.dev/fix-wpa-registry)).
+  ```   
+- **Other methods:** Use the TSforge option in MAS or reset WPA registry keys (see [gravesoft.dev][5]).
 
 ::: info
 
 - Evaluation activation for Windows 10 Enterprise LTSC 2021 may fail—use MAS TSforge to fix.
-  :::
 
----
+:::
+
+<br/> 
 
 ### Avoid License File Swapping
 
 Applying full-version license files to eval builds is _not_ recommended and can break system updates, edition queries, and more.  
 Always use official upgrade or extension methods.
 
----
+<hr/><br/>
 
 ### Need Help?
 
 [Open a discussion for help.](https://github.com/NiREvil/windows-activation/discussions)
 
----
+
 
 ## فارسی
 
-نسخه‌های ارزیابی ویندوز (Evaluation Editions) نسخه‌های آزمایشی رسمی از سیستم‌عامل ویندوز هستند که توسط مایکروسافت منتشر می‌شوند. این نسخه‌ها برای تست امکانات، سازگاری و آشنایی با ویژگی‌های ویندوز (نسخه اینترپرایز و سرور) پیش از خرید نهایی مناسب‌اند.
+نسخه‌های ارزیابی ویندوز (Evaluation Editions) نسخه‌های آزمایشی رسمی از سیستم‌عامل ویندوز هستند که توسط مایکروسافت منتشر می‌شوند. این نسخه‌ها برای تست امکانات، سازگاری و آشنایی با ویژگی‌های ویندوز (نسخه اینترپرایز و سرور) پیش از خرید نهایی مناسب‌اند.  
 
-- **دریافت:** [مرکز ارزیابی مایکروسافت](https://www.microsoft.com/en-us/evalcenter)
+- **دریافت:** [مرکز ارزیابی مایکروسافت][1]
 - **در دسترس:** Windows 10/11 Enterprise و تمامی نسخه‌های Server
 
 ::: warning
+
 پس از پایان دوره آزمایشی، امکان فعال‌سازی این نسخه‌ها وجود ندارد. اگر نیاز به استفاده بلندمدت دارید، حتماً [نسخه اصلی](./genuine-installation-media) را نصب کنید.
+
 :::
 
 ### تفاوت نسخه کامل و ارزیابی
@@ -138,7 +139,7 @@ Always use official upgrade or extension methods.
 <Tabs>
 <TabItem value="LTSC-fa" label="LTSC">
 
-۱. فایل ISO مربوط به نسخه LTSC و زبان/معماری همان ویندوز را [از اینجا](windows_ltsc_links.md) دانلود کنید  
+۱. فایل ISO مربوط به نسخه LTSC و زبان/معماری همان ویندوز را [از اینجا][2] دانلود کنید  
 ۲. روی فایل ISO راست‌کلیک و گزینه Open with Windows Explorer را انتخاب کنید  
 ۳. خط فرمان را با دسترسی ادمین باز کنید و دستور زیر را بزنید:
 
@@ -153,7 +154,7 @@ reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v EditionID /d Ente
 </TabItem>
 <TabItem value="GAC-fa" label="GAC">
 
-۱. فایل ISO نسخه عادی را از [MSDL](https://msdl.gravesoft.dev/) دانلود کنید  
+۱. فایل ISO نسخه عادی را از [MSDL][3] دانلود کنید  
 ۲. آن را مانت کنید  
 ۳. خط فرمان ادمین اجرا و دستور زیر را بزنید:
 
@@ -170,7 +171,7 @@ reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v EditionID /d Ente
 
 #### ویندوز سرور
 
-تبدیل رسمی پشتیبانی می‌شود. [راهنمای مایکروسافت](https://learn.microsoft.com/en-us/windows-server/get-started/upgrade-conversion-options) را ببینید یا از [اسکریپت MAS](./index) استفاده کنید.
+تبدیل رسمی پشتیبانی می‌شود. [راهنمای مایکروسافت][4] را ببینید یا از [اسکریپت MAS](./index) استفاده کنید.
 
 ---
 
@@ -180,7 +181,7 @@ reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v EditionID /d Ente
   ```
   slmgr /rearm
   ```
-- **روش دیگر:** استفاده از گزینه TSforge در MAS یا ریست رجیستری WPA ([gravesoft.dev](https://gravesoft.dev/fix-wpa-registry))
+- **روش دیگر:** استفاده از گزینه TSforge در MAS یا ریست رجیستری WPA ([gravesoft.dev][5])
 
 ::: info
 
@@ -201,3 +202,10 @@ reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v EditionID /d Ente
 [در اینجا مطرح کنید.](https://github.com/NiREvil/windows-activation/discussions)
 
 ---
+
+
+[1]: https://www.microsoft.com/en-us/evalcenter
+[2]: https://massgrave.dev/windows_ltsc_links
+[3]: https://msdl.gravesoft.dev/
+[4]: https://learn.microsoft.com/en-us/windows-server/get-started/upgrade-conversion-options
+[5]: https://gravesoft.dev/fix-wpa-registry
