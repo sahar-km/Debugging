@@ -7,7 +7,8 @@ date: 2025-07-11
 editLink: true
 ---
 
-# Windows Evaluation Editions  
+# Windows Evaluation Editions
+
 # نسخه‌های ارزیابی ویندوز
 
 > **English ⬇ | فارسی ⬇**
@@ -48,11 +49,11 @@ However, you can upgrade using an ISO and a registry tweak:
 
 1. Download the same-language/architecture LTSC ISO from [here](windows_ltsc_links.md).
 2. Mount the ISO (right-click → Open with Windows Explorer).
-3. As administrator, run:  
+3. As administrator, run:
    ```
    reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v EditionID /d EnterpriseS /f
    ```
-   *(For Windows 11 on unsupported hardware, use `IoTEnterpriseS` instead of `EnterpriseS`)*
+   _(For Windows 11 on unsupported hardware, use `IoTEnterpriseS` instead of `EnterpriseS`)_
 4. Run `setup.exe` from the mounted ISO, make sure “Keep personal files and apps” is selected.
 5. Complete the upgrade.
 
@@ -63,11 +64,11 @@ However, you can upgrade using an ISO and a registry tweak:
 
 1. Download the ISO from [MSDL](https://msdl.gravesoft.dev/).
 2. Mount the ISO.
-3. As administrator, run:  
+3. As administrator, run:
    ```
    reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v EditionID /d Enterprise /f
    ```
-   *(For Windows 11 on unsupported hardware, use `IoTEnterprise`)*
+   _(For Windows 11 on unsupported hardware, use `IoTEnterprise`)_
 4. Run `setup.exe` and use key `NPPR9-FWDCX-D2C8J-H872K-2YT43` if prompted.
 5. On the confirmation screen, ensure “Keep personal files and apps” is selected.
 
@@ -82,15 +83,16 @@ However, you can upgrade using an ISO and a registry tweak:
 
 ### Extending the Evaluation Period
 
-- **Default:** 90 days (Enterprise), can be extended 2 more times (up to 270 days) with  
+- **Default:** 90 days (Enterprise), can be extended 2 more times (up to 270 days) with
   ```
   slmgr /rearm
   ```
 - **Other methods:** Use the TSforge option in MAS or reset WPA registry keys (see [gravesoft.dev](https://gravesoft.dev/fix-wpa-registry)).
 
 ::: info
+
 - Evaluation activation for Windows 10 Enterprise LTSC 2021 may fail—use MAS TSforge to fix.
-:::
+  :::
 
 ---
 
@@ -138,11 +140,13 @@ Always use official upgrade or extension methods.
 
 ۱. فایل ISO مربوط به نسخه LTSC و زبان/معماری همان ویندوز را [از اینجا](windows_ltsc_links.md) دانلود کنید  
 ۲. روی فایل ISO راست‌کلیک و گزینه Open with Windows Explorer را انتخاب کنید  
-۳. خط فرمان را با دسترسی ادمین باز کنید و دستور زیر را بزنید:  
-   ```
-   reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v EditionID /d EnterpriseS /f
-   ```
-   (برای ویندوز ۱۱ روی سخت‌افزار ناسازگار، به جای `EnterpriseS` از `IoTEnterpriseS` استفاده کنید)
+۳. خط فرمان را با دسترسی ادمین باز کنید و دستور زیر را بزنید:
+
+```
+reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v EditionID /d EnterpriseS /f
+```
+
+(برای ویندوز ۱۱ روی سخت‌افزار ناسازگار، به جای `EnterpriseS` از `IoTEnterpriseS` استفاده کنید)
 ۴. از درایو مجازی، فایل setup.exe را اجرا کنید و گزینه "نگه داشتن فایل‌ها و برنامه‌ها" را انتخاب کنید  
 ۵. مراحل ارتقاء را کامل کنید
 
@@ -151,11 +155,13 @@ Always use official upgrade or extension methods.
 
 ۱. فایل ISO نسخه عادی را از [MSDL](https://msdl.gravesoft.dev/) دانلود کنید  
 ۲. آن را مانت کنید  
-۳. خط فرمان ادمین اجرا و دستور زیر را بزنید:  
-   ```
-   reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v EditionID /d Enterprise /f
-   ```
-   (برای ویندوز ۱۱ روی سخت‌افزار ناسازگار، از `IoTEnterprise` استفاده کنید)
+۳. خط فرمان ادمین اجرا و دستور زیر را بزنید:
+
+```
+reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v EditionID /d Enterprise /f
+```
+
+(برای ویندوز ۱۱ روی سخت‌افزار ناسازگار، از `IoTEnterprise` استفاده کنید)
 ۴. فایل setup.exe را اجرا و در صورت نیاز کلید `NPPR9-FWDCX-D2C8J-H872K-2YT43` را وارد کنید  
 ۵. مطمئن شوید گزینه "نگه داشتن فایل‌ها و برنامه‌ها" انتخاب شده است
 
@@ -170,15 +176,16 @@ Always use official upgrade or extension methods.
 
 ### افزایش دوره ارزیابی
 
-- **پیش‌فرض:** ۹۰ روز (Enterprise)، قابل تمدید تا ۲۷۰ روز با دستور  
+- **پیش‌فرض:** ۹۰ روز (Enterprise)، قابل تمدید تا ۲۷۰ روز با دستور
   ```
   slmgr /rearm
   ```
 - **روش دیگر:** استفاده از گزینه TSforge در MAS یا ریست رجیستری WPA ([gravesoft.dev](https://gravesoft.dev/fix-wpa-registry))
 
 ::: info
+
 - فعال‌سازی نسخه LTSC 2021 ممکن است به خاطر کلید نادرست خطا دهد—برای رفع مشکل از TSforge کمک بگیرید.
-:::
+  :::
 
 ---
 
