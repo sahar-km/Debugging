@@ -11,99 +11,122 @@ editLink: true
 
 به بخش سوالات متداول MAS خوش آمدید! اگر سوالی دارید، ابتدا این صفحه را مرور کنید — احتمال زیاد جواب‌تان اینجاست. اگر هنوز سوالی داشتید، [تماس بگیرید](#contact-us) تا راهنمایی‌تان کنیم.
 
-<br/> 
+<br/>
 
 ## شروع به کار با MAS
 
 ### چطور از MAS استفاده کنم؟
+
 برای راه‌اندازی دائمی ویندوز با HWID، راهنمای [فعالسازی دائمی با HWID](./index#method-1--permanent-activation-with-hwid) را بخوانید.
 
 ### فعال‌سازی دائمی ویندوز چگونه انجام می‌شود؟
+
 در MAS، گزینه HWID را انتخاب کنید.
 
 ### دانلود و نصب آفیس به چه صورت است؟
+
 راهنمای [نصب رسانه اصل آفیس](./genuine-installation-media) را دنبال کنید.
 
 ### فعال‌سازی دائمی آفیس چطور انجام می‌شود؟
+
 در MAS، گزینه Ohook را انتخاب کنید.
 
-<br/> 
+<br/>
 
 ## مشکلات رایج و راه‌حل‌ها
 
 ### اگر فعال‌سازی با خطا مواجه شد، چه کنم؟
+
 راهنمای [عیب‌یابی](./troubleshoot) را ببینید.
 
 ### آیا MAS امن است؟ چطور مطمئن شوم که ویروس ندارد؟
+
 MAS کاملاً متن‌باز است، بیش از ۱۲۵ هزار ستاره در [GitHub][1] دارد و میلیون‌ها کاربر از آن استفاده می‌کنند. می‌توانید کد را با Notepad یا کمک ChatGPT بررسی کنید.  
 اگر مایل بودید، فعال‌سازی دستی را مطابق [این راهنما](./manual_hwid_activation) انجام دهید.
 
 ### چطور فعال‌سازی HWID، Ohook، TSforge، KMS38 یا Online KMS را حذف کنم؟
+
 راهنماهای حذف هر روش را اینجا پیدا کنید:
+
 - [حذف HWID](./hwid.md#how-to-remove-hwid)
 - [حذف Ohook](./ohook.md#how-to-remove-ohook)
 - [حذف TSforge](./tsforge.md#how-to-remove-tsforge)
 - [حذف KMS38](./kms38.md#how-to-remove-kms38)
 - [حذف Online KMS](./online_kms.md#how-to-remove-online-kms)
 
-<br/> 
+<br/>
 
 ## سوالات مربوط به ویندوز و آفیس
 
 ### چطور نسخه کامل Windows 10/11 Enterprise LTSC را دانلود کنم؟
+
 راهنمای [دریافت رسانه اصل](./genuine-installation-media) را ببینید.
 
 ### آیا می‌توانم ویرایش ویندوز را از Home به Pro تغییر دهم؟
+
 بله، در MAS گزینه Change Windows Edition را انتخاب کنید.
 
 ### آیا با تغییر نسخه ویندوز (مثلاً از Home به Pro) اطلاعاتم پاک می‌شود؟
+
 خیر، اطلاعات شما حذف نمی‌شود.
 
 ### بعد از تغییر نسخه ویندوز، غیر فعال شده است؛ چه کنم؟
+
 کافیست فعال‌سازی HWID را برای نسخه جدید انجام دهید؛ هر نسخه نیاز به فعال‌سازی مجزا دارد.
 
 ### آیا می‌توانم اکانت مایکروسافت را با MAS فعال نگه دارم؟
+
 بله، این کار بدون مشکل و امن است.
 
 ### آیا بعد از فعال‌سازی، ویندوز و آفیس آپدیت می‌شوند؟
+
 بله، به‌روزرسانی‌ها بدون مشکل ادامه پیدا می‌کنند.
 
-<br/> 
+<br/>
 
 ## سوالات ویژه آفیس
 
 ### من در روسیه هستم و آفیس دانلود نمی‌شود؛ راه‌حل چیست؟
+
 راهنمای [دور زدن محدودیت](https://gravesoft.dev/bypass-russian-geoblock)[2] را مطالعه کنید.
 
 ### آیا می‌توانم Office 365 را فعال کنم؟
+
 بله؛ از گزینه Ohook استفاده کنید. توجه داشته باشید برخی قابلیت‌های سروری (مانند ۱ ترابایت OneDrive) فقط برای مشترکین رسمی فعال است، اما اکثر امکانات و ۵ گیگابایت فضای رایگان فعال می‌شود.
 
 ### آیا می‌توانم Copilot را در آفیس داشته باشم؟
+
 خیر؛ [Copilot][3] یک سرویس اضافه برای مشترکین رسمی مایکروسافت ۳۶۵ است.
 
 ### آیا امکان استفاده از Python در Excel با MAS هست؟
+
 خیر؛ [Python در Excel][4] فقط برای حساب‌های رسمی مایکروسافت ۳۶۵ فعال است.
 
 ### اگر پیام "Office is not genuine" دریافت کردم چه کنم؟
+
 از نسخه جدید MAS، گزینه Ohook را اجرا کنید.
 
-<hr/><br/> 
+<hr/><br/>
 
 ## سایر سوالات
 
 ### آیا بعد از فعال‌سازی می‌توانم پوشه MAS را حذف کنم؟
+
 بله، پس از فعال‌سازی مشکلی نیست.
 
 ### چطور فعال‌سازی توسط MAS کار می‌کند؟
+
 توضیحات دقیق‌تر در بخش مستندات (Docs) آمده است؛ برای اطلاعات بیشتر به آن مراجعه کنید.
 
 ### آیا MAS برای ویندوز ویستا/۷/۸.۱ هم کار می‌کند؟
+
 بله؛ گزینه‌های TSforge، Ohook و Online KMS روی نسخه‌های Vista/7/8.1 هم قابل استفاده است.
 
 ### چطور می‌توانم به پروژه کمک کنم یا کمک مالی کنم؟
+
 پروژه رایگان است و کمک مالی نمی‌پذیرد؛ چون توسط جامعه توسعه‌دهندگان مدیریت می‌شود و تقسیم کمک‌ها عملی نیست. همچنین کسب درآمد از ابزارهای فعال‌سازی صحیح نیست.
 
-<hr/><br/> 
+<hr/><br/>
 
 ::: tip
 
@@ -111,10 +134,10 @@ MAS کاملاً متن‌باز است، بیش از ۱۲۵ هزار ستاره
 
 :::
 
-[1]: https://github.com/massgravel/Microsoft-Activation-Scripts  
-[2]: https://gravesoft.dev/bypass-russian-geoblock  
-[3]: https://www.microsoft.com/en-us/microsoft-365/microsoft-copilot  
-[4]: https://support.microsoft.com/en-us/office/introduction-to-python-in-excel-55643c2e-ff56-4168-b1ce-9428c8308545  
+[1]: https://github.com/massgravel/Microsoft-Activation-Scripts
+[2]: https://gravesoft.dev/bypass-russian-geoblock
+[3]: https://www.microsoft.com/en-us/microsoft-365/microsoft-copilot
+[4]: https://support.microsoft.com/en-us/office/introduction-to-python-in-excel-55643c2e-ff56-4168-b1ce-9428c8308545
 [5]: https://github.com/NiREvil/windows-activation/discussions
 [6]: mailto:diana.clk01@gmail.com
 [rainbow]: https://github.com/NiREvil/vless/assets/126243832/1aca7f5d-6495-44b7-aced-072bae52f256
