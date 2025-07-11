@@ -95,7 +95,7 @@ However, you can upgrade using an ISO and a registry tweak:
 
 ::: tip Avoiding
 
-Applying full-version license files to eval builds is _not_ recommended and can break system updates, edition queries, and more.    
+Applying full-version license files to eval builds is _not_ recommended and can break system updates, edition queries, and more.  
 Always use official upgrade or extension methods.
 
 :::
@@ -106,7 +106,7 @@ Always use official upgrade or extension methods.
 
 [Open a discussion for help.][6]
 
-<hr/><br/> 
+<hr/><br/>
 
 [1]: https://www.microsoft.com/en-us/evalcenter
 [2]: https://massgrave.dev/windows_ltsc_links
