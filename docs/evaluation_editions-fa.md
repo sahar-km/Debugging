@@ -16,7 +16,7 @@ editLink: true
 
 ::: info نکته
 
-پس از پایان دوره آزمایشی، امکان فعال‌سازی این نسخه‌ها وجود ندارد. اگر نیاز به استفاده بلندمدت دارید، حتماً [نسخه اصلی](./genuine-installation-media-fa) را نصب کنید.  
+پس از پایان دوره آزمایشی، امکان فعال‌سازی این نسخه‌ها وجود ندارد. اگر نیاز به استفاده بلندمدت دارید، حتماً [نسخه اصلی](./genuine-installation-media-fa) را نصب کنید.
 
 :::
 
@@ -72,7 +72,7 @@ reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v EditionID /d Ente
 
 تبدیل رسمی پشتیبانی می‌شود. [راهنمای مایکروسافت][4] را ببینید یا از [اسکریپت MAS](./index-fa) استفاده کنید.
 
-<br/> 
+<br/>
 
 ### افزایش دوره ارزیابی
 
@@ -88,20 +88,20 @@ reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v EditionID /d Ente
 
 :::
 
-<br/> 
+<br/>
 
 ### پرهیز از تغییر فایل لایسنس
 
 جایگزینی فایل لایسنس نسخه کامل روی نسخه ارزیابی توصیه نمی‌شود، ممکن است به روزرسانی‌ها، شناسایی نسخه و ... را مختل کند.  
 همیشه از روش‌های رسمی برای ارتقاء یا تمدید استفاده کنید.
 
-<br/> 
+<br/>
 
 ### نیاز به راهنمایی؟
 
 [در اینجا مطرح کنید.][5]
 
-<hr/><br/> 
+<hr/><br/>
 
 [1]: https://www.microsoft.com/en-us/evalcenter
 [2]: https://massgrave.dev/windows_ltsc_links
