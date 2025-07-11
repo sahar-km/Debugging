@@ -31,7 +31,7 @@ editLink: true
 <p align="center">
   <img src="https://github.com/user-attachments/assets/647ef16b-9208-4ff3-a94b-825ffa99721f" alt="about-system" width="480px" /></p><br/>
 
-::: tip روش‌های دیگر برای یافتن نسخه ویندوز 
+::: tip روش‌های دیگر برای یافتن نسخه ویندوز
 
 ::: details برای مشاهده توضیحات کلیک کنید
 
@@ -75,45 +75,44 @@ editLink: true
   <img src="https://github.com/user-attachments/assets/16e8f49a-0cec-4836-b841-0cbd9344fbb1" alt="findstr command" width="420px" /></p><br/>
 
 :::
-   
+
 3. **دانلود فایل تیکت:**  
-  از جدول زیر مطابق با نسخه ویندوز خود، فایل تیکت (Ticket) را دانلود کنید. ۴. کپی فایل تیکت:
+   از جدول زیر مطابق با نسخه ویندوز خود، فایل تیکت (Ticket) را دانلود کنید. ۴. کپی فایل تیکت:
 
 4. **دانلود فایل تیکت:**  
-  از جدول زیر مطابق با نسخه ویندوز خود، فایل تیکت (Ticket) را دانلود کنید.
+   از جدول زیر مطابق با نسخه ویندوز خود، فایل تیکت (Ticket) را دانلود کنید.
 
 5. **کپی فایل تیکت:**  
-  فایل دانلودشده را به آدرس زیر منتقل کنید:
+   فایل دانلودشده را به آدرس زیر منتقل کنید:
 
- ```md
+```md
 C:\ProgramData\Microsoft\Windows\ClipSVC\GenuineTicket
 ```
 
 ::: info نکته: پوشه `ProgramData` پنهان است؛ آدرس را مستقیماً در نوار آدرس اکسپلورر وارد کنید.
 
 6. **باز کردن تنظیمات بخش فعال‌سازی:**  
-  وارد بخش Settings > Activation شوید و روی گزینه "Change product key" کلیک کنید.
+   وارد بخش Settings > Activation شوید و روی گزینه "Change product key" کلیک کنید.
 
 7. **وارد کردن کلید محصول:**  
-  کلید مربوط به نسخه ویندوز را از جدول زیر کپی و در کادر مربوطه وارد کنید.
+   کلید مربوط به نسخه ویندوز را از جدول زیر کپی و در کادر مربوطه وارد کنید.
 
-8. **اتمام فعال‌سازی:**   
-  چند لحظه صبر کنید تا ویندوز به صورت خودکار فعال شود.
+8. **اتمام فعال‌سازی:**  
+   چند لحظه صبر کنید تا ویندوز به صورت خودکار فعال شود.
 
 9. **مشاهده وضعیت فعال‌‌شدن ویندوز**
 
 برای بررسی وضعیت فعال‌سازی **`ویندوز ۱۰`**، از این طریق اقدام کنید:  
 **Settings → Update & Security → Activation**. [^2]
 
+برای بررسی وضعیت فعال‌سازی **`ویندوز ۱۱`**، بر روی دکمه `Start` کلیک کرده و سپس از این طریق اقدام کنید:
 
-برای بررسی وضعیت فعال‌سازی **`ویندوز ۱۱`**، بر روی دکمه `Start` کلیک کرده و سپس از این طریق اقدام کنید: 
-
-Settings → System → Activation. [^3]  
+Settings → System → Activation. [^3]
 
 <br/>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/da52f1bb-79c9-45db-bade-a0f56cd0a739" alt="activated" width="540px" /></p><br/><br/>  
+  <img src="https://github.com/user-attachments/assets/da52f1bb-79c9-45db-bade-a0f56cd0a739" alt="activated" width="540px" /></p><br/><br/>
 
 ::: info رفع خطا
 
