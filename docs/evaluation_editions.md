@@ -22,25 +22,25 @@ Evaluation editions can not be activated beyond the evaluation period. Avoid usi
 
 :::
 
-<br/> 
+<br/>
 
 ## Difference between the full and evaluation
 
 Both versions are almost the same feature-wise. The main difference lies in the **activation**.
 
 - The evaluation version of Windows typically comes with a 90-day (180-day for Server) trial period.
-- Evaluation Editions cannot be activated outside of the evaluation period. 
+- Evaluation Editions cannot be activated outside of the evaluation period.
 - After the trial period, the system will start showing notifications and may shut down periodically.
 - To be clear, you can not permanently activate it with your genuine key, digital license, KMS, etc.
 
-<br/> 
+<br/>
 
 ## Convert evaluation to the full version
 
 ### Windows 10/11 Enterprise Evaluation
 
-Officially, converting Windows 10/11 Enterprise eval to full version is not supported.   
-However, you can use an alternative method to change to the full version by doing an in-place upgrade with an ISO **(keeping files and apps)** and with a registry tweak.  
+Officially, converting Windows 10/11 Enterprise eval to full version is not supported.  
+However, you can use an alternative method to change to the full version by doing an in-place upgrade with an ISO **(keeping files and apps)** and with a registry tweak.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -54,14 +54,14 @@ LTSC means long-term servicing channel. Microsoft provides longer update support
 - Right-click on the downloaded ISO file, Open With > Windows Explorer
 - A new DVD drive will appear in Windows Explorer, which means the installation image has been mounted successfully.
 - Now open the command prompt as admin and enter,  
-  `reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v EditionID /d EnterpriseS /f`  
+  `reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v EditionID /d EnterpriseS /f`
   - If you are on Windows 11 with unsupported hardware then enter,  
-  `reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v EditionID /d IoTEnterpriseS /f`  
+    `reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v EditionID /d IoTEnterpriseS /f`
 - Go into that DVD drive and run setup.exe, continue until you reach the final confirmation screen.
 - Make sure it says "**Keep personal files and apps**" on the final screen. Then you can continue the process and wait until it is done.
 
 It will upgrade your eval Windows version to the full version.
-    
+
 </TabItem>
 
 <TabItem value="eval_gac" label="Windows 10/11 Enterprise Evaluation (GAC)" default>
@@ -72,9 +72,9 @@ GAC means general availability channel, aka normal version.
 - Right-click on the downloaded ISO file, Open With > Windows Explorer
 - A new DVD drive will appear in Windows Explorer, which means the installation image has been mounted successfully.
 - Now open the command prompt as admin and enter,  
-  `reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v EditionID /d Enterprise /f`  
+  `reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v EditionID /d Enterprise /f`
   - If you are on Windows 11 with unsupported hardware then enter,  
-  `reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v EditionID /d IoTEnterprise /f`  
+    `reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v EditionID /d IoTEnterprise /f`
 - Go into that DVD drive and run setup.exe, enter this key if the setup is asking for it `NPPR9-FWDCX-D2C8J-H872K-2YT43`
 - Continue until you reach the final confirmation screen.
 - Make sure it says "**Keep personal files and apps**" on the final screen. Then you can continue the process and wait until it is done.
@@ -90,7 +90,7 @@ You can use the official method here [learn.microsoft.com/get-started/upgrade-co
 or  
 Use the change edition option in the [MAS script](./index).
 
-<hr/><br/>  
+<hr/><br/>
 
 ## Extend evaluation activation period
 
@@ -107,17 +107,17 @@ You can repeat this process 2 times (a total of 270 days of activation).
 **Reset the activation at any given time**
 
 #### Method -1
-                                                 
+
 You can use TSforge option in MAS to reset the activation (trial) period at any given time.
 
 #### Method -2
-                                                 
+
 WPA registry keys at `HKEY_LOCAL_MACHINE\SYSTEM\WPA` hold the records of the trial period. By clearing this registry we can simply reset the activation (trial) period at any given time. You can follow below guide to do this.  
 https://gravesoft.dev/fix-wpa-registry
 
 ::: info Note
 
-- The eval activation for Windows 10 Enterprise LTSC 2021 is not working because of the incorrect key used by Microsoft. 
+- The eval activation for Windows 10 Enterprise LTSC 2021 is not working because of the incorrect key used by Microsoft.
 - However, TSforge option in MAS can fix this and reset the activation (trial) period.
 
 :::
@@ -127,7 +127,7 @@ https://gravesoft.dev/fix-wpa-registry
 ## Avoid license swapping
 
 Some people suggest installing license files of the full version of Windows Enterprise to activate the evaluation installation.  
-This is not a good idea for many reasons,  
+This is not a good idea for many reasons,
 
 - If you apply this method then the below commands will show errors  
   `dism /online /english /Get-CurrentEdition`  
@@ -137,7 +137,7 @@ This is not a good idea for many reasons,
 
 It's better to either upgrade to the full version or extend the activation period as mentioned above on this page.
 
-<br/> 
+<br/>
 
 ::: tip
 
@@ -148,8 +148,5 @@ You can [connect with us][1] for help if you need.
 <hr/><br/>
 
 [microsoft.com/evalcenter]: https://www.microsoft.com/en-us/evalcenter
-
-[learn.microsoft.com/get-started/upgrade-conversion-options]: https://learn.microsoft.com/en-us/windows-server/get-started/upgrade-conversion-options 
-
+[learn.microsoft.com/get-started/upgrade-conversion-options]: https://learn.microsoft.com/en-us/windows-server/get-started/upgrade-conversion-options
 [1]: https://github.com/NiREvil/windows-activation/discussions
-             
