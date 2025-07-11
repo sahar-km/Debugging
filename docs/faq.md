@@ -2,7 +2,7 @@
 layout: doc
 outline: deep
 title: 'FAQ'
-description: 'Frequently Asked Questions about Activation Methods' 
+description: 'Frequently Asked Questions about Activation Methods'
 date: 2023-02-04
 editLink: true
 ---
@@ -15,7 +15,7 @@ Welcome to the AEG FAQ! Here you'll find answers to the most common questions. I
 
 ## Getting Started
 
-<br/> 
+<br/>
 
 ### How do I use AEG?
 
@@ -88,7 +88,7 @@ Yes — updates will work as usual.
 
 ## Office-Specific
 
-<br/> 
+<br/>
 
 ### I’m in Russia and can’t download Office. Any workaround?
 
@@ -114,7 +114,7 @@ Simply re-run the Ohook activation from the latest AEG version.
 
 ## Other Common Questions
 
-<br/> 
+<br/>
 
 ### Can I delete the MAS folder after activation?
 
