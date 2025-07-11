@@ -60,7 +60,7 @@ However, you can upgrade using an ISO and a registry tweak:
 
 **For General Availability Channel (GAC):**
 
-1. Download the ISO from [MSDL][3].  
+1. Download the ISO from [MSDL][3].
 2. Mount the ISO.
 3. As administrator, run:
    ```
@@ -77,14 +77,14 @@ However, you can upgrade using an ISO and a registry tweak:
 
 - Official conversion is supported. See [Microsoft guide][4] or use the [AEG script](./index).
 
-<br/> 
+<br/>
 
 ### Extending the Evaluation Period
 
-- **Default:** 90 days (Enterprise), can be extended 2 more times (up to 270 days) with  
+- **Default:** 90 days (Enterprise), can be extended 2 more times (up to 270 days) with
   ```
   slmgr /rearm
-  ```   
+  ```
 - **Other methods:** Use the TSforge option in MAS or reset WPA registry keys (see [gravesoft.dev][5]).
 
 ::: info
@@ -93,7 +93,7 @@ However, you can upgrade using an ISO and a registry tweak:
 
 :::
 
-<br/> 
+<br/>
 
 ### Avoid License File Swapping
 
@@ -106,11 +106,9 @@ Always use official upgrade or extension methods.
 
 [Open a discussion for help.](https://github.com/NiREvil/windows-activation/discussions)
 
-
-
 ## فارسی
 
-نسخه‌های ارزیابی ویندوز (Evaluation Editions) نسخه‌های آزمایشی رسمی از سیستم‌عامل ویندوز هستند که توسط مایکروسافت منتشر می‌شوند. این نسخه‌ها برای تست امکانات، سازگاری و آشنایی با ویژگی‌های ویندوز (نسخه اینترپرایز و سرور) پیش از خرید نهایی مناسب‌اند.  
+نسخه‌های ارزیابی ویندوز (Evaluation Editions) نسخه‌های آزمایشی رسمی از سیستم‌عامل ویندوز هستند که توسط مایکروسافت منتشر می‌شوند. این نسخه‌ها برای تست امکانات، سازگاری و آشنایی با ویژگی‌های ویندوز (نسخه اینترپرایز و سرور) پیش از خرید نهایی مناسب‌اند.
 
 - **دریافت:** [مرکز ارزیابی مایکروسافت][1]
 - **در دسترس:** Windows 10/11 Enterprise و تمامی نسخه‌های Server
@@ -202,7 +200,6 @@ reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v EditionID /d Ente
 [در اینجا مطرح کنید.](https://github.com/NiREvil/windows-activation/discussions)
 
 ---
-
 
 [1]: https://www.microsoft.com/en-us/evalcenter
 [2]: https://massgrave.dev/windows_ltsc_links
